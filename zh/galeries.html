@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品 - Ana Ruiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="../css/style-modern.css" rel="stylesheet" />
+
+  <style>
+    :root { --site-nav-offset: 80px; }
+
+    .oeuvres-section {
+      max-width: 900px;
+      margin: calc(var(--site-nav-offset) + 1.2rem) auto 3rem auto;
+      padding: 0 1.2rem;
+      border-radius: 22px;
+    }
+
+    .oeuvres-section h1 {
+      text-align: center;
+      margin: 0 0 1.1rem 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .oeuvres-note {
+      text-align: center;
+      margin: 0 auto 1.6rem auto;
+      font-style: italic;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    .oeuvres-section h2 {
+      margin-top: 2.2rem;
+      margin-bottom: 0.9rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+    }
+
+    .oeuvres-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .oeuvres-list li {
+      margin-bottom: 0.7rem;
+      line-height: 1.65;
+    }
+
+    .oeuvres-list .year {
+      font-weight: 700;
+      margin-right: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .oeuvres-list a {
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .oeuvres-list a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .oeuvres-section { padding: 0 0.9rem; }
+      .oeuvres-section h1 { font-size: 1.35rem; }
+    }
+  </style>
+
+  <script defer src="../js/navbar-load.js"></script>
+  <link href="../css/theme.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ===== Barre de navigation principale ===== -->
+    <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">Ana Ruiz</a>
+        <img alt="Signature Ana Ruiz" class="nav-signature" src="../img/signature.png"/>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="galeries.html">作品</a></li>
+        <li><a href="publications.html">出版物</a></li>
+        <li><a href="diaporama.html">幻灯片</a></li>
+        <li><a href="apropos.html">简介</a></li>
+        <li><a href="contact.html">联系</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <a class="lang-link" data-lang="fr" href="../galeries.html" title="Français" aria-label="Français">🇫🇷</a>
+          <a class="lang-link" data-lang="en" href="../en/galeries.html" title="English" aria-label="English">🇬🇧</a>
+          <a class="lang-link" data-lang="es" href="../es/galeries.html" title="Español" aria-label="Español">🇪🇸</a>
+          <a class="lang-link" data-lang="zh" href="galeries.html" title="中文" aria-label="中文">🇨🇳</a>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+          <span class="theme-icon">☀︎</span>
+        </button>
+        <button aria-label="打开菜单" class="hamburger" id="menu-toggle" aria-controls="primary-nav">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="oeuvres-section fade-in">
+      <h1>作品</h1>
+      <p class="oeuvres-note">带有在线画廊的展览（及装置）可点击进入。</p>
+
+      <h2>展览</h2>
+      <ul class="oeuvres-list">
+        <li><span class="year">2025</span>– <a href="peau-dane.html">Peau d’âne</a>, 画廊餐厅 Le Canapé, Gif-sur-Yvette</li>
+        <li><span class="year">2013</span>– Une maison, un écrivain, 画廊餐厅 Le Canapé, Gif-sur-Yvette</li>
+        <li><span class="year">2012</span>– <a href="la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html">La maison ou le pouvoir de rentrer en soi-même</a>, Atelier des Arts, Villebon-sur-Yvette</li>
+        <li><span class="year">2009</span>– <a href="fete-des-artistes-2009.html">Fête des artistes</a></li>
+        <li><span class="year">2008</span>– <a href="sur-le-sentier-du-dragonnier-2008.html">Sur le sentier du dragonnier</a>, Espace 181, Palaiseau</li>
+        <li><span class="year">2007</span>– <a href="couleurs-en-nudite-2007.html">Couleurs en nudité</a>, 多媒体图书馆, Villebon-sur-Yvette</li>
+        <li><span class="year">2005</span>– Angles de vie, Château de Belleville, Gif-sur-Yvette</li>
+        <li><span class="year">2004</span>– Le regard en appétit, 画廊餐厅 Le Canapé, Gif-sur-Yvette</li>
+        <li><span class="year">1994</span>– Espace controversé, Château du Montcel, Fondation Cartier, Jouy-en-Josas</li>
+        <li><span class="year">1993</span>– L’auberge espagnole, Centre d’art Atrium, moulin de l’Aqueduc, Avalon</li>
+      </ul>
+
+      <h2>装置</h2>
+      <ul class="oeuvres-list">
+        <li><span class="year">2005</span>– Invisible-visible, 地面与窗户装置 – Château de Belleville, Gif-sur-Yvette</li>
+        <li><span class="year">2005–2006</span>– Terre d’Artistes 与 Recycl’Art 装置 – MJC Cyrano, Gif-sur-Yvette</li>
+        <li><span class="year">2007</span>– Dix flaques, rêve d’enfance, Villebon-sur-Yvette</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Ana Ruiz。保留所有权利。| <a href="mentions-legales.html">法律声明</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+/*
+  Theme override for Ana Ruiz site
+  - Default: clair (crème)
+  - Option: sombre
+  Controlled via: <html data-theme="light|dark">
+
+  Objectifs (source de vérité : README.md)
+  - Fond clair = crème très clair (pas blanc pur)
+  - Texte lisible en clair (plus sombre)
+  - Pas de "box" blanche séparée pour les blocs de texte (fond crème continu)
+  - Fond sombre disponible (☾) / fond clair (☀︎) visible sur toutes les pages
+*/
+
+:root{
+  /* Clair (par défaut) */
+  --bg: #fbf7ef;            /* crème très clair */
+  --text: #1a1712;          /* texte plus sombre */
+  --muted: #3f3a33;
+  --heading: #15120e;
+
+  /* En clair : on évite les panneaux blancs, on laisse respirer le fond crème */
+  --panel-bg: transparent;
+  --panel-bg-soft: rgba(251, 247, 239, 0.92);
+
+  /* Cartes (œuvres, vignettes) : léger contraste mais sans blanc pur */
+  --card-bg: rgba(26, 23, 18, 0.03);
+  --card-border: rgba(26, 23, 18, 0.10);
+
+  --nav-bg: rgba(251, 247, 239, 0.92);
+  --nav-shadow: 0 8px 28px rgba(20, 18, 16, 0.12);
+  --nav-text: #1a1712;
+  --nav-link-hover-bg: rgba(26, 23, 18, 0.06);
+
+  --footer-bg: transparent;
+
+  --link: #2d4a7a;
+  --link-hover: #1f3560;
+
+  --image-bg: rgba(26,23,18,0.04);
+
+  --btn-bg: rgba(26,23,18,0.06);
+  --btn-bg-hover: rgba(26,23,18,0.10);
+  --btn-text: var(--nav-text);
+
+  --focus-ring: 0 0 0 4px rgba(45, 74, 122, 0.22);
+}
+
+html[data-theme="dark"]{
+  --bg: #151516;
+  --text: #e9ecef;
+  --muted: #b8bac2;
+  --heading: #f4efe9;
+
+  --panel-bg: rgba(38, 37, 41, 0.14);
+  --panel-bg-soft: rgba(38, 37, 41, 0.10);
+  --card-bg: rgba(38, 37, 41, 0.12);
+  --card-border: rgba(255, 255, 255, 0.06);
+
+  --nav-bg: rgba(28, 28, 31, 0.70);
+  --nav-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  --nav-text: #e9ecef;
+  --nav-link-hover-bg: rgba(200, 195, 175, 0.07);
+
+  --footer-bg: rgba(0, 0, 0, 0.14);
+
+  --link: #97bbc6;
+  --link-hover: #b8d6df;
+
+  --image-bg: #222;
+
+  --btn-bg: rgba(238, 233, 222, 0.14);
+  --btn-bg-hover: rgba(238, 233, 222, 0.24);
+  --btn-text: #e6e6e6;
+
+  --focus-ring: 0 0 0 4px rgba(151, 187, 198, 0.25);
+}
+
+/* Base (évite le "bandeau noir" qui venait du fond html restant en sombre) */
+html,
+body{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  min-height: 100%;
+}
+
+/* Liens */
+a{ color: var(--link); }
+a:hover{ color: var(--link-hover); }
+
+/* Navbar */
+.navbar{
+  background: var(--nav-bg) !important;
+  box-shadow: var(--nav-shadow) !important;
+}
+.nav-logo a{
+  color: var(--nav-text) !important;
+  text-shadow: none !important;
+}
+
+/* Layout navbar : liens + actions (thème + hamburger) */
+.navbar-container{
+  display:flex !important;
+  align-items:center !important;
+  gap: 1rem !important;
+}
+
+.nav-links{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap: 0.9rem !important;
+  list-style:none !important;
+  padding:0 !important;
+  margin:0 !important;
+
+  /* autorise le shrink sans pousser le bouton de thème hors écran */
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-x: auto;
+}
+
+.nav-links a{
+  color: var(--nav-text) !important;
+}
+
+.nav-links a.active{
+  background: var(--nav-link-hover-bg) !important;
+  color: var(--nav-text) !important;
+}
+
+.nav-links a:hover,
+.nav-links a:focus{
+  background: var(--nav-link-hover-bg) !important;
+  color: var(--nav-text) !important;
+  box-shadow: var(--focus-ring) !important;
+  outline: none !important;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap: .35rem;
+  flex: 0 0 auto;
+}
+
+.hamburger{ color: var(--nav-text) !important; }
+
+/* Signature : lisible en clair / sombre */
+html[data-theme="dark"] .nav-signature{
+  filter: invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  opacity: 0.92;
+}
+html[data-theme="light"] .nav-signature{
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  opacity: 0.88;
+}
+
+/* Bouton thème (☀︎/☾) */
+.theme-toggle{
+  border: none;
+  background: transparent;
+  color: var(--nav-text);
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 38px;
+  border-radius: 999px;
+  transition: background 0.15s, transform 0.08s;
+}
+.theme-toggle:hover{ background: var(--nav-link-hover-bg); }
+.theme-toggle:active{ transform: translateY(1px); }
+.theme-toggle:focus-visible{
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.theme-toggle .theme-icon{
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Conteneurs principaux : fond continu (pas de box blanche) */
+.gallery-page,
+.gallery-container,
+.diaporama-container,
+.about-container,
+.contact-container,
+.legal-container,
+.oeuvres-section,
+.publications-section{
+  background: var(--panel-bg) !important;
+  color: var(--text) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Cartes (œuvres / vidéos) : léger contraste */
+.gallery-card,
+.gallery-work{
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+/* Titres */
+.gallery-title,
+.gallery-title a,
+.gallery-work-title,
+.diapo-title,
+.diapo-gallery,
+.oeuvres-section h1,
+.oeuvres-section h2,
+.about-title,
+.contact-title,
+.legal-container h1,
+.legal-container h2,
+.container .page-title,
+.container .section-title{
+  color: var(--heading) !important;
+}
+
+/* Textes secondaires (mais lisibles) */
+.gallery-desc,
+.gallery-work-desc,
+.gallery-citation,
+.oeuvres-note,
+.diapo-caption,
+.diapo-indicator,
+.note,
+.page-subtitle{
+  color: var(--muted) !important;
+}
+
+/* Textes principaux qui étaient trop clairs sur fond clair (inline CSS legacy) */
+.about-text,
+.contact-info,
+.legal-container{
+  color: var(--text) !important;
+}
+
+/* Formulaire contact (force le clair) */
+html[data-theme="light"] .contact-form label{
+  color: var(--muted) !important;
+}
+html[data-theme="light"] .contact-form input,
+html[data-theme="light"] .contact-form textarea{
+  background: var(--panel-bg-soft) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--card-border) !important;
+}
+html[data-theme="light"] .contact-form button{
+  background: var(--btn-bg) !important;
+  color: var(--text) !important;
+}
+html[data-theme="light"] .contact-form button:hover{
+  background: var(--btn-bg-hover) !important;
+}
+
+/* Contact : supprimer le voile sombre en mode clair */
+html[data-theme="light"] body::after{
+  display: none !important;
+}
+
+/* Images */
+.gallery-work img,
+.diapo-img,
+.gallery-thumb,
+.lightbox-img{
+  background: var(--image-bg) !important;
+}
+
+/* Boutons (diapo, formulaires, lightbox, etc.) */
+.diapo-btn,
+form button,
+input[type="submit"],
+#lightbox-close,
+.zoom-btn{
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+.diapo-btn:hover,
+form button:hover,
+input[type="submit"]:hover,
+#lightbox-close:hover,
+.zoom-btn:hover{
+  background: var(--btn-bg-hover);
+}
+
+/* Bouton audio diapo */
+.diapo-audio-btn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted);
+  padding: 0.15rem 0.35rem;
+  border-radius: 10px;
+}
+.diapo-audio-btn:hover{ color: var(--link-hover); }
+.diapo-audio-btn:focus-visible{ outline: none; box-shadow: var(--focus-ring); }
+
+/* Footer */
+footer{
+  background: var(--footer-bg) !important;
+  color: var(--muted) !important;
+}
+footer a{ color: var(--link) !important; }
+
+/* Lightbox overlay : conserver un vrai noir même en clair */
+.lightbox, .lightbox-overlay{
+  background: rgba(0,0,0,0.92) !important;
+}
+
+/* Ajustement de l'image de fond de l'accueil selon le thème */
+html[data-theme="light"] .background-slideshow{
+  filter: brightness(0.82) blur(1px) grayscale(8%) !important;
+}
+html[data-theme="dark"] .background-slideshow{
+  filter: brightness(0.52) blur(1.2px) grayscale(10%) !important;
+}
+
+/* Offset sécurité sous la navbar fixe (évite les chevauchements) */
+.gallery-page,
+.oeuvres-section,
+.diaporama-container,
+.about-container,
+.contact-container,
+.legal-container{
+  margin-top: calc(var(--site-nav-offset, 80px) + 0.8rem) !important;
+}
+
+/* Mobile */
+@media (max-width: 840px){
+  .theme-toggle{ width: 46px; height: 40px; }
+
+  /* Menu déroulant */
+  .nav-links{
+    display:none !important;
+    position:absolute;
+    top: calc(100% + 8px);
+    right: 0.8rem;
+    left: 0.8rem;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:0;
+    padding: 0.5rem;
+    border-radius: 16px;
+    background: var(--nav-bg) !important;
+    box-shadow: var(--nav-shadow) !important;
+    overflow: visible;
+  }
+  .nav-links.open, .nav-links.show{ display:flex !important; }
+  .nav-links a{ padding: .7rem .9rem !important; }
+}
+/* ===========================
+   Language switcher (flags)
+   Only visible element for language selection (no extra text).
+   =========================== */
+.lang-switcher{
+  display:flex;
+  align-items:center;
+  gap: .18rem;
+}
+
+.lang-link{
+  display:inline-grid;
+  place-items:center;
+  width: 34px;
+  height: 34px;
+  font-size: 1.15rem;
+  line-height: 1;
+  text-decoration:none;
+  border-radius: 999px;
+  background: transparent;
+  user-select: none;
+}
+
+.lang-link:hover{
+  background: var(--nav-link-hover-bg);
+}
+
+.lang-link:focus-visible{
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.lang-link.active{
+  background: var(--nav-link-hover-bg);
+}
+
+/* Slightly larger tap targets on small screens */
+@media (max-width: 840px){
+  .lang-link{ width: 38px; height: 36px; font-size: 1.2rem; }
+}
+
+/* ===========================
+   Expanded description panels (La maison...) must follow theme
+   - In light mode: dark text on cream (no white-on-black)
+   =========================== */
+html[data-theme="light"] .expanded-text{
+  background: var(--panel-bg-soft) !important;
+  color: var(--text) !important;
+  box-shadow: 0 10px 32px rgba(20,18,16,0.14) !important;
+}
+
+html[data-theme="light"] .expanded-text p{
+  color: var(--text) !important;
+}
+
+html[data-theme="light"] .expanded-text blockquote{
+  color: var(--muted) !important;
+  border-left-color: rgba(26,23,18,0.14) !important;
+}
+
+html[data-theme="light"] .expanded-text .source{
+  color: var(--muted) !important;
+}
+
+html[data-theme="light"] .expanded-close{
+  color: var(--text) !important;
+  background: rgba(26,23,18,0.06) !important;
+}

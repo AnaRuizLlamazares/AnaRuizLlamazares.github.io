@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peau d'âne (2025) - Ana Ruiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link href="../css/style-modern.css" rel="stylesheet"/>
+
+  <style>
+    :root { --site-nav-offset: 80px; }
+
+    .gallery-page {
+      max-width: 1000px;
+      margin: 0 auto 3rem auto;
+      padding: 0 1vw;
+      margin-top: calc(var(--site-nav-offset) + 0.8rem); /* évite l'empiètement sur le menu */
+    }
+
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .gallery-desc {
+      font-size: 1.09rem;
+      margin: 0 0 1.4em 0;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .gallery-intro {
+      max-width: 860px;
+      margin: 0 auto 1.6rem auto;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+    .gallery-intro p { margin: 0 0 1rem 0; }
+
+    .gallery-actions {
+      display: flex;
+      justify-content: center;
+      margin: 1.4rem 0 2.2rem 0;
+    }
+
+    .external-link {
+      display: inline-block;
+      padding: .82rem 1.15rem;
+      background: linear-gradient(90deg,#6f5ce8,#c79be8);
+      color: #121017;
+      border-radius: .7rem;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 2px 14px #19171b2a;
+    }
+    .external-link:hover { opacity: 0.92; }
+
+    .gallery-works {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2em 2em;
+      margin-bottom: 2em;
+    }
+
+    .gallery-work {
+      border-radius: 16px;
+      box-shadow: 0 2px 14px #19171b18;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.16s;
+    }
+
+    .gallery-work img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .gallery-work-title {
+      margin: 1em 0 1em 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.09rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-align: center;
+      padding: 0 0.8rem;
+    }
+
+    .gallery-back {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5em;
+    }
+
+    .gallery-back a {
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 0.7em 1.5em;
+      border-radius: 18px;
+      transition: background 0.14s, color 0.14s;
+      box-shadow: 0 2px 9px #18101421;
+      background: rgba(238, 233, 222, 0.12);
+    }
+
+    @media (max-width: 600px) {
+      .gallery-title { font-size: 1.3rem; }
+      .gallery-intro { font-size: 1rem; }
+      .gallery-works { grid-template-columns: 1fr; }
+      .gallery-work img { height: 240px; }
+    }
+  </style>
+
+  <script defer src="../js/navbar-load.js"></script>
+  <link href="../css/theme.css" rel="stylesheet"/>
+</head>
+
+<body>
+  <!-- ===== Barre de navigation principale ===== -->
+    <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">Ana Ruiz</a>
+        <img alt="Signature Ana Ruiz" class="nav-signature" src="../img/signature.png"/>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="galeries.html">Works</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="diaporama.html">Slideshow</a></li>
+        <li><a href="apropos.html">Bio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <a class="lang-link" data-lang="fr" href="../peau-dane.html" title="Français" aria-label="Français">🇫🇷</a>
+          <a class="lang-link" data-lang="en" href="peau-dane.html" title="English" aria-label="English">🇬🇧</a>
+          <a class="lang-link" data-lang="es" href="../es/peau-dane.html" title="Español" aria-label="Español">🇪🇸</a>
+          <a class="lang-link" data-lang="zh" href="../zh/peau-dane.html" title="中文" aria-label="中文">🇨🇳</a>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Change theme">
+          <span class="theme-icon">☀︎</span>
+        </button>
+        <button aria-label="Open menu" class="hamburger" id="menu-toggle" aria-controls="primary-nav">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="gallery-page fade-in">
+      <div class="gallery-title">Peau d'âne (2025)</div>
+      <div class="gallery-desc">Clothing as a map of intimacy.</div>
+
+      <div class="gallery-intro">
+        <p>
+          Clothing is a map of intimacy: it traces the contours of who we are—our desires, our fears, our personal stories. Each choice reveals a piece of our inner geography. Clothes touch the deepest part of our being; unconsciously, they tell something about who we are and how we feel, like a secret language.
+        </p>
+        <p>
+          Clothes are the maps of our interior, the traces of our secret landscapes. They draw the outlines of the invisible, reveal the folds of the soul, the valleys of our fears, the peaks of our emotions.
+        </p>
+        <p>
+          In this exhibition, clothing becomes painting, revealing an intimate geography where every stroke, every color, every gradient of grey, every twist tells a story of our bodies. Like maps, they guide us through the territories of identity—between shadow and light, between what we show and what we hide.
+        </p>
+        <p>
+          Here, these map-clothes invite us on a journey: discovering ourselves, others, and the thousand faces of intimacy. The painting becomes a reflection of our intimate map—an echo of who we are.
+        </p>
+      </div>
+
+      <div class="gallery-actions">
+        <a class="external-link" href="https://youtu.be/bvlnzltgUqg?si=h7M2hqSJ2O6x4cE5" rel="noopener noreferrer" target="_blank">
+          Watch the “Peau d'âne” video
+        </a>
+      </div>
+
+      <div class="gallery-works">
+        <div class="gallery-work">
+          <img src="../img/auMilieuTerre.png" data-large="../img/auMilieuTerre.png" alt="Je me suis assis au milieu de la Terre"/>
+          <div class="gallery-work-title">Je me suis assis au milieu de la Terre</div>
+        </div>
+      </div>
+
+      <div class="gallery-back">
+        <a href="galeries.html">← Back to works</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Ana Ruiz. All rights reserved. | <a href="mentions-legales.html">Legal notice</a></p>
+  </footer>
+
+  <script src="../js/gallery-lightbox.js"></script>
+</body>
+</html>

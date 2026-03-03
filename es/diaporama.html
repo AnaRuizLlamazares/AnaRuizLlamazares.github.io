@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diapositivas - Ana Ruiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="../css/style-modern.css" rel="stylesheet" />
+
+  <style>
+    :root { --site-nav-offset: 80px; }
+
+    .diaporama-container {
+      max-width: 950px;
+      margin: calc(var(--site-nav-offset) + 1.2rem) auto 3rem auto;
+      padding: 2rem 1.2rem 2.2rem 1.2rem;
+      border-radius: 22px;
+      text-align: center;
+    }
+
+    .diapo-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin: 0 0 1.2rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    .diapo-gallery {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .diapo-stage {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+    }
+
+    .diapo-titlecard {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 2.4rem 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      line-height: 1.25;
+    }
+
+    .diapo-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .diapo-caption {
+      font-style: italic;
+      margin: 1rem 0 1.2rem 0;
+      min-height: 1.4em;
+    }
+
+    .diapo-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 0.2rem;
+    }
+
+    .diapo-btn {
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .diapo-indicator {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .diaporama-container { padding: 1.3rem 0.9rem 1.7rem 0.9rem; }
+      .diapo-title { font-size: 1.35rem; }
+      .diapo-gallery { font-size: 1.05rem; }
+      .diapo-stage { min-height: 280px; }
+    }
+  </style>
+
+  <script defer src="../js/navbar-load.js"></script>
+  <script defer src="../js/diapo.js"></script>
+  <link href="../css/theme.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ===== Barre de navigation principale ===== -->
+    <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">Ana Ruiz</a>
+        <img alt="Signature Ana Ruiz" class="nav-signature" src="../img/signature.png"/>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeries.html">Obras</a></li>
+        <li><a href="publications.html">Publicaciones</a></li>
+        <li><a href="diaporama.html">Diapositivas</a></li>
+        <li><a href="apropos.html">Bio</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <a class="lang-link" data-lang="fr" href="../diaporama.html" title="Français" aria-label="Français">🇫🇷</a>
+          <a class="lang-link" data-lang="en" href="../en/diaporama.html" title="English" aria-label="English">🇬🇧</a>
+          <a class="lang-link" data-lang="es" href="diaporama.html" title="Español" aria-label="Español">🇪🇸</a>
+          <a class="lang-link" data-lang="zh" href="../zh/diaporama.html" title="中文" aria-label="中文">🇨🇳</a>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+          <span class="theme-icon">☀︎</span>
+        </button>
+        <button aria-label="Abrir menú" class="hamburger" id="menu-toggle" aria-controls="primary-nav">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="diaporama-container fade-in" id="diapo-container">
+      <div class="diapo-title">Diapositivas</div>
+
+      <div id="diapo-gallery" class="diapo-gallery"></div>
+
+      <div class="diapo-stage">
+        <div id="diapo-titlecard" class="diapo-titlecard" hidden></div>
+        <img id="diapo-img" class="diapo-img" src="" alt="" />
+      </div>
+
+      <div id="diapo-caption" class="diapo-caption"></div>
+
+      <div class="diapo-controls">
+        <button class="diapo-btn" id="prev-btn" aria-label="Imagen anterior">←</button>
+        <span id="diapo-indicator" class="diapo-indicator"></span>
+        <button class="diapo-btn" id="next-btn" aria-label="Imagen siguiente">→</button>
+        <button class="diapo-audio-btn" id="audio-btn" aria-label="Música de la presentación" title="Música">
+          <span id="audio-icon">🎵</span>
+        </button>
+        <audio id="diapo-audio" loop preload="auto">
+          <source src="../audio/diapo.mp4" type="audio/mp4"/>
+        </audio>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Ana Ruiz. Todos los derechos reservados. | <a href="mentions-legales.html">Aviso legal</a></p>
+  </footer>
+
+</body>
+</html>

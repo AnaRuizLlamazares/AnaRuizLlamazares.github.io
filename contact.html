@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-theme="light">
+<head>
+<!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - Ana Ruiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="css/style-modern.css" rel="stylesheet"/>
+<style>
+    body {
+      background: #151516 url("img/photo-ana.jpg") no-repeat center right fixed;
+      background-size: cover;
+      /* Un voile sombre pour la lisibilité */
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      background: rgba(22,20,27,0.63);
+      pointer-events: none;
+      /* Pour bien lisser l’image sous le texte */
+    }
+    .contact-container {
+      position: relative;
+      max-width: 700px;
+      margin: 6rem auto 3rem auto;
+      padding: 2.5em 2.5em;
+      background: rgba(38,37,41,0.23);
+      border-radius: 26px;
+      box-shadow: 0 2px 28px #18101819;
+      text-align: center;
+      z-index: 1;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .contact-info {
+      color: #cec9c4;
+      font-size: 1.14rem;
+      margin-bottom: 2em;
+      word-break: normal;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 8px #19102844;
+    }
+    .contact-form label {
+      display: block;
+      color: #b8bac2;
+      font-size: 1.01rem;
+      margin: 1.4em 0 0.4em 0;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.6em 0.9em;
+      border-radius: 10px;
+      border: 1px solid #28282b;
+      font-size: 1.07rem;
+      background: #232324ee;
+      color: #f4efe9;
+      margin-bottom: 1em;
+      box-shadow: 0 1px 7px #18101810;
+      transition: border-color 0.14s;
+      outline: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #9976e3;
+      background: #242136;
+    }
+    .contact-form button {
+      padding: 0.8em 2.2em;
+      background: rgba(238, 233, 222, 0.17);
+      color: #ded6c2;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 9px #18101421;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+      margin-top: 0.8em;
+    }
+    .contact-form button:hover {
+      background: rgba(238, 233, 222, 0.27);
+      color: #f4efe9;
+    }
+    @media (max-width: 850px) {
+      .contact-container { max-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      .contact-title { font-size: 1.18rem; }
+      .contact-info { font-size: 0.98rem; }
+      .contact-container { padding: 1.1em 0.3em; }
+    }
+  </style>
+<style>
+/* --- Correctifs mobile: signature visible, hamburger réduit, titres centrés --- */
+@media (max-width: 840px){
+  /* Afficher la signature en mobile et la réduire */
+  .nav-signature{display:block; height:20px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:20px; width:auto; display:block; opacity:.95}
+  /* Bouton hamburger plus petit et mieux clicable */
+  .hamburger{margin-left:auto; width:40px; height:36px; padding:0; display:grid; place-items:center; font-size:1rem; line-height:1; border-radius:.5rem}
+  /* Menu mobile: centrer les titres et l'alignement */
+  .nav-links{display:none; flex-direction:column; align-items:center; text-align:center}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block; padding:.6rem 0; font-size:1.05rem}
+}
+</style>
+<script defer="" src="js/navbar-load.js"></script>
+<style>
+.nav-logo a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
+
+/* Navigation links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links a {
+  display: inline-block;
+  padding: .6rem .7rem;
+  font-size: 0.98rem;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .35rem;
+}
+
+/* visual breathing room for navbar on large screens */
+@media (min-width: 1200px) {
+  .navbar { padding: 1.2rem 0; }
+  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
+}
+
+/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
+@media (max-width: 840px){
+  .navbar { padding: 0.8rem 0.6rem; }
+  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
+
+  /* limiter la largeur du texte du logo mais le garder lisible */
+  .nav-logo a {
+    font-size: 0.88rem;
+    font-weight:700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* signature réduite pour mobile */
+  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
+
+  /* hamburger un peu plus grand pour confort tactile */
+  .hamburger{
+    margin-left:auto;
+    width:42px;
+    height:36px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    line-height:1;
+    border-radius:.5rem;
+  }
+
+  /* Menu mobile: colonne, plein largeur mais discret */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.12rem;
+    padding:0.35rem 0;
+    width:100%;
+  }
+  .nav-links.open{display:flex}
+
+  .nav-links li { margin:0; width:100%; }
+  .nav-links a{
+    display:block;
+    padding:.44rem 0;
+    font-size:0.92rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100%;
+  }
+
+  /* très petits écrans : compacter encore légèrement */
+  @media (max-width: 380px) {
+    .nav-logo a { max-width: 120px; font-size:0.8rem; }
+    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
+    .hamburger { width:38px; height:32px; font-size:0.9rem; }
+  }
+}
+</style><style>
+.nav-logo a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
+
+/* Navigation links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links a {
+  display: inline-block;
+  padding: .6rem .7rem;
+  font-size: 0.98rem;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .35rem;
+}
+
+/* visual breathing room for navbar on large screens */
+@media (min-width: 1200px) {
+  .navbar { padding: 1.2rem 0; }
+  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
+}
+
+/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
+@media (max-width: 840px){
+  .navbar { padding: 0.8rem 0.6rem; }
+  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
+
+  /* limiter la largeur du texte du logo mais le garder lisible */
+  .nav-logo a {
+    font-size: 0.88rem;
+    font-weight:700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* signature réduite pour mobile */
+  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
+
+  /* hamburger un peu plus grand pour confort tactile */
+  .hamburger{
+    margin-left:auto;
+    width:42px;
+    height:36px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    line-height:1;
+    border-radius:.5rem;
+  }
+
+  /* Menu mobile: colonne, plein largeur mais discret */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.12rem;
+    padding:0.35rem 0;
+    width:100%;
+  }
+  .nav-links.open{display:flex}
+
+  .nav-links li { margin:0; width:100%; }
+  .nav-links a{
+    display:block;
+    padding:.44rem 0;
+    font-size:0.92rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100%;
+  }
+
+  /* très petits écrans : compacter encore légèrement */
+  @media (max-width: 380px) {
+    .nav-logo a { max-width: 120px; font-size:0.8rem; }
+    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
+    .hamburger { width:38px; height:32px; font-size:0.9rem; }
+  }
+}
+</style>  <link href="css/theme.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ===== Barre de navigation principale ===== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">Ana Ruiz</a>
+        <img alt="Signature Ana Ruiz" class="nav-signature" src="img/signature.png"/>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="galeries.html">Oeuvres</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="diaporama.html">Diaporama</a></li>
+        <li><a href="apropos.html">Bio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <a class="lang-link" data-lang="fr" href="contact.html" title="Français" aria-label="Français">🇫🇷</a>
+          <a class="lang-link" data-lang="en" href="en/contact.html" title="English" aria-label="English">🇬🇧</a>
+          <a class="lang-link" data-lang="es" href="es/contact.html" title="Español" aria-label="Español">🇪🇸</a>
+          <a class="lang-link" data-lang="zh" href="zh/contact.html" title="中文" aria-label="中文">🇨🇳</a>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">
+          <span class="theme-icon">☀︎</span>
+        </button>
+        <button aria-label="Ouvrir le menu" class="hamburger" id="menu-toggle" aria-controls="primary-nav">☰</button>
+      </div>
+    </div>
+  </nav>
+<!-- ===== Contenu principal de la page ===== -->
+<main>
+<div class="contact-container fade-in">
+<div class="contact-title">Contact</div>
+<div class="contact-info">
+        Pour toute question, proposition ou collaboration, n’hésitez pas à me contacter :<br/><br/>
+<a href="mailto:anaruiz@exemple.com" style="color:#8cb1b8; text-decoration:underline;">anaruiz@exemple.com</a>
+</div>
+<form action="mailto:anaruiz@exemple.com" class="contact-form" enctype="text/plain" method="post">
+<label for="nom">Nom</label>
+<input autocomplete="name" id="nom" name="nom" required="" type="text"/>
+<label for="email">Email</label>
+<input autocomplete="email" id="email" name="email" required="" type="email"/>
+<label for="message">Message</label>
+<textarea id="message" name="message" required="" rows="5"></textarea>
+<button type="submit">Envoyer</button>
+</form>
+</div>
+</main>
+<!-- ===== Pied de page commun à tout le site ===== -->
+<footer>
+<p>© 2025 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
+</footer>
+<!-- ===== Scripts spécifiques à la page ===== -->
+
+</body>
+</html>

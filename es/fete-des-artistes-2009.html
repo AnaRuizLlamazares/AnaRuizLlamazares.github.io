@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="es" data-theme="light">
+<head>
+<!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fiesta de los artistas (2009) - Ana Ruiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style-modern.css" rel="stylesheet"/>
+<style>
+    body { background: #151516 !important; }
+    .gallery-page { max-width: 1000px; margin: 5rem auto 3rem auto; padding: 0 1vw; }
+    .gallery-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5em; color: #f4efe9; font-weight: 700; letter-spacing: 0.5px; text-align: center; line-height: 1.25; }
+    .gallery-desc { color: #cec9c4; font-size: 1.09rem; margin: 0 0 2.2em 0; text-align: center; font-style: italic; }
+    .gallery-works { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2em 2em; margin-bottom: 2em; }
+    .gallery-work { background: rgba(38,37,41,0.12); border-radius: 16px; box-shadow: 0 2px 14px #19171b18; overflow: hidden; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.16s; }
+    .gallery-work img { width: 100%; height: 260px; object-fit: cover; background: #222; display: block; cursor: pointer; }
+    .gallery-work-title { margin: 1em 0 0.6em 0; color: #f4efe9; font-family: 'Playfair Display', serif; font-size: 1.09rem; font-weight: 700; letter-spacing: 0.2px; text-align: center; }
+    .gallery-work-desc { color: #c7c7c7; font-size: 0.99rem; text-align: center; margin-bottom: 1em; }
+    .gallery-citation { margin: 2.5em auto 1.5em auto; color: #a7a2b6; background: rgba(44,44,48,0.18); border-left: 3px solid #8b858c; font-style: italic; font-size: 1.07rem; padding: 1em 1.3em; max-width: 650px; border-radius: 10px; box-shadow: 0 2px 14px #19171b18; }
+    .gallery-back { display: flex; justify-content: center; margin-top: 2.5em; }
+    .gallery-back a { font-size: 1rem; color: #968a7f; text-decoration: none; background: rgba(238, 233, 222, 0.12); padding: 0.7em 1.5em; border-radius: 18px; transition: background 0.14s, color 0.14s; box-shadow: 0 2px 9px #18101421; }
+    .gallery-back a:hover { background: rgba(238, 233, 222, 0.22); color: #b3a797; }
+    @media (max-width: 600px) {
+      .gallery-title { font-size: 1.3rem;}
+      .gallery-works { grid-template-columns: 1fr;}
+      .gallery-work img { height: 180px;}
+    }
+  </style>
+<style>
+/* --- Correctifs mobile: signature visible, hamburger réduit, titres centrés --- */
+@media (max-width: 840px){
+  /* Afficher la signature en mobile et la réduire */
+  .nav-signature{display:block; height:20px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:20px; width:auto; display:block; opacity:.95}
+  /* Bouton hamburger plus petit et mieux clicable */
+  .hamburger{margin-left:auto; width:40px; height:36px; padding:0; display:grid; place-items:center; font-size:1rem; line-height:1; border-radius:.5rem}
+  /* Menu mobile: centrer les titres et l'alignement */
+  .nav-links{display:none; flex-direction:column; align-items:center; text-align:center}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block; padding:.6rem 0; font-size:1.05rem}
+}
+</style>
+<script defer="" src="../js/navbar-load.js"></script>
+<style>
+.nav-logo a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
+
+/* Navigation links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links a {
+  display: inline-block;
+  padding: .6rem .7rem;
+  font-size: 0.98rem;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .35rem;
+}
+
+/* visual breathing room for navbar on large screens */
+@media (min-width: 1200px) {
+  .navbar { padding: 1.2rem 0; }
+  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
+}
+
+/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
+@media (max-width: 840px){
+  .navbar { padding: 0.8rem 0.6rem; }
+  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
+
+  /* limiter la largeur du texte du logo mais le garder lisible */
+  .nav-logo a {
+    font-size: 0.88rem;
+    font-weight:700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* signature réduite pour mobile */
+  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
+
+  /* hamburger un peu plus grand pour confort tactile */
+  .hamburger{
+    margin-left:auto;
+    width:42px;
+    height:36px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    line-height:1;
+    border-radius:.5rem;
+  }
+
+  /* Menu mobile: colonne, plein largeur mais discret */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.12rem;
+    padding:0.35rem 0;
+    width:100%;
+  }
+  .nav-links.open{display:flex}
+
+  .nav-links li { margin:0; width:100%; }
+  .nav-links a{
+    display:block;
+    padding:.44rem 0;
+    font-size:0.92rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100%;
+  }
+
+  /* très petits écrans : compacter encore légèrement */
+  @media (max-width: 380px) {
+    .nav-logo a { max-width: 120px; font-size:0.8rem; }
+    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
+    .hamburger { width:38px; height:32px; font-size:0.9rem; }
+  }
+}
+</style><style>
+.nav-logo a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
+
+/* Navigation links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links a {
+  display: inline-block;
+  padding: .6rem .7rem;
+  font-size: 0.98rem;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .35rem;
+}
+
+/* visual breathing room for navbar on large screens */
+@media (min-width: 1200px) {
+  .navbar { padding: 1.2rem 0; }
+  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
+}
+
+/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
+@media (max-width: 840px){
+  .navbar { padding: 0.8rem 0.6rem; }
+  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
+
+  /* limiter la largeur du texte du logo mais le garder lisible */
+  .nav-logo a {
+    font-size: 0.88rem;
+    font-weight:700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* signature réduite pour mobile */
+  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
+
+  /* hamburger un peu plus grand pour confort tactile */
+  .hamburger{
+    margin-left:auto;
+    width:42px;
+    height:36px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    line-height:1;
+    border-radius:.5rem;
+  }
+
+  /* Menu mobile: colonne, plein largeur mais discret */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.12rem;
+    padding:0.35rem 0;
+    width:100%;
+  }
+  .nav-links.open{display:flex}
+
+  .nav-links li { margin:0; width:100%; }
+  .nav-links a{
+    display:block;
+    padding:.44rem 0;
+    font-size:0.92rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100%;
+  }
+
+  /* très petits écrans : compacter encore légèrement */
+  @media (max-width: 380px) {
+    .nav-logo a { max-width: 120px; font-size:0.8rem; }
+    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
+    .hamburger { width:38px; height:32px; font-size:0.9rem; }
+  }
+}
+</style>  <link href="../css/theme.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ===== Barre de navigation principale ===== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">Ana Ruiz</a>
+        <img alt="Signature Ana Ruiz" class="nav-signature" src="../img/signature.png"/>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeries.html">Obras</a></li>
+        <li><a href="publications.html">Publicaciones</a></li>
+        <li><a href="diaporama.html">Diapositivas</a></li>
+        <li><a href="apropos.html">Bio</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <a class="lang-link" data-lang="fr" href="../fete-des-artistes-2009.html" title="Français" aria-label="Français">🇫🇷</a>
+          <a class="lang-link" data-lang="en" href="../en/fete-des-artistes-2009.html" title="English" aria-label="English">🇬🇧</a>
+          <a class="lang-link" data-lang="es" href="fete-des-artistes-2009.html" title="Español" aria-label="Español">🇪🇸</a>
+          <a class="lang-link" data-lang="zh" href="../zh/fete-des-artistes-2009.html" title="中文" aria-label="中文">🇨🇳</a>
+        </div>
+
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+          <span class="theme-icon">☀︎</span>
+        </button>
+        <button aria-label="Abrir menú" class="hamburger" id="menu-toggle" aria-controls="primary-nav">☰</button>
+      </div>
+    </div>
+  </nav>
+<!-- ===== Contenu principal de la page ===== -->
+<main>
+<div class="gallery-page fade-in">
+<div class="gallery-title">Fête des artistes (2009)</div>
+<div class="gallery-desc" id="gallery-desc" role="button" tabindex="0" aria-expanded="false">
+        Homenaje a los artistas, a la creación compartida, a la fiesta y a la fraternidad del arte.
+      </div>
+<div class="gallery-works">
+  <div class="gallery-work">
+    <img src="../img/dragonnier-couverture.jpg" data-large="../img/dragonnier-couverture.jpg" alt="Couverture Dragonnier">
+    <div class="gallery-work-title">Couverture Dragonnier</div>
+  </div>
+  <div class="gallery-work">
+    <img src="../img/le-vieux-dragonnier.jpg" data-large="../img/le-vieux-dragonnier.jpg" alt="Le vieux dragonnier">
+    <div class="gallery-work-title">Le vieux dragonnier</div>
+  </div>
+</div>
+<div class="gallery-citation">
+        « El arte es una fiesta para compartir… »
+      </div>
+<div class="gallery-back">
+<a href="galeries.html">← Volver a obras</a>
+</div>
+</div>
+</main>
+<!-- ===== Pied de page commun à tout le site ===== -->
+<footer>
+<p>© 2025 Ana Ruiz. Todos los derechos reservados. | <a href="mentions-legales.html">Aviso legal</a></p>
+</footer>
+<!-- ===== Scripts spécifiques à la page ===== -->
+<script src="../js/gallery-lightbox.js"></script>
+</body>
+</html>
