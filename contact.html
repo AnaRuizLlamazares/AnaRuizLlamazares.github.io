@@ -10,8 +10,41 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Contact - Ana Ruiz</title>
+  <meta name="description" content="Contacter Ana Ruiz Llamazares via un formulaire sécurisé (sans afficher d’adresse e-mail)."/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Ana Ruiz Llamazares"/>
+  <meta name="theme-color" content="#fbf7ef" media="(prefers-color-scheme: light)"/>
+  <meta name="theme-color" content="#151516" media="(prefers-color-scheme: dark)"/>
+
+  <link rel="canonical" href="https://anaruizllamazares.com/contact.html"/>
+  <link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/contact.html"/>
+  <link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/contact.html"/>
+  <link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/contact.html"/>
+  <link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/contact.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/contact.html"/>
+
+  <meta property="og:site_name" content="Ana Ruiz Llamazares"/>
+  <meta property="og:title" content="Contact - Ana Ruiz"/>
+  <meta property="og:description" content="Contacter Ana Ruiz Llamazares via un formulaire sécurisé (sans afficher d’adresse e-mail)."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://anaruizllamazares.com/contact.html"/>
+  <meta property="og:image" content="https://anaruizllamazares.com/img/accueil.jpg"/>
+  <meta property="og:locale" content="fr_FR"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Contact - Ana Ruiz"/>
+  <meta name="twitter:description" content="Contacter Ana Ruiz Llamazares via un formulaire sécurisé (sans afficher d’adresse e-mail)."/>
+  <meta name="twitter:image" content="https://anaruizllamazares.com/img/accueil.jpg"/>
+
+  <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "fr", "publisher": {"@type": "Person", "name": "Ana Ruiz Llamazares", "image": "https://anaruizllamazares.com/img/photo-ana.jpg"}}, {"@context": "https://schema.org", "@type": "Person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg"}]</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="css/style-modern.css" rel="stylesheet"/>
+  <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
+  <link href="img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="img/signature.png" rel="shortcut icon"/>
+  <link href="img/signature.png" rel="apple-touch-icon"/>
 <style>
     body {
       background: #151516 url("img/photo-ana.jpg") no-repeat center right fixed;
@@ -124,6 +157,8 @@
 }
 </style>
 <script defer="" src="js/navbar-load.js"></script>
+  <script defer src="js/site-config.js"></script>
+  <script defer src="js/contact-form.js"></script>
 <style>
 .nav-logo a {
   font-size: 1.05rem;
@@ -356,10 +391,13 @@
 <div class="contact-container fade-in">
 <div class="contact-title">Contact</div>
 <div class="contact-info">
-        Pour toute question, proposition ou collaboration, n’hésitez pas à me contacter :<br/><br/>
-<a href="mailto:anaruiz@exemple.com" style="color:#8cb1b8; text-decoration:underline;">anaruiz@exemple.com</a>
-</div>
-<form action="mailto:anaruiz@exemple.com" class="contact-form" enctype="text/plain" method="post">
+        Pour toute question, proposition ou collaboration, vous pouvez m’écrire via ce formulaire sécurisé.
+      </div>
+<form class="contact-form" data-contact-form data-msg-config="Le formulaire est en cours de configuration. Merci de réessayer plus tard." data-msg-sending="Envoi en cours…" data-msg-success="Message envoyé. Merci !" data-msg-error="Erreur lors de l’envoi. Merci de réessayer.">
+  <input class="visually-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+  <input type="hidden" name="lang" value="fr"/>
+  <input type="hidden" name="page" value="contact"/>
+
 <label for="nom">Nom</label>
 <input autocomplete="name" id="nom" name="nom" required="" type="text"/>
 <label for="email">Email</label>
@@ -367,6 +405,7 @@
 <label for="message">Message</label>
 <textarea id="message" name="message" required="" rows="5"></textarea>
 <button type="submit">Envoyer</button>
+  <div class="form-status" aria-live="polite"></div>
 </form>
 </div>
 </main>

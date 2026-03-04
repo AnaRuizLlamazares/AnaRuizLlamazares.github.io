@@ -102,6 +102,11 @@ a:hover{ color: var(--link-hover); }
   display:flex !important;
   align-items:center !important;
   gap: 1rem !important;
+  justify-content: flex-start !important;
+
+  /* Légèrement plus large pour éviter les libellés rognés (ex : "Accueil") */
+  max-width: 1400px !important;
+  width: 100% !important;
 }
 
 .nav-links{
@@ -116,11 +121,20 @@ a:hover{ color: var(--link-hover); }
   /* autorise le shrink sans pousser le bouton de thème hors écran */
   flex: 1 1 auto !important;
   min-width: 0 !important;
-  overflow-x: auto;
+
+  /* IMPORTANT:
+     On évite l'overflow-x auto sur desktop car cela "rogne" parfois le premier item (ex: Accueil).
+     Si l'espace manque, on bascule en menu hamburger (voir media query plus bas).
+  */
+  overflow: visible !important;
+  flex-wrap: nowrap !important;
 }
 
 .nav-links a{
   color: var(--nav-text) !important;
+  /* Évite les libellés "coupés" verticalement (ex : Accueil) selon certaines polices/tailles */
+  line-height: 1.15 !important;
+  white-space: nowrap;
 }
 
 .nav-links a.active{
@@ -143,7 +157,11 @@ a:hover{ color: var(--link-hover); }
   flex: 0 0 auto;
 }
 
-.hamburger{ color: var(--nav-text) !important; }
+/* Hamburger : caché par défaut (desktop). Affiché quand la navbar bascule en mode compact. */
+.hamburger{
+  color: var(--nav-text) !important;
+  display: none !important;
+}
 
 /* Signature : lisible en clair / sombre */
 html[data-theme="dark"] .nav-signature{
@@ -306,8 +324,27 @@ footer{
 }
 footer a{ color: var(--link) !important; }
 
-/* Lightbox overlay : conserver un vrai noir même en clair */
-.lightbox, .lightbox-overlay{
+/* En mode clair, le footer doit être bien lisible (plus sombre) */
+html[data-theme="light"] footer{
+  color: var(--text) !important;
+}
+html[data-theme="light"] footer a{
+  color: var(--text) !important;
+}
+html[data-theme="light"] footer a:hover{
+  color: var(--link-hover) !important;
+}
+
+/* Lightbox overlay
+   - Clair : fond blanc (vrai blanc) autour de l'œuvre
+   - Sombre : fond noir uniquement
+*/
+html[data-theme="light"] .lightbox,
+html[data-theme="light"] .lightbox-overlay{
+  background: #ffffff !important;
+}
+html[data-theme="dark"] .lightbox,
+html[data-theme="dark"] .lightbox-overlay{
   background: rgba(0,0,0,0.92) !important;
 }
 
@@ -329,9 +366,15 @@ html[data-theme="dark"] .background-slideshow{
   margin-top: calc(var(--site-nav-offset, 80px) + 0.8rem) !important;
 }
 
-/* Mobile */
-@media (max-width: 840px){
+/* Navbar compacte (tablettes + mobile) :
+   - évite que les rubriques soient coupées (ex: "Accueil")
+   - affiche un menu hamburger
+*/
+@media (max-width: 1100px){
   .theme-toggle{ width: 46px; height: 40px; }
+
+  /* Hamburger visible */
+  .hamburger{ display: grid !important; }
 
   /* Menu déroulant */
   .nav-links{
@@ -353,6 +396,31 @@ html[data-theme="dark"] .background-slideshow{
   .nav-links.open, .nav-links.show{ display:flex !important; }
   .nav-links a{ padding: .7rem .9rem !important; }
 }
+
+/* Navbar compacte forcée (si le script détecte un débordement)
+   -> même comportement que le breakpoint 1100px, mais applicable sur desktop.
+*/
+html.nav-force-hamburger .theme-toggle{ width: 46px; height: 40px; }
+html.nav-force-hamburger .hamburger{ display: grid !important; }
+html.nav-force-hamburger .nav-links{
+  display:none !important;
+  position:absolute;
+  top: calc(100% + 8px);
+  right: 0.8rem;
+  left: 0.8rem;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:0;
+  padding: 0.5rem;
+  border-radius: 16px;
+  background: var(--nav-bg) !important;
+  box-shadow: var(--nav-shadow) !important;
+  overflow: visible;
+}
+html.nav-force-hamburger .nav-links.open,
+html.nav-force-hamburger .nav-links.show{ display:flex !important; }
+html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
 /* ===========================
    Language switcher (flags)
    Only visible element for language selection (no extra text).
@@ -421,3 +489,96 @@ html[data-theme="light"] .expanded-close{
   color: var(--text) !important;
   background: rgba(26,23,18,0.06) !important;
 }
+
+
+/* ===========================
+   Bio : Distinctions
+   - En mode clair, on ne veut pas de bloc sombre (fond noir)
+   =========================== */
+html[data-theme="light"] .distinctions-block{
+  background: var(--panel-bg-soft) !important;
+  color: var(--text) !important;
+  border-left-color: rgba(26,23,18,0.18) !important;
+  box-shadow: 0 10px 32px rgba(20,18,16,0.12) !important;
+}
+
+html[data-theme="light"] .distinctions-block h2{
+  color: var(--heading) !important;
+}
+
+html[data-theme="light"] .distinctions-list,
+html[data-theme="light"] .distinctions-list li{
+  color: var(--text) !important;
+}
+
+html[data-theme="light"] .distinctions-list li span{
+  color: var(--muted) !important;
+}
+
+
+/* ===========================
+   Contact form status messages
+   =========================== */
+.form-status{
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--muted);
+  min-height: 1.35em;
+}
+.form-status.ok{ color: #1c6f3a; }
+html[data-theme="dark"] .form-status.ok{ color: #6fe3a3; }
+.form-status.error{ color: #b3261e; }
+html[data-theme="dark"] .form-status.error{ color: #ff8a80; }
+.form-status.info{ color: var(--muted); }
+
+/* Utility: visually hidden (for honeypot) */
+.visually-hidden{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+
+
+/* ===========================
+   Extra small screens polish
+   - keep flags + theme toggle accessible without breaking layout
+   =========================== */
+@media (max-width: 420px){
+  .nav-actions{ gap: .22rem !important; }
+  .lang-link{ width: 32px !important; height: 32px !important; font-size: 1.05rem !important; }
+  .theme-toggle{ width: 40px !important; height: 34px !important; }
+  .hamburger{ width: 40px !important; height: 34px !important; font-size: 1.05rem !important; }
+  .nav-logo a{ max-width: 140px !important; }
+  .nav-signature{ display:none !important; }
+}
+
+@media (max-width: 360px){
+  .nav-actions{ flex-wrap: wrap !important; justify-content: flex-end !important; }
+  .lang-switcher{ width: 100%; justify-content: flex-end; }
+}
+
+
+
+/* ===========================
+   Mobile padding: keep content comfortable to read
+   =========================== */
+@media (max-width: 700px){
+  .gallery-page,
+  .diaporama-container,
+  .about-container,
+  .contact-container,
+  .legal-container,
+  .oeuvres-section,
+  .publications-section{
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+}
+
