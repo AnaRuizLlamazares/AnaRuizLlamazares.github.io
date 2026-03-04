@@ -462,6 +462,51 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
   .lang-link{ width: 38px; height: 36px; font-size: 1.2rem; }
 }
 
+/* Ultra-mobile portrait: la navbar doit rester 100% utilisable.
+   Problème rencontré : la rangée d’actions (drapeaux + thème + hamburger) peut pousser
+   l’icône ☰ hors écran, rendant la navigation impossible.
+   Solution :
+   - compacter légèrement les icônes
+   - autoriser un retour à la ligne (actions sur 2e ligne)
+   => le hamburger reste toujours visible.
+*/
+@media (max-width: 520px){
+  .navbar-container{
+    flex-wrap: wrap !important;
+    gap: .55rem !important;
+    padding: 0.55rem 0.7rem !important;
+  }
+
+  .nav-logo{
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .nav-logo a{
+    /* éviter que le logo prenne toute la largeur */
+    max-width: 58vw !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  .nav-actions{
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    justify-content: flex-end !important;
+    gap: .25rem !important;
+  }
+
+  .lang-switcher{ gap: .1rem !important; }
+  .lang-link{ width: 30px !important; height: 30px !important; font-size: 1rem !important; }
+
+  .theme-toggle{ width: 38px !important; height: 36px !important; }
+  .theme-toggle .theme-icon{ font-size: 1.05rem !important; }
+
+  .hamburger{ width: 40px !important; height: 36px !important; font-size: 1.05rem !important; }
+}
+
 /* ===========================
    Expanded description panels (La maison...) must follow theme
    - In light mode: dark text on cream (no white-on-black)
