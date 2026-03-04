@@ -10,6 +10,7 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 
 ### 1) Navigation
 - Le menu doit être présent sur toutes les pages.
+- "Ana Ruiz" (à gauche dans la navbar) ne doit **pas** être cliquable.
 - Le libellé **"Galeries" devient "Oeuvres"**.
 - Le libellé **"À propos" devient "Bio"**.
 - Le bouton **Clair/Sombre** doit être accessible **sur toutes les pages** (et pas "perdu" dans un sous-menu).
@@ -79,7 +80,7 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 
 ### 11) Mentions légales : crédit musique diaporama
 - Dans **Mentions légales**, ajouter :  
-  **Sébastien Nadler**, compositeur et interprète de l’impro au piano **« Concerto pour hall de gare »**, liée au **Diaporama**.
+  **Improvisation piano (diaporama) : Sébastien Nadler**.
 
 ### 12) Favicon (icône d’onglet)
 - Le **favicon** (petite icône de l’onglet du navigateur) doit être déclaré **dans le `<head>` de toutes les pages** (FR / EN / ES / 中文).
