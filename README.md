@@ -1,4 +1,4 @@
-# Ana Ruiz — site (sebastiennadler.github.io)
+# Ana Ruiz — site (anaruizllamazares.github.io)
 
 Ce fichier **README.md est la source de vérité** pour les choix fonctionnels/UX demandés (instructions "client").
 
@@ -33,6 +33,10 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - En clair, éviter les "cartouches"/"box" blanches derrière les textes : **fond crème continu** (pas de démarcation visible entre un bloc texte et le fond).
 - Corriger le cas où un **bandeau noir** apparaissait en bas en mode clair : le fond doit rester crème.
 - L’icône du bouton doit refléter le thème : **Soleil** en clair, **Lune** en sombre.
+- Quand on ouvre une œuvre en plein écran (lightbox), le fond doit être :
+  - **blanc pur** en mode clair (pas crème)
+  - **noir** en mode sombre.
+- En mode clair, le footer (© 2025… | Mentions légales) doit être **suffisamment foncé** pour rester lisible.
 
 ### 5) Diaporama (diaporama.html + js/diapo.js)
 - Le diaporama tourne avec un rythme de **5 secondes** par image.
@@ -42,7 +46,9 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Ajouter la possibilité de **jouer / ne pas jouer** la musique du diaporama (fichier audio `audio/diapo.mp3` et/ou `audio/diapo.mp4`) via un bouton (🎵 / ⏸️).
 
 ### 6) Responsive / mobile
-- Le responsive/mobile sera revu **dans un second temps** (pas la priorité du lot actuel).
+- Le site doit être **lisible et utilisable sur mobile** : menu (hamburger), drapeaux de langue, bouton de thème, galeries, diaporama, formulaire de contact.
+- Les ajustements responsive se font **sans casser** la version desktop.
+
 
 ### 7) Langues (FR / EN / ES / 中文)
 - Le site doit exister en **4 langues** :
@@ -59,6 +65,25 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 
 ### 9) Galerie "La maison..." en mode clair
 - En mode clair, le texte ne doit **pas** être blanc sur noir : les blocs de texte (notamment le panneau de description étendu) doivent respecter le thème (**texte sombre sur fond crème**).
+
+
+### 10) Contact : pas d’e-mail exposé
+- La page **Contact** ne doit afficher **qu’un formulaire**.
+- L’envoi doit se faire via un **endpoint HTTPS**.
+
+Configuration actuelle (pour rendre le formulaire fonctionnel immédiatement) :
+- Endpoint **FormSubmit (AJAX)**.
+- Réglage : `js/site-config.js` → `SITE_CONFIG.CONTACT_FORM_ENDPOINT` (base) + `SITE_CONFIG.CONTACT_EMAIL_B64` (destination encodée).
+
+Note : sur un site 100% statique, il est difficile de garantir que l'adresse soit *impossible* à récupérer côté visiteur. Pour une confidentialité stricte, il faudra passer par un endpoint serveur (Cloudflare Worker / Netlify Function, etc.) ou un provider type Formspree avec un identifiant de formulaire.
+
+### 11) Mentions légales : crédit musique diaporama
+- Dans **Mentions légales**, ajouter :  
+  **Sébastien Nadler**, compositeur et interprète de l’impro au piano **« Concerto pour hall de gare »**, liée au **Diaporama**.
+
+### 12) Favicon (icône d’onglet)
+- Le **favicon** (petite icône de l’onglet du navigateur) doit être déclaré **dans le `<head>` de toutes les pages** (FR / EN / ES / 中文).
+- Fichier utilisé : `img/signature.png` (décliné via `rel="icon"`, `rel="shortcut icon"`, `rel="apple-touch-icon"`).
 
 ---
 

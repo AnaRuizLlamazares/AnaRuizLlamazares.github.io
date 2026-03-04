@@ -163,6 +163,53 @@
     var nav = document.querySelector('nav.navbar');
     var menuBtn = document.getElementById('menu-toggle');
     var navLinks = document.querySelector('.nav-links');
+    var navContainer = document.querySelector('.navbar-container');
+    var navLogo = document.querySelector('.nav-logo');
+    var navActions = document.querySelector('.nav-actions');
+
+    // Some viewports (or font loading) can make the first item (e.g. "Accueil") look truncated.
+    // We force the hamburger layout when the menu doesn't fit.
+    function updateNavMode(){
+      try{
+        // CSS breakpoint already handles <= 1100px
+        if (window.matchMedia('(max-width:1100px)').matches){
+          document.documentElement.classList.remove('nav-force-hamburger');
+          return;
+        }
+
+        if(!navLinks || !navContainer) return;
+
+        // Temporarily remove forced mode so we can measure the real width need
+        var had = document.documentElement.classList.contains('nav-force-hamburger');
+        if (had) document.documentElement.classList.remove('nav-force-hamburger');
+
+        // Ensure the list is measurable even if another rule hid it
+        var prevInlineDisplay = navLinks.style.display;
+        var computed = window.getComputedStyle(navLinks);
+        if (computed.display === 'none') navLinks.style.display = 'flex';
+
+        var containerW = navContainer.getBoundingClientRect().width;
+        var logoW = navLogo ? navLogo.getBoundingClientRect().width : 0;
+        var actionsW = navActions ? navActions.getBoundingClientRect().width : 0;
+
+        // scrollWidth gives the intrinsic width needed to show all links
+        var linksW = navLinks.scrollWidth;
+        var needed = logoW + actionsW + linksW + 32; // small safety buffer
+        var force = needed > containerW;
+
+        // Restore
+        navLinks.style.display = prevInlineDisplay;
+        if (had) document.documentElement.classList.add('nav-force-hamburger');
+
+        document.documentElement.classList.toggle('nav-force-hamburger', !!force);
+      }catch(e){
+        // No-op
+      }
+    }
+
+    function hamburgerModeActive(){
+      return window.matchMedia('(max-width:1100px)').matches || document.documentElement.classList.contains('nav-force-hamburger');
+    }
 
     function isOpen() {
       return navLinks && (navLinks.classList.contains('open') || navLinks.classList.contains('show'));
@@ -202,7 +249,8 @@
 
       // Close if click outside (mobile)
       document.addEventListener('click', function (e) {
-        if (!window.matchMedia('(max-width:840px)').matches) return;
+        // Fermer si on est en mode hamburger (breakpoint ou mode forcé)
+        if (!hamburgerModeActive()) return;
         if (!isOpen()) return;
         if (nav && nav.contains(e.target)) return;
         closeMenu();
@@ -220,6 +268,7 @@
       window.addEventListener('resize', function () {
         closeMenu();
         setNavOffset();
+        updateNavMode();
       });
     }
 
@@ -245,6 +294,13 @@
 
     // --- NAV OFFSET ---
     setNavOffset();
-    window.addEventListener('load', function () { setTimeout(setNavOffset, 60); });
+    window.addEventListener('load', function () {
+      setTimeout(setNavOffset, 60);
+      // after fonts/images have settled
+      setTimeout(updateNavMode, 120);
+    });
+
+    // initial measurement
+    updateNavMode();
   });
 })();
