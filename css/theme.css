@@ -422,8 +422,9 @@ html.nav-force-hamburger .nav-links.open,
 html.nav-force-hamburger .nav-links.show{ display:flex !important; }
 html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
 /* ===========================
-   Language switcher (flags)
-   Only visible element for language selection (no extra text).
+   Language switcher (small flags)
+   Use drawn flag icons instead of emoji, because some browser/OS combinations
+   fall back to acronyms/letters instead of real flags.
    =========================== */
 .lang-switcher{
   display:flex;
@@ -436,13 +437,41 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
   place-items:center;
   width: 34px;
   height: 34px;
-  font-size: 1.15rem;
   line-height: 1;
   text-decoration:none;
   border-radius: 999px;
   background: transparent;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+  font-size: 0 !important;
+  color: transparent !important;
+  text-indent: -9999px;
+  white-space: nowrap;
 }
+
+.lang-link::before{
+  content: "";
+  display:block;
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+html[data-theme="dark"] .lang-link::before{
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.22);
+}
+
+.lang-link[data-lang="fr"]::before{ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAxNic+PHJlY3Qgd2lkdGg9JzgnIGhlaWdodD0nMTYnIGZpbGw9JyMwMDU1QTQnLz48cmVjdCB4PSc4JyB3aWR0aD0nOCcgaGVpZ2h0PScxNicgZmlsbD0nI0ZGRkZGRicvPjxyZWN0IHg9JzE2JyB3aWR0aD0nOCcgaGVpZ2h0PScxNicgZmlsbD0nI0VGNDEzNScvPjwvc3ZnPg=="); }
+.lang-link[data-lang="en"]::before{ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAxNic+PHJlY3Qgd2lkdGg9JzI0JyBoZWlnaHQ9JzE2JyBmaWxsPScjMDEyMTY5Jy8+PHBhdGggZD0nTTAgMGwyNCAxNk0yNCAwTDAgMTYnIHN0cm9rZT0nI0ZGRicgc3Ryb2tlLXdpZHRoPSczLjInLz48cGF0aCBkPSdNMCAwbDI0IDE2TTI0IDBMMCAxNicgc3Ryb2tlPScjQzgxMDJFJyBzdHJva2Utd2lkdGg9JzEuNScvPjxwYXRoIGQ9J00xMiAwdjE2TTAgOGgyNCcgc3Ryb2tlPScjRkZGJyBzdHJva2Utd2lkdGg9JzUuMicvPjxwYXRoIGQ9J00xMiAwdjE2TTAgOGgyNCcgc3Ryb2tlPScjQzgxMDJFJyBzdHJva2Utd2lkdGg9JzMnLz48L3N2Zz4="); }
+.lang-link[data-lang="es"]::before{ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAxNic+PHJlY3Qgd2lkdGg9JzI0JyBoZWlnaHQ9JzE2JyBmaWxsPScjQUExNTFCJy8+PHJlY3QgeT0nNCcgd2lkdGg9JzI0JyBoZWlnaHQ9JzgnIGZpbGw9JyNGMUJGMDAnLz48L3N2Zz4="); }
+.lang-link[data-lang="zh"]::before{ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAxNic+PHJlY3Qgd2lkdGg9JzI0JyBoZWlnaHQ9JzE2JyBmaWxsPScjREUyOTEwJy8+PGcgZmlsbD0nI0ZGREUwMCc+PHBhdGggZD0nTTUgMi4xbC42NSAxLjkyaDIuMDJMNi4wNCA1LjJsLjYzIDEuOTJMNSA1Ljk1IDMuMzMgNy4xMmwuNjMtMS45MkwyLjMzIDQuMDJoMi4wMnonLz48cGF0aCB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwLjIgMC4yNSkgc2NhbGUoLjYpJyBkPSdNMTQgMi4ybC42IDEuN2gxLjhsLTEuNDUgMS4wNS41NSAxLjdMMTQgNS42bC0xLjUgMS4wNS41NS0xLjdMMTEuNiAzLjloMS44eicvPjxwYXRoIHRyYW5zZm9ybT0ndHJhbnNsYXRlKC0wLjIgMi4wNSkgc2NhbGUoLjYpJyBkPSdNMTYuNCAxLjhsLjYgMS43aDEuOGwtMS40NSAxLjA1LjU1IDEuN0wxNi40IDUuMmwtMS41IDEuMDUuNTUtMS43TDE0IDMuNWgxLjh6Jy8+PHBhdGggdHJhbnNmb3JtPSd0cmFuc2xhdGUoLTEuMjUgNC4xKSBzY2FsZSguNiknIGQ9J00xOC40IDEuOGwuNiAxLjdoMS44bC0xLjQ1IDEuMDUuNTUgMS43TDE4LjQgNS4ybC0xLjUgMS4wNS41NS0xLjdMMTYgMy41aDEuOHonLz48cGF0aCB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgtMi41NSA1LjUpIHNjYWxlKC42KScgZD0nTTIwLjggMS44bC42IDEuN2gxLjhsLTEuNDUgMS4wNS41NSAxLjdMMjAuOCA1LjJsLTEuNSAxLjA1LjU1LTEuN0wxOC40IDMuNWgxLjh6Jy8+PC9nPjwvc3ZnPg=="); }
 
 .lang-link:hover{
   background: var(--nav-link-hover-bg);
@@ -457,9 +486,19 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
   background: var(--nav-link-hover-bg);
 }
 
+.lang-link.active::before{
+  transform: translateY(-0.5px);
+  box-shadow: 0 0 0 2px rgba(45, 74, 122, 0.18), 0 1px 2px rgba(0,0,0,0.08);
+}
+
+html[data-theme="dark"] .lang-link.active::before{
+  box-shadow: 0 0 0 2px rgba(151, 187, 198, 0.22), 0 1px 2px rgba(0,0,0,0.22);
+}
+
 /* Slightly larger tap targets on small screens */
 @media (max-width: 840px){
-  .lang-link{ width: 38px; height: 36px; font-size: 1.2rem; }
+  .lang-link{ width: 38px; height: 36px; }
+  .lang-link::before{ width: 22px; height: 15px; }
 }
 
 /* Ultra-mobile portrait: la navbar doit rester 100% utilisable.
@@ -499,7 +538,8 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
   }
 
   .lang-switcher{ gap: .1rem !important; }
-  .lang-link{ width: 30px !important; height: 30px !important; font-size: 1rem !important; }
+  .lang-link{ width: 30px !important; height: 30px !important; }
+  .lang-link::before{ width: 18px !important; height: 12px !important; }
 
   .theme-toggle{ width: 38px !important; height: 36px !important; }
   .theme-toggle .theme-icon{ font-size: 1.05rem !important; }
