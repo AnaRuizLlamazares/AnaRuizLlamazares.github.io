@@ -3,11 +3,49 @@
   - Reads endpoint from window.SITE_CONFIG.CONTACT_FORM_ENDPOINT
   - Submits via fetch() (AJAX) to keep a smooth UX
   - Does not expose any destination email address in the HTML
-
-  Works with providers like Formspree.
 */
 
 (function(){
+  function siteLang(){
+    var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    if (l.indexOf('en') === 0) return 'en';
+    if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('zh') === 0) return 'zh';
+    return 'fr';
+  }
+
+  var I18N = {
+    fr: {
+      config: 'Le formulaire est en cours de configuration. Merci de réessayer plus tard.',
+      sending: 'Envoi en cours…',
+      success: 'Message envoyé. Merci !',
+      error: 'Erreur lors de l’envoi. Merci de réessayer.'
+    },
+    en: {
+      config: 'The form is being configured. Please try again later.',
+      sending: 'Sending…',
+      success: 'Message sent. Thank you!',
+      error: 'Sending failed. Please try again.'
+    },
+    es: {
+      config: 'El formulario se está configurando. Por favor, inténtalo de nuevo más tarde.',
+      sending: 'Enviando…',
+      success: 'Mensaje enviado. ¡Gracias!',
+      error: 'Error al enviar. Por favor, inténtalo de nuevo.'
+    },
+    zh: {
+      config: '表单正在配置中，请稍后再试。',
+      sending: '正在发送…',
+      success: '发送成功，谢谢！',
+      error: '发送失败，请重试。'
+    }
+  };
+
+  function tr(key){
+    var lang = siteLang();
+    return (I18N[lang] && I18N[lang][key]) || (I18N.fr && I18N.fr[key]) || '';
+  }
+
   function decodeB64(str){
     if(!str) return '';
     try { return atob(str); } catch(e) { return ''; }
@@ -18,22 +56,17 @@
       var cfg = window.SITE_CONFIG || {};
       var ep = (cfg.CONTACT_FORM_ENDPOINT || '').trim();
 
-      // If using FormSubmit in "base" form (https://formsubmit.co/ajax/)
-      // and the destination email is provided in base64, build the full endpoint.
       if (ep && /formsubmit\.co\/ajax\/?$/i.test(ep) && ep.indexOf('@') === -1){
-        // FormSubmit base endpoint needs the destination email appended.
         if (cfg.CONTACT_EMAIL_B64){
           var email = decodeB64(String(cfg.CONTACT_EMAIL_B64).trim());
           if (email){
             if (ep.slice(-1) !== '/') ep += '/';
             ep = ep + email;
           } else {
-            // If we can't build the final endpoint, disable the form (handled later).
             return '';
           }
         }
       }
-
       return ep;
     } catch(e){
       return '';
@@ -65,7 +98,7 @@
       var endpoint = getEndpoint();
       if(!isValidEndpoint(endpoint)){
         if(submitBtn) submitBtn.disabled = true;
-        setStatus(status, form.getAttribute('data-msg-config') || 'Le formulaire est en cours de configuration. Merci de réessayer plus tard.', 'info');
+        setStatus(status, form.getAttribute('data-msg-config') || tr('config'), 'info');
         return;
       }
 
@@ -76,7 +109,7 @@
         e.preventDefault();
 
         if(submitBtn) submitBtn.disabled = true;
-        setStatus(status, form.getAttribute('data-msg-sending') || 'Envoi en cours…', 'info');
+        setStatus(status, form.getAttribute('data-msg-sending') || tr('sending'), 'info');
 
         var data = new FormData(form);
 
@@ -92,15 +125,15 @@
             if(payload && payload.errors && payload.errors.length && payload.errors[0].message){
               msg = payload.errors[0].message;
             }
-            throw new Error(msg || 'Erreur lors de l’envoi. Merci de réessayer.');
+            throw new Error(msg || (form.getAttribute('data-msg-error') || tr('error')));
           });
         })
         .then(function(){
           form.reset();
-          setStatus(status, form.getAttribute('data-msg-success') || 'Message envoyé. Merci !', 'ok');
+          setStatus(status, form.getAttribute('data-msg-success') || tr('success'), 'ok');
         })
         .catch(function(err){
-          setStatus(status, (err && err.message) ? err.message : (form.getAttribute('data-msg-error') || 'Erreur lors de l’envoi. Merci de réessayer.'), 'error');
+          setStatus(status, (err && err.message) ? err.message : (form.getAttribute('data-msg-error') || tr('error')), 'error');
         })
         .finally(function(){
           if(submitBtn) submitBtn.disabled = false;

@@ -1,11 +1,31 @@
-/* Lightbox + description global (version consolidée) */
+/* Lightbox + description global (version consolidée, i18n) */
 (function(){
+  function siteLang(){
+    var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    if (l.indexOf('en') === 0) return 'en';
+    if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('zh') === 0) return 'zh';
+    return 'fr';
+  }
+
+  var I18N = {
+    fr: { close: 'Fermer', zoom: 'Agrandir l’œuvre' },
+    en: { close: 'Close', zoom: 'Open artwork full size' },
+    es: { close: 'Cerrar', zoom: 'Abrir la obra en gran formato' },
+    zh: { close: '关闭', zoom: '放大查看作品' }
+  };
+
+  function tr(key){
+    var lang = siteLang();
+    return (I18N[lang] && I18N[lang][key]) || (I18N.fr && I18N.fr[key]) || '';
+  }
+
   function ensureLightbox(){
     if(document.getElementById('lightbox')) return;
     const wrap=document.createElement('div');
     wrap.innerHTML=`<div id="lightbox" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true">
       <div class="lightbox-frame">
-        <button id="lightbox-close" aria-label="Fermer">✕</button>
+        <button id="lightbox-close" aria-label="${tr('close')}" title="${tr('close')}">✕</button>
         <div class="lightbox-inner">
           <img id="lightbox-img" alt="">
         </div>
@@ -13,9 +33,11 @@
     </div>`;
     document.body.appendChild(wrap.firstElementChild);
   }
+
   let box,img,closeBtn;
   const BLANK='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
   let loading=false,savedPad='',aborted=false;
+
   function initLightbox(){
     ensureLightbox();
     box=document.getElementById('lightbox');
@@ -26,6 +48,7 @@
     box.addEventListener('click',e=>{if(e.target===box)close();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('open'))close();});
   }
+
   function open(src,alt){
     if(loading) return;
     loading=true; aborted=false;
@@ -43,9 +66,14 @@
       closeBtn.focus();
       loading=false;
     };
-    loader.onerror=function(){loading=false;if(aborted)return;console.warn('Échec image:',src);};
+    loader.onerror=function(){
+      loading=false;
+      if(aborted) return;
+      console.warn('Image load failed:',src);
+    };
     loader.src=src;
   }
+
   function close(){
     aborted=true;
     box.classList.remove('open');
@@ -55,14 +83,14 @@
     img.classList.remove('ready');
     setTimeout(()=>{img.src=BLANK;},150);
   }
+
   function enhanceThumbnails(){
     document.querySelectorAll('.gallery-work').forEach(w=>{
-      const pic=w.querySelector('img'); if(!pic) return;
+      const pic=w.querySelector('img');
+      if(!pic) return;
 
-      // Avoid binding twice (some pages used to have inline handlers)
       if(!pic.dataset.lbBound){
         pic.dataset.lbBound = '1';
-        // Click on the image opens the lightbox
         pic.style.cursor = 'zoom-in';
         pic.addEventListener('click', ()=>{
           const src=pic.getAttribute('data-large')||pic.src;
@@ -72,7 +100,11 @@
 
       if(!w.querySelector('.zoom-btn')){
         const b=document.createElement('button');
-        b.type='button'; b.className='zoom-btn'; b.textContent='+';
+        b.type='button';
+        b.className='zoom-btn';
+        b.textContent='+';
+        b.setAttribute('aria-label', tr('zoom'));
+        b.title = tr('zoom');
         b.addEventListener('click',e=>{
           e.stopPropagation();
           const src=pic.getAttribute('data-large')||pic.src;
@@ -80,6 +112,7 @@
         });
         w.appendChild(b);
       }
+
       if(!pic.hasAttribute('tabindex')) pic.tabIndex=0;
       if(!pic.dataset.lbKeyBound){
         pic.dataset.lbKeyBound = '1';
@@ -92,15 +125,16 @@
       }
     });
   }
+
   function initDescription(){
     const trigger=document.getElementById('gallery-desc');
     const panel=document.getElementById('gallery-desc-full');
     const closeB=document.getElementById('gallery-desc-close');
     if(!trigger||!panel) return;
 
-    // Guard against duplicate initialisation
     if(trigger.dataset.descBound) return;
     trigger.dataset.descBound = '1';
+
     function openDesc(){
       panel.style.display='block';
       requestAnimationFrame(()=>{
@@ -110,22 +144,34 @@
         closeB&&closeB.focus();
       });
     }
+
     function closeDesc(){
       panel.classList.remove('open');
       panel.setAttribute('aria-hidden','true');
       trigger.setAttribute('aria-expanded','false');
       setTimeout(()=>{panel.style.display='none'; trigger.focus();},200);
     }
-    function toggle(){panel.classList.contains('open')?closeDesc():openDesc();}
+
+    function toggle(){
+      panel.classList.contains('open') ? closeDesc() : openDesc();
+    }
+
     trigger.addEventListener('click',e=>{e.preventDefault();toggle();});
     trigger.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        toggle();
+      }
     });
     closeB&&closeB.addEventListener('click',e=>{e.stopPropagation();closeDesc();});
     closeB&&closeB.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();closeDesc();}
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        closeDesc();
+      }
     });
   }
+
   document.addEventListener('DOMContentLoaded',()=>{
     initLightbox();
     enhanceThumbnails();

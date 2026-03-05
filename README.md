@@ -58,8 +58,15 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
   - **ES** : dossier `/es/`
   - **ZH (mandarin)** : dossier `/zh/`
 - Le changement de langue se fait **uniquement** via des **drapeaux cliquables dans la barre de menu** (navbar), visibles sur **toutes les pages**.
+- Les drapeaux doivent être de **vrais petits drapeaux visuels** (pas des acronymes de langue, et pas des emojis pouvant se dégrader en lettres selon le navigateur).
 - Il ne doit pas y avoir d’autres sélecteurs de langue ailleurs (pas de bloc "langue" dans le contenu, pas d’autres drapeaux, pas de traductions empilées dans une même page).
 - Les pages traduites sont des **pages HTML séparées** (mêmes noms de fichiers) pour conserver une navigation simple.
+
+### 7 bis) Qualité des traductions
+- Toutes les pages traduites (`/en`, `/es`, `/zh`) doivent être **entièrement** rédigées dans la langue cible.
+- Exception : les **noms propres**, les **titres originaux des expositions** et les **titres originaux des œuvres** restent visibles **en français**.
+- Si une traduction d’un titre est ajoutée, le **titre original français** doit rester présent lui aussi.
+- Les éléments d’interface doivent aussi être localisés : titres de page, formulaires, libellés, boutons, messages d’état et labels d’accessibilité.
 
 ### 8) Rubrique "Vidéos"
 - L’accès **"Vidéos"** doit être **supprimé partout** (onglet absent du menu) et la rubrique n’existe plus.
