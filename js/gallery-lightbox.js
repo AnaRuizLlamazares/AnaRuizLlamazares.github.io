@@ -20,17 +20,41 @@
     return (I18N[lang] && I18N[lang][key]) || (I18N.fr && I18N.fr[key]) || '';
   }
 
-  function ensureLightbox(){
-    if(document.getElementById('lightbox')) return;
-    const wrap=document.createElement('div');
-    wrap.innerHTML=`<div id="lightbox" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  function lightboxMarkup(){
+    return `<div id="lightbox" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true">
       <div class="lightbox-frame">
-        <button id="lightbox-close" aria-label="${tr('close')}" title="${tr('close')}">✕</button>
+        <button id="lightbox-close" type="button" aria-label="${tr('close')}" title="${tr('close')}">✕</button>
         <div class="lightbox-inner">
           <img id="lightbox-img" alt="">
         </div>
       </div>
     </div>`;
+  }
+
+  function ensureLightbox(){
+    var existing = document.getElementById('lightbox');
+    if(existing){
+      var complete = existing.classList.contains('lightbox-overlay')
+        && existing.querySelector('.lightbox-frame')
+        && existing.querySelector('.lightbox-inner')
+        && existing.querySelector('#lightbox-img')
+        && existing.querySelector('#lightbox-close');
+
+      if(!complete){
+        existing.outerHTML = lightboxMarkup();
+      } else {
+        var close = existing.querySelector('#lightbox-close');
+        if(close){
+          close.setAttribute('aria-label', tr('close'));
+          close.setAttribute('title', tr('close'));
+          if(!close.getAttribute('type')) close.setAttribute('type', 'button');
+        }
+      }
+      return;
+    }
+
+    const wrap=document.createElement('div');
+    wrap.innerHTML=lightboxMarkup();
     document.body.appendChild(wrap.firstElementChild);
   }
 

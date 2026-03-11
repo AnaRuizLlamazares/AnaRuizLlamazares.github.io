@@ -24,7 +24,11 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 ### 3) Exposition "Peau d’âne" (2025)
 - Ajout de l’exposition **Peau d’âne** (2025), **Gif-sur-Yvette**, galerie-restaurant **Le Canapé**.
 - Sur la page de l’expo, le contenu ne doit pas être masqué par la barre du menu : on utilise l’offset de navbar (`--site-nav-offset`) pour gérer l’espace en haut.
-- Le titre du premier tableau est : **"Je me suis assis au milieu de la Terre"**.
+- La galerie **Peau d’âne** est organisée en **2 parties uniquement** :
+  1. **Visages**
+  2. **Vêtements**
+- L’ordre des œuvres dans chaque partie suit l’**ordre de numérotation** des fichiers.
+- L’image **"Je me suis assis au milieu de la Terre"** ne figure plus dans la galerie **Peau d’âne**.
 
 ### 4) Thème Clair / Sombre
 - Ajouter un thème **Clair** et un thème **Sombre**.
@@ -37,11 +41,15 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Quand on ouvre une œuvre en plein écran (lightbox), le fond doit être :
   - **blanc pur** en mode clair (pas crème)
   - **noir** en mode sombre.
-- En mode clair, le footer (© 2025… | Mentions légales) doit être **suffisamment foncé** pour rester lisible.
+- En mode clair, le footer (© 2026… | Mentions légales) doit être **suffisamment foncé** pour rester lisible.
+- Sur la page d’accueil, en mode clair, l’image de fond doit être **plus claire / moins assombrie**, tout en gardant un **contraste suffisant** pour que le texte ressorte bien.
 
 ### 5) Diaporama (diaporama.html + js/diapo.js)
 - Le diaporama tourne avec un rythme de **5 secondes** par image.
-- Choisir **4 images par galerie** (max 4).
+- Par défaut, choisir **4 images maximum par galerie**.
+- Exception : pour **Peau d’âne**, le diaporama doit afficher les nouvelles œuvres publiées, en **2 séquences** :
+  1. **Visages** (`Vis1` à `Vis5`)
+  2. **Vêtements** (`Vet1` à `Vet6`)
 - Avant chaque série d’images d’une galerie, afficher une "carte" avec le **nom de la galerie**.
 - Sous chaque image, afficher le **titre de l’œuvre**.
 - Ajouter la possibilité de **jouer / ne pas jouer** la musique du diaporama (fichier audio `audio/diapo.mp3` et/ou `audio/diapo.mp4`) via un bouton (🎵 / ⏸️).
@@ -75,6 +83,10 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - En mode clair, le texte ne doit **pas** être blanc sur noir : les blocs de texte (notamment le panneau de description étendu) doivent respecter le thème (**texte sombre sur fond crème**).
 
 
+### 9 bis) Galerie "Couleurs en nudité"
+- La galerie **Couleurs en nudité** doit utiliser le **même zoom / lightbox** que les autres galeries.
+- Le zoom doit fonctionner sur les versions **FR / EN / ES / 中文**.
+
 ### 10) Contact : pas d’e-mail exposé
 - La page **Contact** ne doit afficher **qu’un formulaire**.
 - L’envoi doit se faire via un **endpoint HTTPS**.
@@ -101,7 +113,7 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 - **Menu + gestion du thème + calcul d’offset navbar + langues** : `js/navbar-load.js`
 - **Diaporama (séquence, cartons de galerie, 4 images, 5s, sous-titres, audio)** : `js/diapo.js` + `diaporama.html`
 - **Liste Oeuvres** : `galeries.html`
-- **Page Peau d’âne** : `peau-dane.html` (+ image `img/auMilieuTerre.png`)
+- **Page Peau d’âne** : `peau-dane.html` (+ œuvres WebP dans `img/PeauDAne/`)
 
 ---
 
@@ -110,4 +122,17 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 - Pour ajouter une nouvelle expo avec galerie :
   1. Créer une nouvelle page `mon-expo-AAAA.html` sur le modèle des pages existantes.
   2. Ajouter l’entrée correspondante dans `galeries.html` (section Expositions ou Installations).
-  3. Ajouter jusqu’à 4 images dans `js/diapo.js` si on veut l’inclure au diaporama.
+  3. Ajouter jusqu’à 4 images dans `js/diapo.js` si on veut l’inclure au diaporama (sauf exception explicite comme **Peau d’âne**).
+
+### 13) SEO / référencement
+- Renforcer le **référencement naturel** du site sans sur-optimisation ni bourrage de mots-clés.
+- Mieux expliciter, dans les pages stratégiques, qu’il s’agit du **site officiel d’Ana Ruiz Llamazares**, **artiste peintre et plasticienne**.
+- Renforcer la pertinence locale autour de **Gif-sur-Yvette**, de l’**Essonne** et de la **région parisienne / près de Paris**, quand cela est justifié par le contenu du site.
+- Soigner les éléments SEO de base : **titres de pages descriptifs**, **meta descriptions spécifiques**, **H1/H2**, **alt text d’images**, **liens internes**, **données structurées**, **sitemap** et **performance**.
+- Conserver `https://anaruizllamazares.com/` comme **domaine canonique principal**.
+
+### 14) Nettoyage du dossier final
+- Supprimer les **images source**, **doublons** et **médias non référencés** dans la version publiée.
+- Supprimer les fichiers système inutiles (par ex. `.DS_Store`) et le dossier de versionnage local `.git` dans l’archive finale.
+- Conserver uniquement les **images** et les **dossiers utiles** au site final mis en ligne.
+

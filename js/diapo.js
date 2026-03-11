@@ -1,8 +1,8 @@
 /*
-  Slideshow (v3)
-  - Max 4 images per gallery
+  Slideshow (v4)
+  - Default max 4 images per gallery (override with maxSlides when needed)
   - 5 seconds per image
-  - Before each gallery: a title card with the gallery name
+  - Before each gallery/series: a title card with the gallery name
   - Caption under each image = artwork title
   - Optional music playback (diapo.mp4), remember user preference
 */
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!imgEl || !galleryEl || !captionEl || !indicatorEl || !prevBtn || !nextBtn || !titleCard) return;
 
-  // --- Language (for small UI strings only) ---
   function siteLang() {
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     if (l.indexOf('en') === 0) return 'en';
@@ -31,22 +30,38 @@ document.addEventListener('DOMContentLoaded', function () {
     fr: {
       altFallback: 'Œuvre Ana Ruiz',
       audioPlay: 'Jouer la musique',
-      audioPause: 'Mettre en pause la musique'
+      audioPause: 'Mettre en pause la musique',
+      facesSection: 'Visages',
+      garmentsSection: 'Vêtements',
+      faceLabel: 'Visage',
+      garmentLabel: 'Vêtement'
     },
     en: {
       altFallback: 'Artwork by Ana Ruiz',
       audioPlay: 'Play music',
-      audioPause: 'Pause music'
+      audioPause: 'Pause music',
+      facesSection: 'Faces',
+      garmentsSection: 'Garments',
+      faceLabel: 'Face',
+      garmentLabel: 'Garment'
     },
     es: {
       altFallback: 'Obra de Ana Ruiz',
       audioPlay: 'Reproducir música',
-      audioPause: 'Pausar música'
+      audioPause: 'Pausar música',
+      facesSection: 'Rostros',
+      garmentsSection: 'Prendas',
+      faceLabel: 'Rostro',
+      garmentLabel: 'Prenda'
     },
     zh: {
       altFallback: 'Ana Ruiz 的作品',
       audioPlay: '播放音乐',
-      audioPause: '暂停音乐'
+      audioPause: '暂停音乐',
+      facesSection: '面孔',
+      garmentsSection: '服饰',
+      faceLabel: '面孔',
+      garmentLabel: '服饰'
     }
   };
 
@@ -55,16 +70,45 @@ document.addEventListener('DOMContentLoaded', function () {
     return (I18N[l] && I18N[l][key]) || (I18N.fr && I18N.fr[key]) || '';
   }
 
-  // --- Assets path prefix (for /en, /es, /zh pages opened locally) ---
+  function peauDaneSectionTitle(sectionKey) {
+    return "Peau d’âne (2025) — " + tr(sectionKey);
+  }
+
+  function peauDaneFaceTitle(index) {
+    return tr('faceLabel') + ' ' + index;
+  }
+
+  function peauDaneGarmentTitle(index) {
+    return tr('garmentLabel') + ' ' + index;
+  }
+
   var path = (window.location && window.location.pathname) ? window.location.pathname : '';
   var assetPrefix = /\/((en|es|zh))\//.test(path) ? '../' : '';
 
-  // --- Data: galleries + artworks (max 4 per gallery) ---
   var galleries = [
     {
-      name: "Peau d’âne (2025)",
+      name: peauDaneSectionTitle('facesSection'),
+      galleryLabel: "Peau d’âne (2025)",
+      maxSlides: 5,
       slides: [
-        { src: "img/auMilieuTerre.png", title: "Je me suis assis au milieu de la Terre" }
+        { src: "img/PeauDAne/peau-dane-visage-1-ana-ruiz.webp", title: peauDaneFaceTitle(1) },
+        { src: "img/PeauDAne/peau-dane-visage-2-ana-ruiz.webp", title: peauDaneFaceTitle(2) },
+        { src: "img/PeauDAne/peau-dane-visage-3-ana-ruiz.webp", title: peauDaneFaceTitle(3) },
+        { src: "img/PeauDAne/peau-dane-visage-4-ana-ruiz.webp", title: peauDaneFaceTitle(4) },
+        { src: "img/PeauDAne/peau-dane-visage-5-ana-ruiz.webp", title: peauDaneFaceTitle(5) }
+      ]
+    },
+    {
+      name: peauDaneSectionTitle('garmentsSection'),
+      galleryLabel: "Peau d’âne (2025)",
+      maxSlides: 6,
+      slides: [
+        { src: "img/PeauDAne/peau-dane-vetement-1-ana-ruiz.webp", title: peauDaneGarmentTitle(1) },
+        { src: "img/PeauDAne/peau-dane-vetement-2-ana-ruiz.webp", title: peauDaneGarmentTitle(2) },
+        { src: "img/PeauDAne/peau-dane-vetement-3-ana-ruiz.webp", title: peauDaneGarmentTitle(3) },
+        { src: "img/PeauDAne/peau-dane-vetement-4-ana-ruiz.webp", title: peauDaneGarmentTitle(4) },
+        { src: "img/PeauDAne/peau-dane-vetement-5-ana-ruiz.webp", title: peauDaneGarmentTitle(5) },
+        { src: "img/PeauDAne/peau-dane-vetement-6-ana-ruiz.webp", title: peauDaneGarmentTitle(6) }
       ]
     },
     {
@@ -103,12 +147,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
-  // --- Flatten sequence with title cards ---
   var sequence = [];
   galleries.forEach(function (g) {
+    var maxSlides = (typeof g.maxSlides === 'number') ? g.maxSlides : 4;
+    var galleryLabel = g.galleryLabel || g.name;
     sequence.push({ type: 'title', gallery: g.name });
-    (g.slides || []).slice(0, 4).forEach(function (s) {
-      sequence.push({ type: 'image', gallery: g.name, src: s.src, title: s.title });
+    (g.slides || []).slice(0, maxSlides).forEach(function (s) {
+      sequence.push({ type: 'image', gallery: galleryLabel, src: s.src, title: s.title });
     });
   });
 
@@ -121,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var slide = sequence[current];
 
     if (slide.type === 'title') {
-      // Title card for gallery
       titleCard.hidden = false;
       titleCard.textContent = slide.gallery;
 
@@ -139,12 +183,10 @@ document.addEventListener('DOMContentLoaded', function () {
       imgEl.src = assetPrefix + slide.src;
       imgEl.alt = slide.title || tr('altFallback');
 
-      // Gallery name + artwork title
       galleryEl.textContent = slide.gallery;
       captionEl.textContent = slide.title || '';
     }
 
-    // Simple indicator (position / total)
     indicatorEl.textContent = (current + 1) + ' / ' + sequence.length;
   }
 
@@ -178,19 +220,16 @@ document.addEventListener('DOMContentLoaded', function () {
     resetAuto();
   });
 
-  // Keyboard navigation
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') { prevBtn.click(); }
     if (e.key === 'ArrowRight') { nextBtn.click(); }
   });
 
-  // Init
   if (sequence.length) {
     showSlide(0);
     startAuto();
   }
 
-  // --- Optional music ---
   var audioBtn = document.getElementById('audio-btn');
   var audioIcon = document.getElementById('audio-icon');
   var diapoAudio = document.getElementById('diapo-audio');
@@ -207,12 +246,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (audioBtn && diapoAudio) {
-    // Restore preference
     var pref = null;
     try { pref = localStorage.getItem('ana-diapo-music'); } catch (e) {}
 
     if (pref === 'on') {
-      // Try autoplay (may be blocked by browser policy)
       var pp = diapoAudio.play();
       if (pp && typeof pp.then === 'function') {
         pp.then(function () { setAudioUI(true); }).catch(function () { setAudioUI(false); });
