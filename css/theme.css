@@ -847,19 +847,36 @@ html[data-theme="dark"] { --mosaic-opacity: 0.22; --mosaic-filter: saturate(0.9)
 /* le contenu reste au-dessus de la mosaïque */
 body > main, body > footer{ position: relative; z-index: 1; }
 
-/* ===== Portrait d'Ana sur la page Bio ===== */
-.about-portrait{
-  float: right; width: min(42%, 380px); margin: 0.2rem 0 1rem 1.6rem;
-  border-radius: 14px; overflow: hidden;
-  box-shadow: 0 10px 30px rgba(20,18,16,0.18);
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
+
+/* ===== Fond photo (Bio, Contact) : la photo d'Ana en transparence sur tout l'écran ===== */
+.photo-bg{
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: url("../img/photo-ana.jpg") no-repeat center 30% / cover;
+  opacity: var(--photobg-opacity, 0.42);
+  filter: var(--photobg-filter, none);
 }
-.about-portrait img{ display: block; width: 100%; height: auto; }
-.about-portrait figcaption{
-  font-size: 0.82rem; text-align: center; padding: 0.5rem 0.6rem; color: var(--muted);
+html[data-theme="light"]{ --photobg-opacity: 0.42; --photobg-filter: saturate(0.9) brightness(1.08); }
+html[data-theme="dark"] { --photobg-opacity: 0.38; --photobg-filter: saturate(0.85) brightness(0.75); }
+@media (max-width: 640px){ .photo-bg{ background-position: 60% 30%; } }
+/* lisibilité du texte sur la photo : léger voile derrière les blocs de texte */
+.about-container, .contact-container{
+  background: color-mix(in srgb, var(--bg) 72%, transparent) !important;
+  border-radius: 18px; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
 }
-.about-text::after{ content: ""; display: block; clear: both; }
-@media (max-width: 640px){
-  .about-portrait{ float: none; width: 70%; margin: 0 auto 1.2rem auto; }
+@supports not (background: color-mix(in srgb, red 50%, blue)){
+  html[data-theme="light"] .about-container, html[data-theme="light"] .contact-container{ background: rgba(251,247,239,0.78) !important; }
+  html[data-theme="dark"] .about-container, html[data-theme="dark"] .contact-container{ background: rgba(21,21,22,0.78) !important; }
 }
+
+/* ===== Accessibilité / ergonomie ===== */
+.skip-link{ position: absolute; left: -999px; top: 0; z-index: 1000; padding: .6rem 1rem; background: var(--bg); color: var(--text); border: 1px solid var(--card-border); border-radius: 0 0 8px 0; }
+.skip-link:focus{ left: 0; outline: 3px solid var(--link); }
+a:focus-visible, button:focus-visible{ outline: 3px solid var(--link); outline-offset: 2px; }
+/* zones cliquables plus grandes (≥ 40px) sans changer la mise en page */
+.oeuvres-list a, footer a, .gallery-back a, .breadcrumb a{ display: inline-block; padding: .45em .15em; margin: -.45em -.15em; }
+.lang-link{ min-width: 40px; min-height: 40px; }
+/* fil d'Ariane */
+.breadcrumb{ font-size: .92rem; color: var(--muted); margin: 0 0 .8rem 0; }
+.breadcrumb a{ color: var(--link); text-decoration: none; }
+.breadcrumb a:hover{ text-decoration: underline; }
+.breadcrumb [aria-current]{ color: var(--text); }

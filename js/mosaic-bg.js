@@ -14,21 +14,21 @@
   var prefix = /\/(en|es|zh)\//.test(path) ? '../' : '';
 
   var WORKS = [
-    'img/PeauDAne/peau-dane-visage-1-ana-ruiz.webp', 'img/PeauDAne/peau-dane-visage-2-ana-ruiz.webp',
-    'img/PeauDAne/peau-dane-visage-3-ana-ruiz.webp', 'img/PeauDAne/peau-dane-visage-4-ana-ruiz.webp',
-    'img/PeauDAne/peau-dane-visage-5-ana-ruiz.webp', 'img/PeauDAne/peau-dane-vetement-1-ana-ruiz.webp',
-    'img/PeauDAne/peau-dane-vetement-2-ana-ruiz.webp', 'img/PeauDAne/peau-dane-vetement-3-ana-ruiz.webp',
-    'img/PeauDAne/peau-dane-vetement-4-ana-ruiz.webp', 'img/PeauDAne/peau-dane-vetement-5-ana-ruiz.webp',
-    'img/PeauDAne/peau-dane-vetement-6-ana-ruiz.webp', 'img/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp',
-    'img/la-maison/maison-sacree.jpg', 'img/la-maison/maison-floride.jpg', 'img/la-maison/maison-temple.jpg',
-    'img/la-maison/maison-palais-prison.jpg', 'img/la-maison/maison-de-thyphee.jpg', 'img/la-maison/maison-paradis-perdu.jpg',
-    'img/FeteDesArtistes/gizeh-2009-ana-ruiz.webp', 'img/FeteDesArtistes/naples-2009-ana-ruiz.webp',
-    'img/FeteDesArtistes/nepal-2009-ana-ruiz.webp', 'img/FeteDesArtistes/athenes-2009-ana-ruiz.webp',
-    'img/FeteDesArtistes/tolede-2009-ana-ruiz.webp', 'img/FeteDesArtistes/angles-de-vie-ana-ruiz.webp',
-    'img/SurLesSentiersDuDragonnier/le-vieux-dragonnier.jpg', 'img/SurLesSentiersDuDragonnier/le-vieux-volcan.jpg',
-    'img/SurLesSentiersDuDragonnier/sable-noir.jpg', 'img/SurLesSentiersDuDragonnier/sur-la-terre.jpg',
-    'img/CouleurEnNudite/couleurs-a-nues-2007-ana-ruiz.webp', 'img/CouleurEnNudite/el-rayo-de-luna-2007-ana-ruiz.webp',
-    'img/presse/tableau-angles-de-vie-1.jpg', 'img/presse/tableau-angles-de-vie-2.jpg', 'img/presse/tableau-angles-de-vie-3.jpg'
+    'img/mosaique/peau-dane-visage-1-ana-ruiz.webp', 'img/mosaique/peau-dane-visage-2-ana-ruiz.webp',
+    'img/mosaique/peau-dane-visage-3-ana-ruiz.webp', 'img/mosaique/peau-dane-visage-4-ana-ruiz.webp',
+    'img/mosaique/peau-dane-visage-5-ana-ruiz.webp', 'img/mosaique/peau-dane-vetement-1-ana-ruiz.webp',
+    'img/mosaique/peau-dane-vetement-2-ana-ruiz.webp', 'img/mosaique/peau-dane-vetement-3-ana-ruiz.webp',
+    'img/mosaique/peau-dane-vetement-4-ana-ruiz.webp', 'img/mosaique/peau-dane-vetement-5-ana-ruiz.webp',
+    'img/mosaique/peau-dane-vetement-6-ana-ruiz.webp', 'img/mosaique/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp',
+    'img/mosaique/maison-sacree.webp', 'img/mosaique/maison-floride.webp', 'img/mosaique/maison-temple.webp',
+    'img/mosaique/maison-palais-prison.webp', 'img/mosaique/maison-de-thyphee.webp', 'img/mosaique/maison-paradis-perdu.webp',
+    'img/mosaique/gizeh-2009-ana-ruiz.webp', 'img/mosaique/naples-2009-ana-ruiz.webp',
+    'img/mosaique/nepal-2009-ana-ruiz.webp', 'img/mosaique/athenes-2009-ana-ruiz.webp',
+    'img/mosaique/tolede-2009-ana-ruiz.webp', 'img/mosaique/angles-de-vie-ana-ruiz.webp',
+    'img/mosaique/le-vieux-dragonnier.webp', 'img/mosaique/le-vieux-volcan.webp',
+    'img/mosaique/sable-noir.webp', 'img/mosaique/sur-la-terre.webp',
+    'img/mosaique/couleurs-a-nues-2007-ana-ruiz.webp', 'img/mosaique/el-rayo-de-luna-2007-ana-ruiz.webp',
+    'img/mosaique/tableau-angles-de-vie-1.webp', 'img/mosaique/tableau-angles-de-vie-2.webp', 'img/mosaique/tableau-angles-de-vie-3.webp'
   ];
 
   var STATIC = true;

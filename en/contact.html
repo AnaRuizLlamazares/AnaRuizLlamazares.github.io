@@ -8,6 +8,7 @@
     Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
   -->
 <meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Contact | Ana Ruiz Llamazares</title>
 <meta content="Contact Ana Ruiz Llamazares using a secure form (no email address displayed)." name="description"/>
@@ -41,21 +42,6 @@
 <link href="../img/signature.png" rel="shortcut icon"/>
 <link href="../img/signature.png" rel="apple-touch-icon"/>
 <style>
-    body {
-      background: #151516 url("../img/photo-ana.jpg") no-repeat center right fixed;
-      background-size: cover;
-      /* Un voile sombre pour la lisibilité */
-      position: relative;
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      z-index: 0;
-      inset: 0;
-      background: rgba(22,20,27,0.63);
-      pointer-events: none;
-      /* Pour bien lisser l’image sous le texte */
-    }
     .contact-container {
       position: relative;
       max-width: 700px;
@@ -93,7 +79,7 @@
       text-align: left;
     }
     .contact-form input,
-    .contact-form textarea {
+    .contact-form textarea { box-sizing: border-box;
       width: 100%;
       padding: 0.6em 0.9em;
       border-radius: 10px;
@@ -253,6 +239,8 @@
 </style> <link href="../css/theme.css" rel="stylesheet"/>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="photo-bg" aria-hidden="true"></div>
 <!-- ===== Barre de navigation principale ===== -->
 <nav class="navbar">
 <div class="navbar-container">
@@ -283,7 +271,7 @@
 </div>
 </nav>
 <!-- ===== Contenu principal de la page ===== -->
-<main>
+<main id="main">
 <div class="contact-container fade-in">
 <h1 class="contact-title">Contact</h1>
 <div class="contact-info">

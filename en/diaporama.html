@@ -3,6 +3,7 @@
 <html data-theme="light" lang="en">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <meta charset="utf-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Slideshow | Ana Ruiz Llamazares</title>
 <meta content="Musical slideshow featuring a selection of works by Ana Ruiz Llamazares." name="description"/>
@@ -126,6 +127,7 @@
 <link href="../css/theme.css" rel="stylesheet"/>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <!-- ===== Barre de navigation principale ===== -->
 <nav class="navbar">
 <div class="navbar-container">
@@ -155,7 +157,7 @@
 </div>
 </div>
 </nav>
-<main>
+<main id="main">
 <div class="diaporama-container fade-in" id="diapo-container">
 <h1 class="diapo-title">Slideshow</h1>
 <div class="diapo-gallery" id="diapo-gallery"></div>
