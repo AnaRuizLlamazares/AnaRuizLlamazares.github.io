@@ -1,9 +1,9 @@
 /*
   Mosaïque de fond (Ana Ruiz)
   - Grille de tuiles en plein écran, derrière le contenu, à partir des œuvres du site
-  - Chaque tuile bouge très lentement (zoom/dérive) et change d'œuvre par fondu doux
-  - Respecte prefers-reduced-motion (image fixe, pas de fondu)
-  - S'arrête quand l'onglet est caché
+  - Mosaïque FIXE : disposition tirée au hasard au chargement, puis aucune animation
+    (le mouvement et les fondus ont été jugés perturbants) — STATIC = true
+  - STATIC = false réactive la dérive lente et les fondus (respecte prefers-reduced-motion)
   Activation : <div class="mosaic-bg" aria-hidden="true"></div> juste après <body>
 */
 (function () {
@@ -31,8 +31,9 @@
     'img/presse/tableau-angles-de-vie-1.jpg', 'img/presse/tableau-angles-de-vie-2.jpg', 'img/presse/tableau-angles-de-vie-3.jpg'
   ];
 
-  var reduceMotion = false;
-  try { reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var STATIC = true;
+  var reduceMotion = STATIC;
+  try { if (!STATIC) reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }

@@ -829,10 +829,11 @@ html[data-theme="light"] .home-page .home-panel{
   position: absolute; inset: -8%; width: 116%; height: 116%;
   object-fit: cover; opacity: 0;
   transition: opacity 2.6s ease-in-out;
-  animation: mosaicDrift 60s ease-in-out infinite alternate;
-  will-change: opacity, transform;
+  /* animation désactivée (mosaïque fixe) ; réactivable : animation: mosaicDrift 60s ease-in-out infinite alternate; */
+  animation: none;
 }
 .mosaic-tile img.is-on{ opacity: 1; }
+.mosaic-tile img{ transition: none; }
 @keyframes mosaicDrift{
   0%   { transform: translate(-2%, -2%) scale(1.00); }
   50%  { transform: translate( 2%,  1%) scale(1.06); }
