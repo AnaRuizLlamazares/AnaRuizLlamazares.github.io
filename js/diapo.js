@@ -117,32 +117,37 @@ document.addEventListener('DOMContentLoaded', function () {
         { src: "img/la-maison/maison-sacree.jpg", title: "Maison sacrée" },
         { src: "img/la-maison/maison-floride.jpg", title: "Maison Floride" },
         { src: "img/la-maison/maison-temple.jpg", title: "Maison temple" },
-        { src: "img/la-maison/maison-palais-prison.jpg", title: "Maison palais prison" }
-      ]
-    },
-    {
-      name: "Sur le sentier du dragonnier (2008)",
-      slides: [
-        { src: "img/dragonnier-couverture.jpg", title: "Dragonnier couverture" },
-        { src: "img/le-vieux-dragonnier.jpg", title: "Le vieux dragonnier" },
-        { src: "img/le-vieux-volcan.jpg", title: "Le vieux volcan" },
-        { src: "img/au-dessous-du-volcan.jpg", title: "Au-dessous du volcan" }
-      ]
-    },
-    {
-      name: "Couleurs en nudité (2007)",
-      slides: [
-        { src: "img/dragonnier-couverture.jpg", title: "Couverture Dragonnier" },
-        { src: "img/le-vieux-dragonnier.jpg", title: "Le vieux dragonnier" },
-        { src: "img/le-vieux-volcan.jpg", title: "Le vieux volcan" },
-        { src: "img/au-dessous-du-volcan.jpg", title: "Au-dessous du volcan" }
+        { src: "img/la-maison/maison-palais-prison.jpg", title: "Maison palais prison" },
+        { src: "img/la-maison/maison-de-thyphee.jpg", title: "Maison de Typhée" },
+        { src: "img/la-maison/maison-paradis-perdu.jpg", title: "Maison paradis perdu" }
       ]
     },
     {
       name: "Fête des artistes (2009)",
       slides: [
-        { src: "img/dragonnier-couverture.jpg", title: "Couverture Dragonnier" },
-        { src: "img/le-vieux-dragonnier.jpg", title: "Le vieux dragonnier" }
+        { src: "img/FeteDesArtistes/gizeh-2009-ana-ruiz.webp", title: "Gizeh" },
+        { src: "img/FeteDesArtistes/naples-2009-ana-ruiz.webp", title: "Naples" },
+        { src: "img/FeteDesArtistes/nepal-2009-ana-ruiz.webp", title: "Népal" },
+        { src: "img/FeteDesArtistes/athenes-2009-ana-ruiz.webp", title: "Athènes" },
+        { src: "img/FeteDesArtistes/tolede-2009-ana-ruiz.webp", title: "Tolède" },
+        { src: "img/FeteDesArtistes/invitation-chateau-de-belleville-ana-ruiz.webp", title: "Invitation — Château de Belleville" }
+      ]
+    },
+    {
+      name: "Sur le sentier du dragonnier (2008)",
+      slides: [
+        { src: "img/SurLesSentiersDuDragonnier/dragonnier-couverture.jpg", title: "Dragonnier (couverture)" },
+        { src: "img/SurLesSentiersDuDragonnier/le-vieux-dragonnier.jpg", title: "Le vieux dragonnier" },
+        { src: "img/SurLesSentiersDuDragonnier/le-vieux-volcan.jpg", title: "Le vieux volcan" },
+        { src: "img/SurLesSentiersDuDragonnier/sable-noir.jpg", title: "Sable noir" },
+        { src: "img/SurLesSentiersDuDragonnier/sur-la-terre.jpg", title: "Sur la terre" }
+      ]
+    },
+    {
+      name: "Couleurs en nudité (2007)",
+      slides: [
+        { src: "img/CouleurEnNudite/couleurs-a-nues-2007-ana-ruiz.webp", title: "Couleurs à nues" },
+        { src: "img/CouleurEnNudite/el-rayo-de-luna-2007-ana-ruiz.webp", title: "El rayo de luna (100 × 100)" }
       ]
     }
   ];
