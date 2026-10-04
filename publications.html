@@ -260,6 +260,7 @@
 <link href="css/theme.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="mosaic-bg" aria-hidden="true"></div>
 
 <!-- ===== Barre de navigation principale ===== -->
 <nav class="navbar">
@@ -384,7 +385,13 @@
            loading="lazy" decoding="async"/>
       <p class="tableau-caption">Technique mixte — acrylique et matière, c. 2004–2005</p>
     </div>
-  </div>
+  <div class="tableau-card" onclick="openLightbox('img/presse/tableau-angles-de-vie-3.jpg')" role="button" tabindex="0" aria-label="Voir le tableau : Cadres (bleu, vert, jaune)" onkeydown="if(event.key==='Enter')openLightbox('img/presse/tableau-angles-de-vie-3.jpg')">
+      <img src="img/presse/tableau-angles-de-vie-3.jpg"
+           alt="Ana Ruiz Llamazares – Tableau aux cadres concentriques, bleu, vert et jaune, c. 2004–2005"
+           loading="lazy" decoding="async"/>
+      <p class="tableau-caption">Cadres — acrylique sur toile, c. 2004–2005</p>
+    </div>
+</div>
 
 </section>
 </main>
@@ -423,5 +430,6 @@
   }
 </script>
 
+<script defer src="js/mosaic-bg.js"></script>
 </body>
 </html>

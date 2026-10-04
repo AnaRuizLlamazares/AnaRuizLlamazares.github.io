@@ -815,3 +815,50 @@ html[data-theme="light"] .home-page .home-panel{
   .home-panel{ padding: 1.1rem 1rem; }
   .gallery-section-title{ font-size: 1.28rem; }
 }
+
+/* ===== Mosaïque de fond (œuvres d'Ana) — pages Œuvres, Bio, Publications, Mentions légales ===== */
+.mosaic-bg{
+  position: fixed; inset: 0; z-index: -1;
+  display: grid; gap: 0;
+  overflow: hidden; pointer-events: none;
+  opacity: var(--mosaic-opacity, 0.16);
+  filter: var(--mosaic-filter, saturate(0.9) blur(0.6px));
+}
+.mosaic-tile{ position: relative; overflow: hidden; background: transparent; }
+.mosaic-tile img{
+  position: absolute; inset: -8%; width: 116%; height: 116%;
+  object-fit: cover; opacity: 0;
+  transition: opacity 2.6s ease-in-out;
+  animation: mosaicDrift 60s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+.mosaic-tile img.is-on{ opacity: 1; }
+@keyframes mosaicDrift{
+  0%   { transform: translate(-2%, -2%) scale(1.00); }
+  50%  { transform: translate( 2%,  1%) scale(1.06); }
+  100% { transform: translate(-1%,  2%) scale(1.10); }
+}
+html[data-theme="light"]{ --mosaic-opacity: 0.15; --mosaic-filter: saturate(0.85) brightness(1.06) blur(0.6px); }
+html[data-theme="dark"] { --mosaic-opacity: 0.22; --mosaic-filter: saturate(0.9) brightness(0.8) blur(0.8px); }
+@media (prefers-reduced-motion: reduce){
+  .mosaic-tile img{ animation: none; transition: none; }
+}
+/* le contenu reste au-dessus de la mosaïque */
+body > main, body > footer{ position: relative; z-index: 1; }
+
+/* ===== Portrait d'Ana sur la page Bio ===== */
+.about-portrait{
+  float: right; width: min(42%, 380px); margin: 0.2rem 0 1rem 1.6rem;
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(20,18,16,0.18);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+}
+.about-portrait img{ display: block; width: 100%; height: auto; }
+.about-portrait figcaption{
+  font-size: 0.82rem; text-align: center; padding: 0.5rem 0.6rem; color: var(--muted);
+}
+.about-text::after{ content: ""; display: block; clear: both; }
+@media (max-width: 640px){
+  .about-portrait{ float: none; width: 70%; margin: 0 auto 1.2rem auto; }
+}

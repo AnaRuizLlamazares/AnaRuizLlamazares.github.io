@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { src: "img/FeteDesArtistes/nepal-2009-ana-ruiz.webp", title: "Népal" },
         { src: "img/FeteDesArtistes/athenes-2009-ana-ruiz.webp", title: "Athènes" },
         { src: "img/FeteDesArtistes/tolede-2009-ana-ruiz.webp", title: "Tolède" },
-        { src: "img/FeteDesArtistes/invitation-chateau-de-belleville-ana-ruiz.webp", title: "Invitation — Château de Belleville" }
+        { src: "img/FeteDesArtistes/angles-de-vie-ana-ruiz.webp", title: "Angles de vie" }
       ]
     },
     {
