@@ -783,6 +783,54 @@ html[data-theme="light"] .home-page .home-panel{
   font-weight: 700;
   text-decoration: none;
 }
+/* Œuvres choisies (accueil) */
+.home-works{
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0.2rem 0 0 0;
+}
+.home-works a{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.home-works figure{ margin: 0; }
+.home-works img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--image-bg);
+}
+.home-works figcaption{
+  margin-top: 0.55rem;
+  line-height: 1.4;
+}
+.home-work-title{
+  display: block;
+  font-weight: 700;
+  color: var(--heading);
+}
+.home-work-expo{
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.home-works a:hover .home-work-title,
+.home-works a:focus .home-work-title{
+  text-decoration: underline;
+}
+@media (max-width: 860px){
+  .home-works{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Bio : paragraphe de parcours placé avant le texte critique */
+.about-parcours{ margin-bottom: 0.9em !important; }
 .oeuvres-intro,
 .about-intro,
 .gallery-meta{

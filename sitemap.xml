@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://anaruizllamazares.com/apropos.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/apropos.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/apropos.html" />
     <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/apropos.html" />
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://anaruizllamazares.com/en/apropos.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/apropos.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/apropos.html" />
     <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/apropos.html" />
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://anaruizllamazares.com/es/apropos.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/apropos.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/apropos.html" />
     <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/apropos.html" />
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://anaruizllamazares.com/zh/apropos.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/apropos.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/apropos.html" />
     <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/apropos.html" />
@@ -249,43 +249,43 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/galeries.html" />
   </url>
   <url>
-    <loc>https://anaruizllamazares.com/index.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/index.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/index.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/index.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/index.html" />
+    <loc>https://anaruizllamazares.com/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/" />
     <image:image><image:loc>https://anaruizllamazares.com/img/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://anaruizllamazares.com/en/index.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/index.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/index.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/index.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/index.html" />
+    <loc>https://anaruizllamazares.com/en/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/" />
     <image:image><image:loc>https://anaruizllamazares.com/img/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://anaruizllamazares.com/es/index.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/index.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/index.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/index.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/index.html" />
+    <loc>https://anaruizllamazares.com/es/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/" />
     <image:image><image:loc>https://anaruizllamazares.com/img/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://anaruizllamazares.com/zh/index.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/index.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/index.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/index.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/index.html" />
+    <loc>https://anaruizllamazares.com/zh/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://anaruizllamazares.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://anaruizllamazares.com/en/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://anaruizllamazares.com/es/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://anaruizllamazares.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anaruizllamazares.com/" />
     <image:image><image:loc>https://anaruizllamazares.com/img/peau-dane-je-me-suis-assis-au-milieu-de-la-terre-ana-ruiz.webp</image:loc></image:image>
   </url>
   <url>

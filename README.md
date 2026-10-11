@@ -130,6 +130,10 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 - Renforcer la pertinence locale autour de **Gif-sur-Yvette**, de l’**Essonne** et de la **région parisienne / près de Paris**, quand cela est justifié par le contenu du site.
 - Soigner les éléments SEO de base : **titres de pages descriptifs**, **meta descriptions spécifiques**, **H1/H2**, **alt text d’images**, **liens internes**, **données structurées**, **sitemap** et **performance**.
 - Conserver `https://anaruizllamazares.com/` comme **domaine canonique principal**.
+- Les deux formes du nom doivent fonctionner dans les moteurs : **« Ana Ruiz »** et **« Ana Ruiz Llamazares »** (nom complet dans les titres, forme courte dans le texte de l’accueil, variantes déclarées dans la fiche `Person`).
+- Recherches visées : **« Ana Ruiz peintre »** et **« Gif-sur-Yvette artiste »** ; la **page d’accueil** est la page prioritaire.
+- Dans `sitemap.xml`, l’accueil est déclaré à l’adresse `/` (et `/en/`, `/es/`, `/zh/`), jamais `index.html`.
+- Tout nouveau texte du site est relu en français par Sébastien avant traduction.
 
 ### 14) Nettoyage du dossier final
 - Supprimer les **images source**, **doublons** et **médias non référencés** dans la version publiée.
