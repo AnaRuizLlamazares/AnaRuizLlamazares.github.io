@@ -23,8 +23,8 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 
 ### 3) Expositions récentes (mise à jour du 17/10/2026)
 - **161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)**, Carré à la Farine, Versailles, du 2 au 15 novembre 2026 : page `salon-versailles-2026.html`, œuvres Hypoderme, Épiderme, Deuxième peau, Peau d’âne (`img/SalonVersailles2026/`). Annoncée en « Exposition à venir » sur l’accueil et la page Œuvres ; à passer en « Exposition récente » après le 15 novembre.
-- **Icône ou le pouvoir de soi (2024)**, exposition collective Géographie(s) du Sacré, crypte d’Orsay, septembre 2024 : page `icone-ou-le-pouvoir-de-soi.html`, vêtements Nekem, Ben, Remine (`img/Icone/`) ; Mina et Aniga à ajouter quand Ana enverra les photos.
-- **Peau d’âne (2024)**, galerie-restaurant Le Canapé, Gif-sur-Yvette, mai – juillet 2024 : page `peau-dane.html`, les cinq visages seuls (`img/PeauDAne/visages/`), titres donnés par Ana.
+- **Icône ou le pouvoir de soi (2024)**, exposition collective Géographie(s) du Sacré, crypte d’Orsay, septembre 2024 : page `icone-ou-le-pouvoir-de-soi.html`, les cinq visages (`img/Icone/visage-1..5-ana-ruiz.webp`), titres donnés par Ana.
+- **Peau d’âne (2024)**, galerie-restaurant Le Canapé, Gif-sur-Yvette, mai – juillet 2024 : page `peau-dane.html`, les vêtements Nekem, Ben, Remine (`img/PeauDAne/`) ; Mina et Aniga à ajouter quand Ana enverra les photos.
 - **Angles de vie (2005)**, château de Belleville : page `angles-de-vie-2005.html`, quatre tableaux (`img/AnglesDeVie/`), titres provisoires I à IV.
 - **Fête des artistes en cartes postales (2009)** : Tolède retiré du site, Angles de vie déplacé dans sa propre galerie.
 - Les fichiers retirés sont rangés dans `img/Historique/retires-2026-10/` (rien n’est supprimé).

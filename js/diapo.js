@@ -116,22 +116,22 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       name: "Icône ou le pouvoir de soi (2024)",
-      maxSlides: 3,
+      maxSlides: 5,
       slides: [
-        { src: "img/Icone/nekem-ana-ruiz.webp", title: "Nekem" },
-        { src: "img/Icone/ben-ana-ruiz.webp", title: "Ben" },
-        { src: "img/Icone/remine-ana-ruiz.webp", title: "Remine" }
+        { src: "img/Icone/visage-1-ana-ruiz.webp", title: peauDaneFaceTitle(1) },
+        { src: "img/Icone/visage-2-ana-ruiz.webp", title: peauDaneFaceTitle(2) },
+        { src: "img/Icone/visage-3-ana-ruiz.webp", title: peauDaneFaceTitle(3) },
+        { src: "img/Icone/visage-4-ana-ruiz.webp", title: peauDaneFaceTitle(4) },
+        { src: "img/Icone/visage-5-ana-ruiz.webp", title: peauDaneFaceTitle(5) }
       ]
     },
     {
       name: "Peau d’âne (2024)",
-      maxSlides: 5,
+      maxSlides: 3,
       slides: [
-        { src: "img/PeauDAne/visages/peau-dane-visage-1-ana-ruiz.webp", title: peauDaneFaceTitle(1) },
-        { src: "img/PeauDAne/visages/peau-dane-visage-2-ana-ruiz.webp", title: peauDaneFaceTitle(2) },
-        { src: "img/PeauDAne/visages/peau-dane-visage-3-ana-ruiz.webp", title: peauDaneFaceTitle(3) },
-        { src: "img/PeauDAne/visages/peau-dane-visage-4-ana-ruiz.webp", title: peauDaneFaceTitle(4) },
-        { src: "img/PeauDAne/visages/peau-dane-visage-5-ana-ruiz.webp", title: peauDaneFaceTitle(5) }
+        { src: "img/PeauDAne/nekem-ana-ruiz.webp", title: "Nekem" },
+        { src: "img/PeauDAne/ben-ana-ruiz.webp", title: "Ben" },
+        { src: "img/PeauDAne/remine-ana-ruiz.webp", title: "Remine" }
       ]
     },
     {
