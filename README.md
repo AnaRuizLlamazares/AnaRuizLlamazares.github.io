@@ -21,8 +21,16 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Quand une galerie existe, l’item doit être **cliquable** (lien vers la page correspondante). Sinon texte simple.
 - La première exposition listée doit être **Peau d’âne (2025)**.
 
-### 3) Exposition "Peau d’âne" (2025)
-- Ajout de l’exposition **Peau d’âne** (2025), **Gif-sur-Yvette**, galerie-restaurant **Le Canapé**.
+### 3) Expositions récentes (mise à jour du 17/10/2026)
+- **161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)**, Carré à la Farine, Versailles, du 2 au 15 novembre 2026 : page `salon-versailles-2026.html`, œuvres Hypoderme, Épiderme, Deuxième peau, Peau d’âne (`img/SalonVersailles2026/`). Annoncée en « Exposition à venir » sur l’accueil et la page Œuvres ; à passer en « Exposition récente » après le 15 novembre.
+- **Icône ou le pouvoir de soi (2024)**, exposition collective Géographie(s) du Sacré, crypte d’Orsay, septembre 2024 : page `icone-ou-le-pouvoir-de-soi.html`, vêtements Nekem, Ben, Remine (`img/Icone/`) ; Mina et Aniga à ajouter quand Ana enverra les photos.
+- **Peau d’âne (2024)**, galerie-restaurant Le Canapé, Gif-sur-Yvette, mai – juillet 2024 : page `peau-dane.html`, les cinq visages seuls (`img/PeauDAne/visages/`), titres donnés par Ana.
+- **Angles de vie (2005)**, château de Belleville : page `angles-de-vie-2005.html`, quatre tableaux (`img/AnglesDeVie/`), titres provisoires I à IV.
+- **Fête des artistes en cartes postales (2009)** : Tolède retiré du site, Angles de vie déplacé dans sa propre galerie.
+- Les fichiers retirés sont rangés dans `img/Historique/retires-2026-10/` (rien n’est supprimé).
+
+#### Historique : exposition "Peau d’âne" (version de mars 2026)
+- Ajout de l’exposition **Peau d’âne**, **Gif-sur-Yvette**, galerie-restaurant **Le Canapé**.
 - Sur la page de l’expo, le contenu ne doit pas être masqué par la barre du menu : on utilise l’offset de navbar (`--site-nav-offset`) pour gérer l’espace en haut.
 - La galerie **Peau d’âne** est organisée en **2 parties uniquement** :
   1. **Visages**
@@ -38,14 +46,14 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - En clair, éviter les "cartouches"/"box" blanches derrière les textes : **fond crème continu** (pas de démarcation visible entre un bloc texte et le fond).
 - Corriger le cas où un **bandeau noir** apparaissait en bas en mode clair : le fond doit rester crème.
 - L’icône du bouton doit refléter le thème : **Soleil** en clair, **Lune** en sombre.
-- Quand on ouvre une œuvre en plein écran (lightbox), le fond doit être :
-  - **blanc pur** en mode clair (pas crème)
-  - **noir** en mode sombre.
+- Quand on ouvre une œuvre en plein écran (lightbox), le fond est **noir dans les deux thèmes**, avec une marge d’au moins **2 cm en haut et en bas** (identique), image centrée (demande d’Ana du 17/10/2026 ; remplace l’ancienne règle « blanc en mode clair »).
+- Le zoom et le diaporama passent en **vrai plein écran** du navigateur (sans barre d’adresse) avec une croix pour en sortir ; un seul script de zoom pour tout le site : `js/gallery-lightbox.js`.
+- Les scripts et styles sont chargés avec un numéro de version (`?v=AAAAMMJJx`) : l’augmenter à chaque modification de `js/` ou `css/` pour contourner le cache des navigateurs.
 - En mode clair, le footer (© 2026… | Mentions légales) doit être **suffisamment foncé** pour rester lisible.
 - Sur la page d’accueil, en mode clair, l’image de fond doit être **plus claire / moins assombrie**, tout en gardant un **contraste suffisant** pour que le texte ressorte bien.
 
 ### 5) Diaporama (diaporama.html + js/diapo.js)
-- Le diaporama tourne avec un rythme de **5 secondes** par image.
+- Le diaporama tourne avec un rythme de **5 secondes** par image ; bouton **pause / reprise** (⏸ / ▶) et bouton **plein écran** (⛶) avec croix pour en sortir.
 - Par défaut, choisir **4 images maximum par galerie**.
 - Exception : pour **Peau d’âne**, le diaporama doit afficher les nouvelles œuvres publiées, en **2 séquences** :
   1. **Visages** (`Vis1` à `Vis5`)
@@ -123,6 +131,13 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
   1. Créer une nouvelle page `mon-expo-AAAA.html` sur le modèle des pages existantes.
   2. Ajouter l’entrée correspondante dans `galeries.html` (section Expositions ou Installations).
   3. Ajouter jusqu’à 4 images dans `js/diapo.js` si on veut l’inclure au diaporama (sauf exception explicite comme **Peau d’âne**).
+
+### 12 bis) Protection des œuvres (17/10/2026)
+- Clic droit, glisser-déposer et sélection désactivés sur les images ; appui long « Enregistrer l’image » désactivé sur mobile ; impression bloquée (Cmd/Ctrl+P et page d’impression vide) : `js/protect.js` + `css/theme.css`.
+- Filigrane visible « © Ana Ruiz Llamazares » dans le coin de l’image agrandie et de l’image du diaporama (`.art-watermark`).
+- Limite : une capture d’écran reste toujours possible (un site web ne peut pas la rendre noire, contrairement aux vidéos protégées par DRM). La protection est dissuasive, pas absolue.
+- Bio et Contact : portrait d’Ana (`img/photo-ana-portrait.webp`, recadré depuis `img/photo-ana.jpg`) à côté du titre, mosaïque d’œuvres en fond.
+- Le thème mémorisé est appliqué par un script en tête de chaque page (plus de passage par le clair en naviguant en sombre).
 
 ### 13) SEO / référencement
 - Renforcer le **référencement naturel** du site sans sur-optimisation ni bourrage de mots-clés.

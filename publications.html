@@ -4,6 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <meta charset="utf-8"/>
+<script>(function(){try{var t=localStorage.getItem("ana-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Publications et presse | Ana Ruiz Llamazares</title>
@@ -31,7 +32,7 @@
 <meta name="twitter:image" content="https://anaruizllamazares.com/img/accueil.jpg"/>
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","@id":"https://anaruizllamazares.com/#website","name":"Ana Ruiz Llamazares","url":"https://anaruizllamazares.com/","inLanguage":"fr","publisher":{"@id":"https://anaruizllamazares.com/#person"}},{"@context":"https://schema.org","@type":"Person","@id":"https://anaruizllamazares.com/#person","name":"Ana Ruiz Llamazares","url":"https://anaruizllamazares.com/","image":"https://anaruizllamazares.com/img/photo-ana.jpg","jobTitle":"Artiste peintre et plasticienne","description":"Artiste peintre et plasticienne liée à Gif-sur-Yvette, en Essonne, près de Paris.","homeLocation":{"@type":"Place","name":"Gif-sur-Yvette, Essonne, France"},"workLocation":{"@type":"Place","name":"Gif-sur-Yvette, Essonne, France"},"knowsLanguage":["fr","en","es","zh"]},{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://anaruizllamazares.com/publications.html#webpage","url":"https://anaruizllamazares.com/publications.html","name":"Publications | Ana Ruiz Llamazares","description":"Publications, textes et articles de presse autour du travail d'Ana Ruiz Llamazares.","inLanguage":"fr","isPartOf":{"@id":"https://anaruizllamazares.com/#website"},"about":{"@id":"https://anaruizllamazares.com/#person"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://anaruizllamazares.com/img/accueil.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-<link href="css/style-modern.css" rel="stylesheet"/>
+<link href="css/style-modern.css?v=20261017d" rel="stylesheet"/>
 <link rel="icon" type="image/png" sizes="32x32" href="img/signature.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="img/signature.png"/>
 <link rel="shortcut icon" href="img/signature.png"/>
@@ -196,48 +197,6 @@
   }
 
   /* ── Lightbox ────────────────────────────────── */
-  .lb-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9000;
-    background: rgba(0,0,0,0.88);
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-  }
-
-  .lb-overlay.open {
-    display: flex;
-  }
-
-  .lb-img {
-    max-width: min(820px, 92vw);
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  }
-
-  .lb-close {
-    position: fixed;
-    top: 1.2rem;
-    right: 1.4rem;
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: #fff;
-    font-size: 1.7rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    line-height: 1;
-    transition: background 0.15s;
-  }
-
-  .lb-close:hover { background: rgba(255,255,255,0.28); }
 
   /* ── Responsive ──────────────────────────────── */
   @media (max-width: 640px) {
@@ -257,8 +216,8 @@
     .tableaux-grid { grid-template-columns: 1fr; }
   }
 </style>
-<script defer src="js/navbar-load.js"></script>
-<link href="css/theme.css" rel="stylesheet"/>
+<script defer src="js/navbar-load.js?v=20261017d"></script>
+<link href="css/theme.css?v=20261017d" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
@@ -370,68 +329,16 @@
     </div>
 
   </div><!-- /articles-list -->
-
-  <!-- ── Œuvres de la période 2004-2005 ──── -->
-  <h2 class="section-label">Œuvres de la période</h2>
-
-  <div class="tableaux-grid">
-    <div class="tableau-card" onclick="openLightbox('img/presse/tableau-angles-de-vie-1.webp')" role="button" tabindex="0" aria-label="Voir le tableau : Angles de vie (bleu, vert, jaune)" onkeydown="if(event.key==='Enter')openLightbox('img/presse/tableau-angles-de-vie-1.webp')">
-      <img src="img/presse/tableau-angles-de-vie-1.webp"
-           alt="Ana Ruiz Llamazares – Tableau de la série Angles de vie, bleu, vert et jaune"
-           loading="lazy" decoding="async"/>
-      <p class="tableau-caption">Angles de vie — acrylique sur toile, c. 2004–2005</p>
-    </div>
-    <div class="tableau-card" onclick="openLightbox('img/presse/tableau-angles-de-vie-2.webp')" role="button" tabindex="0" aria-label="Voir le tableau : La maison (bleu, or, blanc)" onkeydown="if(event.key==='Enter')openLightbox('img/presse/tableau-angles-de-vie-2.webp')">
-      <img src="img/presse/tableau-angles-de-vie-2.webp"
-           alt="Ana Ruiz Llamazares – Tableau mixte, bleu profond et or, c. 2004–2005"
-           loading="lazy" decoding="async"/>
-      <p class="tableau-caption">Technique mixte — acrylique et matière, c. 2004–2005</p>
-    </div>
-  <div class="tableau-card" onclick="openLightbox('img/presse/tableau-angles-de-vie-3.webp')" role="button" tabindex="0" aria-label="Voir le tableau : Cadres (bleu, vert, jaune)" onkeydown="if(event.key==='Enter')openLightbox('img/presse/tableau-angles-de-vie-3.webp')">
-      <img src="img/presse/tableau-angles-de-vie-3.webp"
-           alt="Ana Ruiz Llamazares – Tableau aux cadres concentriques, bleu, vert et jaune, c. 2004–2005"
-           loading="lazy" decoding="async"/>
-      <p class="tableau-caption">Cadres — acrylique sur toile, c. 2004–2005</p>
-    </div>
-</div>
-
 </section>
 </main>
 
 <!-- ── Lightbox ─────────────────────────── -->
-<div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image agrandie">
-  <button class="lb-close" id="lb-close" aria-label="Fermer">×</button>
-  <img class="lb-img" id="lb-img" src="" alt=""/>
-</div>
-
 <footer>
   <p>© 2026 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
 </footer>
 
-<script>
-  function openLightbox(src) {
-    var overlay = document.getElementById('lb-overlay');
-    var img = document.getElementById('lb-img');
-    img.src = src;
-    img.alt = '';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  document.getElementById('lb-close').addEventListener('click', closeLightbox);
-  document.getElementById('lb-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  function closeLightbox() {
-    document.getElementById('lb-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-</script>
-
-<script defer src="js/mosaic-bg.js"></script>
+<script src="js/gallery-lightbox.js?v=20261017d"></script>
+<script defer src="js/mosaic-bg.js?v=20261017d"></script>
+<script src="js/protect.js?v=20261017d"></script>
 </body>
 </html>

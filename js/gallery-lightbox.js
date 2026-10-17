@@ -58,7 +58,21 @@
     document.body.appendChild(wrap.firstElementChild);
   }
 
-  let box,img,closeBtn;
+  let box,img,closeBtn,mark;
+  /* Filigrane visible : « © Ana Ruiz Llamazares » dans le coin de l'image */
+  function ensureMark(){
+    if(mark) return mark;
+    mark=document.createElement('div'); mark.className='art-watermark'; mark.setAttribute('aria-hidden','true'); mark.textContent='© Ana Ruiz Llamazares';
+    (box.querySelector('.lightbox-inner')||box).appendChild(mark); return mark;
+  }
+  function placeMark(){
+    if(!mark||!img||!box.classList.contains('open')) return;
+    var r=img.getBoundingClientRect(), p=mark.offsetParent?mark.offsetParent.getBoundingClientRect():{left:0,top:0};
+    mark.style.left=(r.right-p.left-mark.offsetWidth-10)+'px'; mark.style.top=(r.bottom-p.top-mark.offsetHeight-8)+'px';
+    mark.style.opacity='1';
+  }
+  window.addEventListener('resize',placeMark);
+  document.addEventListener('fullscreenchange',function(){ setTimeout(placeMark,80); });
   const BLANK='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
   let loading=false,savedPad='',aborted=false;
 
@@ -107,7 +121,8 @@
     loader.onload=function(){
       if(aborted) return;
       img.src=src; img.alt=alt||'';
-      requestAnimationFrame(()=>img.classList.add('ready'));
+      ensureMark(); mark.style.opacity='0';
+      requestAnimationFrame(()=>{img.classList.add('ready'); setTimeout(placeMark,60); setTimeout(placeMark,350);});
       box.classList.add('open');
       box.setAttribute('aria-hidden','false');
       document.body.classList.add('lb-open');
@@ -130,6 +145,7 @@
     document.body.classList.remove('lb-open');
     document.body.style.paddingTop=savedPad;
     img.classList.remove('ready');
+    if(mark) mark.style.opacity='0';
     setTimeout(()=>{img.src=BLANK;},150);
   }
 
@@ -220,6 +236,10 @@
       }
     });
   }
+
+  /* Appel direct depuis une page (ex. Publications : onclick="openLightbox('...')") */
+  window.openLightbox=function(src,alt){ if(!box) initLightbox(); if(box) open(src,alt||''); };
+  window.closeLightbox=function(){ if(box) close(); };
 
   document.addEventListener('DOMContentLoaded',()=>{
     initLightbox();

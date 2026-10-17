@@ -3,6 +3,7 @@
 <html data-theme="light" lang="zh">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <meta charset="utf-8"/>
+<script>(function(){try{var t=localStorage.getItem("ana-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>幻灯片 | Ana Ruiz Llamazares</title>
@@ -30,7 +31,7 @@
 <meta content="https://anaruizllamazares.com/img/accueil.jpg" name="twitter:image"/>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "zh", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "画家与视觉艺术家", "description": "与法国巴黎附近 Gif-sur-Yvette 相联系的画家与视觉艺术家。", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "zh"]}, {"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://anaruizllamazares.com/zh/diaporama.html#webpage", "url": "https://anaruizllamazares.com/zh/diaporama.html", "name": "幻灯片 | Ana Ruiz Llamazares", "description": "音乐幻灯片：精选 Ana Ruiz Llamazares 作品。", "inLanguage": "zh", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/accueil.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
-<link href="../css/style-modern.css" rel="stylesheet"/>
+<link href="../css/style-modern.css?v=20261017d" rel="stylesheet"/>
 <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
 <link href="../img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="../img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
@@ -117,6 +118,8 @@
       cursor: pointer;
     }
 
+    .diapo-pause-btn { font-size: 1.15rem; }
+
     .diapo-indicator {
       font-size: 0.95rem;
     }
@@ -128,15 +131,16 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
     .diaporama-container.is-fullscreen .diapo-title { display: none; }
-    .diaporama-container.is-fullscreen .diapo-gallery { position: absolute; top: 18px; left: 0; right: 0; color: #f4efe9 !important; font-size: 1.15rem; padding: 0 70px; }
-    .diaporama-container.is-fullscreen .diapo-stage { height: calc(100vh - 190px); border-radius: 0; }
+    .diaporama-container.is-fullscreen .diapo-gallery { position: absolute; top: 0; left: 0; right: 0; height: 2.4cm; display: flex; align-items: center; justify-content: center; margin: 0; color: #f4efe9 !important; font-size: 1.15rem; padding: 0 2.4cm; }
+    .diaporama-container.is-fullscreen .diapo-stage { height: calc(100vh - 4.8cm); border-radius: 0; }
     .diaporama-container.is-fullscreen .diapo-img { border-radius: 0; }
     .diaporama-container.is-fullscreen .diapo-titlecard { color: #f4efe9; font-size: 2.2rem; }
-    .diaporama-container.is-fullscreen .diapo-caption { position: absolute; bottom: 64px; left: 0; right: 0; color: #f4efe9 !important; margin: 0; }
-    .diaporama-container.is-fullscreen .diapo-controls { position: absolute; bottom: 14px; left: 0; right: 0; margin: 0; }
+    .diaporama-container.is-fullscreen .diapo-caption { position: absolute; bottom: calc(2.4cm - 1.6em); left: 0; right: 0; color: #f4efe9 !important; margin: 0; min-height: 0; line-height: 1.3; }
+    .diaporama-container.is-fullscreen .diapo-controls { position: absolute; bottom: 8px; left: 0; right: 0; margin: 0; }
+    .diaporama-container.is-fullscreen .diapo-btn { width: 38px; height: 38px; font-size: 1.3rem; }
     .diaporama-container.is-fullscreen .diapo-btn { background: rgba(255,255,255,0.18); color: #fff; }
     .diaporama-container.is-fullscreen .diapo-indicator, .diaporama-container.is-fullscreen .diapo-audio-btn { color: #f4efe9 !important; }
-    .diapo-fs-exit { display: none; position: absolute; top: 14px; right: 16px; z-index: 5; border: 0; border-radius: 34px;
+    .diapo-fs-exit { display: none; position: absolute; top: 0.6cm; right: 0.6cm; z-index: 5; border: 0; border-radius: 34px;
       padding: .5rem .9rem; font-size: 1.05rem; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.3); color: #fff; backdrop-filter: blur(4px); }
     .diaporama-container.is-fullscreen .diapo-fs-exit { display: block; }
     .diapo-fs-btn { font-size: 1.35rem; }
@@ -148,9 +152,9 @@
       .diapo-stage { height: min(360px, 50vh); }
     }
   </style>
-<script defer="" src="../js/navbar-load.js"></script>
-<script defer="" src="../js/diapo.js"></script>
-<link href="../css/theme.css" rel="stylesheet"/>
+<script defer="" src="../js/navbar-load.js?v=20261017d"></script>
+<script defer="" src="../js/diapo.js?v=20261017d"></script>
+<link href="../css/theme.css?v=20261017d" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">跳转到内容</a>
@@ -197,6 +201,7 @@
 <button aria-label="上一张" class="diapo-btn" id="prev-btn">←</button>
 <span class="diapo-indicator" id="diapo-indicator"></span>
 <button aria-label="下一张" class="diapo-btn" id="next-btn">→</button>
+<button aria-label="暂停播放" class="diapo-btn diapo-pause-btn" id="pause-btn" title="暂停播放" type="button">⏸</button>
 <button aria-label="幻灯片音乐" class="diapo-audio-btn" id="audio-btn" title="音乐">
 <span id="audio-icon">🎵</span>
 </button>
@@ -210,5 +215,6 @@
 <footer>
 <p>© 2026 Ana Ruiz。保留所有权利。| <a href="mentions-legales.html">法律声明</a></p>
 </footer>
+<script src="../js/protect.js?v=20261017d"></script>
 </body>
 </html>

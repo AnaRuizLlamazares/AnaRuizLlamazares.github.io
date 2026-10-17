@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
       garmentsSection: 'Vêtements',
       faceLabel: 'Visage',
       garmentLabel: 'Vêtement',
+      pause: 'Mettre en pause le défilement',
+      play: 'Reprendre le défilement',
       fullscreen: 'Plein écran',
       exitFullscreen: 'Quitter le plein écran'
     },
@@ -46,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
       garmentsSection: 'Garments',
       faceLabel: 'Face',
       garmentLabel: 'Garment',
+      pause: 'Pause the slideshow',
+      play: 'Resume the slideshow',
       fullscreen: 'Full screen',
       exitFullscreen: 'Exit full screen'
     },
@@ -57,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
       garmentsSection: 'Prendas',
       faceLabel: 'Rostro',
       garmentLabel: 'Prenda',
+      pause: 'Pausar el pase',
+      play: 'Reanudar el pase',
       fullscreen: 'Pantalla completa',
       exitFullscreen: 'Salir de pantalla completa'
     },
@@ -68,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
       garmentsSection: '服饰',
       faceLabel: '面孔',
       garmentLabel: '服饰',
+      pause: '暂停播放',
+      play: '继续播放',
       fullscreen: '全屏',
       exitFullscreen: '退出全屏'
     }
@@ -97,28 +105,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var galleries = [
     {
-      name: peauDaneSectionTitle('facesSection'),
-      galleryLabel: "Peau d’âne (2025)",
-      maxSlides: 5,
+      name: "161ᵉ Salon de Versailles (2026)",
+      maxSlides: 4,
       slides: [
-        { src: "img/PeauDAne/peau-dane-visage-1-ana-ruiz.webp", title: peauDaneFaceTitle(1) },
-        { src: "img/PeauDAne/peau-dane-visage-2-ana-ruiz.webp", title: peauDaneFaceTitle(2) },
-        { src: "img/PeauDAne/peau-dane-visage-3-ana-ruiz.webp", title: peauDaneFaceTitle(3) },
-        { src: "img/PeauDAne/peau-dane-visage-4-ana-ruiz.webp", title: peauDaneFaceTitle(4) },
-        { src: "img/PeauDAne/peau-dane-visage-5-ana-ruiz.webp", title: peauDaneFaceTitle(5) }
+        { src: "img/SalonVersailles2026/hypoderme-ana-ruiz.webp", title: "Hypoderme" },
+        { src: "img/SalonVersailles2026/epiderme-ana-ruiz.webp", title: "Épiderme" },
+        { src: "img/SalonVersailles2026/deuxieme-peau-ana-ruiz.webp", title: "Deuxième peau" },
+        { src: "img/SalonVersailles2026/peau-dane-2026-ana-ruiz.webp", title: "Peau d’âne" }
       ]
     },
     {
-      name: peauDaneSectionTitle('garmentsSection'),
-      galleryLabel: "Peau d’âne (2025)",
-      maxSlides: 6,
+      name: "Icône ou le pouvoir de soi (2024)",
+      maxSlides: 3,
       slides: [
-        { src: "img/PeauDAne/peau-dane-vetement-1-ana-ruiz.webp", title: peauDaneGarmentTitle(1) },
-        { src: "img/PeauDAne/peau-dane-vetement-2-ana-ruiz.webp", title: peauDaneGarmentTitle(2) },
-        { src: "img/PeauDAne/peau-dane-vetement-3-ana-ruiz.webp", title: peauDaneGarmentTitle(3) },
-        { src: "img/PeauDAne/peau-dane-vetement-4-ana-ruiz.webp", title: peauDaneGarmentTitle(4) },
-        { src: "img/PeauDAne/peau-dane-vetement-5-ana-ruiz.webp", title: peauDaneGarmentTitle(5) },
-        { src: "img/PeauDAne/peau-dane-vetement-6-ana-ruiz.webp", title: peauDaneGarmentTitle(6) }
+        { src: "img/Icone/nekem-ana-ruiz.webp", title: "Nekem" },
+        { src: "img/Icone/ben-ana-ruiz.webp", title: "Ben" },
+        { src: "img/Icone/remine-ana-ruiz.webp", title: "Remine" }
+      ]
+    },
+    {
+      name: "Peau d’âne (2024)",
+      maxSlides: 5,
+      slides: [
+        { src: "img/PeauDAne/visages/peau-dane-visage-1-ana-ruiz.webp", title: peauDaneFaceTitle(1) },
+        { src: "img/PeauDAne/visages/peau-dane-visage-2-ana-ruiz.webp", title: peauDaneFaceTitle(2) },
+        { src: "img/PeauDAne/visages/peau-dane-visage-3-ana-ruiz.webp", title: peauDaneFaceTitle(3) },
+        { src: "img/PeauDAne/visages/peau-dane-visage-4-ana-ruiz.webp", title: peauDaneFaceTitle(4) },
+        { src: "img/PeauDAne/visages/peau-dane-visage-5-ana-ruiz.webp", title: peauDaneFaceTitle(5) }
       ]
     },
     {
@@ -133,14 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     {
-      name: "Fête des artistes (2009)",
+      name: "Fête des artistes en cartes postales (2009)",
       slides: [
         { src: "img/FeteDesArtistes/gizeh-2009-ana-ruiz.webp", title: "Gizeh" },
         { src: "img/FeteDesArtistes/naples-2009-ana-ruiz.webp", title: "Naples" },
         { src: "img/FeteDesArtistes/nepal-2009-ana-ruiz.webp", title: "Népal" },
-        { src: "img/FeteDesArtistes/athenes-2009-ana-ruiz.webp", title: "Athènes" },
-        { src: "img/FeteDesArtistes/tolede-2009-ana-ruiz.webp", title: "Tolède" },
-        { src: "img/FeteDesArtistes/angles-de-vie-ana-ruiz.webp", title: "Angles de vie" }
+        { src: "img/FeteDesArtistes/athenes-2009-ana-ruiz.webp", title: "Athènes" }
       ]
     },
     {
@@ -159,6 +170,15 @@ document.addEventListener('DOMContentLoaded', function () {
         { src: "img/CouleurEnNudite/couleurs-a-nues-2007-ana-ruiz.webp", title: "Couleurs à nues" },
         { src: "img/CouleurEnNudite/el-rayo-de-luna-2007-ana-ruiz.webp", title: "El rayo de luna (100 × 100)" }
       ]
+    },
+    {
+      name: "Angles de vie (2005)",
+      slides: [
+        { src: "img/AnglesDeVie/angles-de-vie-1-ana-ruiz.webp", title: "Angles de vie I" },
+        { src: "img/AnglesDeVie/angles-de-vie-2-ana-ruiz.webp", title: "Angles de vie II" },
+        { src: "img/AnglesDeVie/angles-de-vie-3-ana-ruiz.webp", title: "Angles de vie III" },
+        { src: "img/AnglesDeVie/angles-de-vie-4-ana-ruiz.webp", title: "Angles de vie IV" }
+      ]
     }
   ];
 
@@ -171,6 +191,20 @@ document.addEventListener('DOMContentLoaded', function () {
       sequence.push({ type: 'image', gallery: galleryLabel, src: s.src, title: s.title });
     });
   });
+
+  /* Filigrane visible sur l'image du diaporama */
+  var stage = imgEl.parentNode;
+  var mark = document.createElement('div'); mark.className = 'art-watermark'; mark.setAttribute('aria-hidden', 'true'); mark.textContent = '© Ana Ruiz Llamazares';
+  stage.appendChild(mark);
+  function placeMark() {
+    if (imgEl.style.display === 'none' || !imgEl.getAttribute('src')) { mark.style.opacity = '0'; return; }
+    var r = imgEl.getBoundingClientRect(), p = stage.getBoundingClientRect();
+    mark.style.left = (r.right - p.left - mark.offsetWidth - 10) + 'px'; mark.style.top = (r.bottom - p.top - mark.offsetHeight - 8) + 'px';
+    mark.style.opacity = '1';
+  }
+  imgEl.addEventListener('load', function () { placeMark(); setTimeout(placeMark, 120); });
+  window.addEventListener('resize', placeMark);
+  document.addEventListener('fullscreenchange', function () { setTimeout(placeMark, 120); });
 
   var current = 0;
   var timer = null;
@@ -185,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
       titleCard.textContent = slide.gallery;
 
       imgEl.style.display = 'none';
-      imgEl.removeAttribute('src');
+      imgEl.removeAttribute('src'); mark.style.opacity = '0';
       imgEl.alt = '';
 
       galleryEl.textContent = '';
@@ -208,8 +242,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function nextSlide() { showSlide(current + 1); }
   function prevSlide() { showSlide(current - 1); }
 
+  var paused = false;
   function startAuto() {
     stopAuto();
+    if (paused) return;
     timer = setInterval(nextSlide, intervalMs);
   }
 
@@ -244,6 +280,21 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(0);
     startAuto();
   }
+
+  /* --- Pause / reprise du défilement (la musique n'est pas concernée) --- */
+  var pauseBtn = document.getElementById('pause-btn');
+  function syncPause() {
+    if (!pauseBtn) return;
+    pauseBtn.textContent = paused ? '▶' : '⏸';
+    pauseBtn.title = paused ? tr('play') : tr('pause');
+    pauseBtn.setAttribute('aria-label', pauseBtn.title);
+    pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  }
+  if (pauseBtn) {
+    syncPause();
+    pauseBtn.addEventListener('click', function () { paused = !paused; syncPause(); if (paused) stopAuto(); else startAuto(); });
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === ' ' && pauseBtn && document.activeElement === document.body) { e.preventDefault(); pauseBtn.click(); } });
 
   /* --- Plein écran natif du diaporama (comme un lecteur vidéo) --- */
   var container = document.getElementById('diapo-container');

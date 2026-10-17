@@ -339,14 +339,12 @@ html[data-theme="light"] footer a:hover{
    - Clair : fond blanc (vrai blanc) autour de l'œuvre
    - Sombre : fond noir uniquement
 */
-html[data-theme="light"] .lightbox,
-html[data-theme="light"] .lightbox-overlay{
-  background: #ffffff !important;
+/* Zoom : fond noir dans les deux thèmes (demande d'Ana du 17/10/2026), marges 2 cm haut/bas */
+.lightbox, .lightbox-overlay{
+  background: #000 !important;
 }
-html[data-theme="dark"] .lightbox,
-html[data-theme="dark"] .lightbox-overlay{
-  background: rgba(0,0,0,0.92) !important;
-}
+#lightbox-close{ background: rgba(255,255,255,0.22) !important; color: #fff !important; }
+#lightbox-close:hover, #lightbox-close:focus{ background: rgba(255,255,255,0.4) !important; }
 
 /* Ajustement de l'image de fond de l'accueil selon le thème */
 @keyframes bgFadeLight {
@@ -783,6 +781,30 @@ html[data-theme="light"] .home-page .home-panel{
   font-weight: 700;
   text-decoration: none;
 }
+/* ===== Filigrane visible (zoom et diaporama) ===== */
+.lightbox-inner, .diapo-stage{ position: relative; }
+.art-watermark{
+  position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none;
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: .04em; white-space: nowrap;
+  color: rgba(255,255,255,0.78); text-shadow: 0 0 2px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.8);
+  padding: .15em .45em; border-radius: 6px; background: rgba(0,0,0,0.22);
+  opacity: 0; transition: opacity .3s;
+}
+.diaporama-container.is-fullscreen .art-watermark, .lightbox-overlay .art-watermark{ font-size: 1rem; }
+/* ===== Protection des œuvres (voir js/protect.js) ===== */
+img, picture, .mosaic-bg, .background-slideshow{
+  -webkit-user-select: none; user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+#lightbox-img, #diapo-img{ pointer-events: none; }
+@media print{
+  body > *{ display: none !important; }
+  body::before{
+    content: "Ana Ruiz Llamazares — anaruizllamazares.com. Les œuvres ne sont pas imprimables. / Artworks are not printable.";
+    display: block; padding: 2cm; font: 14pt sans-serif; color: #000;
+  }
+}
 /* Exposition à venir (accueil et Œuvres) */
 .home-upcoming{ border-color: rgba(111, 92, 232, 0.45) !important; box-shadow: 0 8px 30px rgba(111, 92, 232, 0.14) !important; }
 .home-upcoming h2::before, .oeuvres-upcoming h2::before{ content: "★ "; color: #c79be8; }
@@ -911,6 +933,20 @@ html[data-theme="dark"] { --mosaic-opacity: 0.22; --mosaic-filter: saturate(0.9)
 /* le contenu reste au-dessus de la mosaïque */
 body > main, body > footer{ position: relative; z-index: 1; }
 
+
+/* ===== Bio et Contact : portrait d'Ana à côté du titre (17/10/2026) ===== */
+.about-head{ display: grid; grid-template-columns: minmax(200px, 1fr) 2fr; gap: 1.8rem; align-items: center; margin: 0 0 1.6rem 0; }
+.about-portrait{ margin: 0; }
+.about-portrait img{ width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 10px 32px rgba(20,18,16,0.22); cursor: zoom-in; pointer-events: auto; }
+.about-portrait figcaption{ margin-top: .55rem; font-size: .9rem; color: var(--muted); text-align: center; font-style: italic; }
+.about-head-text .about-title, .about-head-text .contact-title{ text-align: left !important; margin-bottom: .6em !important; }
+.about-head-text .about-intro, .about-head-text .contact-info{ text-align: left !important; margin-left: 0 !important; margin-right: 0 !important; }
+@media (max-width: 700px){
+  .about-head{ grid-template-columns: 1fr; gap: 1rem; }
+  .about-portrait{ max-width: 240px; margin: 0 auto; }
+  .about-head-text .about-title, .about-head-text .contact-title, .about-head-text .about-intro, .about-head-text .contact-info{ text-align: center !important; }
+}
+.about-container, .contact-container{ position: relative; z-index: 1; }
 
 /* ===== Fond photo (Bio, Contact) : la photo d'Ana en transparence sur tout l'écran ===== */
 .photo-bg{

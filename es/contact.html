@@ -8,6 +8,7 @@
     Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
   -->
 <meta charset="utf-8"/>
+<script>(function(){try{var t=localStorage.getItem("ana-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Contacto | Ana Ruiz Llamazares</title>
@@ -35,7 +36,7 @@
 <meta content="https://anaruizllamazares.com/img/accueil.jpg" name="twitter:image"/>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "es", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "Pintora y artista plástica", "description": "Pintora y artista plástica vinculada a Gif-sur-Yvette, cerca de París, Francia.", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "zh"]}, {"@context": "https://schema.org", "@type": "ContactPage", "@id": "https://anaruizllamazares.com/es/contact.html#webpage", "url": "https://anaruizllamazares.com/es/contact.html", "name": "Contacto | Ana Ruiz Llamazares", "description": "Contacta con Ana Ruiz Llamazares mediante un formulario seguro (sin mostrar correo electrónico).", "inLanguage": "es", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/accueil.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
-<link href="../css/style-modern.css" rel="stylesheet"/>
+<link href="../css/style-modern.css?v=20261017d" rel="stylesheet"/>
 <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
 <link href="../img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="../img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
@@ -137,9 +138,9 @@
   .nav-links a{display:block; padding:.6rem 0; font-size:1.05rem}
 }
 </style>
-<script defer="" src="../js/navbar-load.js"></script>
-<script defer="" src="../js/site-config.js"></script>
-<script defer="" src="../js/contact-form.js"></script>
+<script defer="" src="../js/navbar-load.js?v=20261017d"></script>
+<script defer="" src="../js/site-config.js?v=20261017d"></script>
+<script defer="" src="../js/contact-form.js?v=20261017d"></script>
 <style>
 .nav-logo a {
   font-size: 1.05rem;
@@ -236,11 +237,11 @@
     .hamburger { width:38px; height:32px; font-size:0.9rem; }
   }
 }
-</style> <link href="../css/theme.css" rel="stylesheet"/>
+</style> <link href="../css/theme.css?v=20261017d" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Ir al contenido</a>
-<div class="photo-bg" aria-hidden="true"></div>
+<div class="mosaic-bg" aria-hidden="true"></div>
 <!-- ===== Barre de navigation principale ===== -->
 <nav class="navbar">
 <div class="navbar-container">
@@ -273,10 +274,10 @@
 <!-- ===== Contenu principal de la page ===== -->
 <main id="main">
 <div class="contact-container fade-in">
-<h1 class="contact-title">Contacto</h1>
+<div class="about-head"><figure class="about-portrait"><img alt="Ana Ruiz Llamazares en su taller" decoding="async" height="1092" loading="eager" onclick="openLightbox(this.src,this.alt)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(this.src,this.alt)" src="../img/photo-ana-portrait.webp" title="Ampliar el retrato" width="902"/><figcaption>Ana Ruiz Llamazares en su taller</figcaption></figure><div class="about-head-text"><h1 class="contact-title">Contacto</h1>
 <div class="contact-info">
         Para cualquier pregunta, propuesta o colaboración, puedes escribirme mediante este formulario seguro.
-      </div>
+      </div></div></div>
 <form class="contact-form" data-contact-form="" data-msg-config="El formulario se está configurando. Por favor, inténtalo de nuevo más tarde." data-msg-error="Error al enviar. Por favor, inténtalo de nuevo." data-msg-sending="Enviando…" data-msg-success="Mensaje enviado. ¡Gracias!">
 <input aria-hidden="true" autocomplete="off" class="visually-hidden" name="_gotcha" tabindex="-1" type="text"/>
 <input name="lang" type="hidden" value="es"/>
@@ -297,5 +298,8 @@
 <p>© 2026 Ana Ruiz. Todos los derechos reservados. | <a href="mentions-legales.html">Aviso legal</a></p>
 </footer>
 <!-- ===== Scripts spécifiques à la page ===== -->
+<script src="../js/protect.js?v=20261017d"></script>
+<script src="../js/gallery-lightbox.js?v=20261017d"></script>
+<script defer src="../js/mosaic-bg.js?v=20261017d"></script>
 </body>
 </html>
