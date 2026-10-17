@@ -73,9 +73,33 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('open'))close();});
   }
 
+  /* Plein écran natif (barre d'adresse et onglets masqués), si le navigateur le permet */
+  function fsElement(){ return document.fullscreenElement||document.webkitFullscreenElement||null; }
+  function enterFullscreen(){
+    var el=document.documentElement;
+    try{
+      var r=el.requestFullscreen?el.requestFullscreen({navigationUI:'hide'}):(el.webkitRequestFullscreen?el.webkitRequestFullscreen():null);
+      if(r&&typeof r.catch==='function') r.catch(function(){});
+    }catch(e){}
+  }
+  function exitFullscreen(){
+    if(!fsElement()) return;
+    try{
+      var r=document.exitFullscreen?document.exitFullscreen():(document.webkitExitFullscreen?document.webkitExitFullscreen():null);
+      if(r&&typeof r.catch==='function') r.catch(function(){});
+    }catch(e){}
+  }
+  function onFsChange(){
+    /* Sortie du plein écran par le navigateur (Échap, geste) : on referme le zoom */
+    if(!fsElement()&&box&&box.classList.contains('open')) close(true);
+  }
+  document.addEventListener('fullscreenchange',onFsChange);
+  document.addEventListener('webkitfullscreenchange',onFsChange);
+
   function open(src,alt){
     if(loading) return;
     loading=true; aborted=false;
+    enterFullscreen();
     savedPad=document.body.style.paddingTop||'';
     document.body.style.paddingTop='0';
     img.classList.remove('ready');
@@ -98,8 +122,9 @@
     loader.src=src;
   }
 
-  function close(){
+  function close(fromBrowser){
     aborted=true;
+    if(!fromBrowser) exitFullscreen();
     box.classList.remove('open');
     box.setAttribute('aria-hidden','true');
     document.body.classList.remove('lb-open');

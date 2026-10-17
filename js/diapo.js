@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
       facesSection: 'Visages',
       garmentsSection: 'Vêtements',
       faceLabel: 'Visage',
-      garmentLabel: 'Vêtement'
+      garmentLabel: 'Vêtement',
+      fullscreen: 'Plein écran',
+      exitFullscreen: 'Quitter le plein écran'
     },
     en: {
       altFallback: 'Artwork by Ana Ruiz',
@@ -43,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
       facesSection: 'Faces',
       garmentsSection: 'Garments',
       faceLabel: 'Face',
-      garmentLabel: 'Garment'
+      garmentLabel: 'Garment',
+      fullscreen: 'Full screen',
+      exitFullscreen: 'Exit full screen'
     },
     es: {
       altFallback: 'Obra de Ana Ruiz',
@@ -52,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
       facesSection: 'Rostros',
       garmentsSection: 'Prendas',
       faceLabel: 'Rostro',
-      garmentLabel: 'Prenda'
+      garmentLabel: 'Prenda',
+      fullscreen: 'Pantalla completa',
+      exitFullscreen: 'Salir de pantalla completa'
     },
     zh: {
       altFallback: 'Ana Ruiz 的作品',
@@ -61,7 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
       facesSection: '面孔',
       garmentsSection: '服饰',
       faceLabel: '面孔',
-      garmentLabel: '服饰'
+      garmentLabel: '服饰',
+      fullscreen: '全屏',
+      exitFullscreen: '退出全屏'
     }
   };
 
@@ -236,6 +244,45 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(0);
     startAuto();
   }
+
+  /* --- Plein écran natif du diaporama (comme un lecteur vidéo) --- */
+  var container = document.getElementById('diapo-container');
+  var fsBtn = document.getElementById('fullscreen-btn');
+  var fsExitBtn = document.getElementById('fullscreen-exit');
+  function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  function fsSupported() { return !!(container && (container.requestFullscreen || container.webkitRequestFullscreen)); }
+  function enterFs() {
+    if (!container) return;
+    try {
+      var r = container.requestFullscreen ? container.requestFullscreen({ navigationUI: 'hide' }) : container.webkitRequestFullscreen();
+      if (r && typeof r.catch === 'function') r.catch(function () {});
+    } catch (e) {}
+  }
+  function exitFs() {
+    if (!fsElement()) return;
+    try {
+      var r = document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
+      if (r && typeof r.catch === 'function') r.catch(function () {});
+    } catch (e) {}
+  }
+  function syncFs() {
+    var on = !!fsElement();
+    if (container) container.classList.toggle('is-fullscreen', on);
+    if (fsBtn) { fsBtn.title = on ? tr('exitFullscreen') : tr('fullscreen'); fsBtn.setAttribute('aria-label', fsBtn.title); fsBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+  }
+  if (fsBtn) {
+    if (!fsSupported()) { fsBtn.hidden = true; }
+    else {
+      fsBtn.title = tr('fullscreen'); fsBtn.setAttribute('aria-label', tr('fullscreen'));
+      fsBtn.addEventListener('click', function () { fsElement() ? exitFs() : enterFs(); });
+    }
+  }
+  if (fsExitBtn) {
+    fsExitBtn.title = tr('exitFullscreen'); fsExitBtn.setAttribute('aria-label', tr('exitFullscreen'));
+    fsExitBtn.addEventListener('click', exitFs);
+  }
+  document.addEventListener('fullscreenchange', syncFs);
+  document.addEventListener('webkitfullscreenchange', syncFs);
 
   var audioBtn = document.getElementById('audio-btn');
   var audioIcon = document.getElementById('audio-icon');

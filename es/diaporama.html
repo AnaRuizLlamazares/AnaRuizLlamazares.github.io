@@ -121,6 +121,26 @@
       font-size: 0.95rem;
     }
 
+    /* Plein écran natif : fond noir, image au maximum, commandes en bas, croix en haut à droite */
+    .diaporama-container:fullscreen, .diaporama-container:-webkit-full-screen {
+      position: relative; max-width: none; width: 100vw; height: 100vh; margin: 0 !important; padding: 0 !important;
+      border-radius: 0; background: #000 !important; color: #f4efe9 !important;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .diaporama-container.is-fullscreen .diapo-title { display: none; }
+    .diaporama-container.is-fullscreen .diapo-gallery { position: absolute; top: 18px; left: 0; right: 0; color: #f4efe9 !important; font-size: 1.15rem; padding: 0 70px; }
+    .diaporama-container.is-fullscreen .diapo-stage { height: calc(100vh - 190px); border-radius: 0; }
+    .diaporama-container.is-fullscreen .diapo-img { border-radius: 0; }
+    .diaporama-container.is-fullscreen .diapo-titlecard { color: #f4efe9; font-size: 2.2rem; }
+    .diaporama-container.is-fullscreen .diapo-caption { position: absolute; bottom: 64px; left: 0; right: 0; color: #f4efe9 !important; margin: 0; }
+    .diaporama-container.is-fullscreen .diapo-controls { position: absolute; bottom: 14px; left: 0; right: 0; margin: 0; }
+    .diaporama-container.is-fullscreen .diapo-btn { background: rgba(255,255,255,0.18); color: #fff; }
+    .diaporama-container.is-fullscreen .diapo-indicator, .diaporama-container.is-fullscreen .diapo-audio-btn { color: #f4efe9 !important; }
+    .diapo-fs-exit { display: none; position: absolute; top: 14px; right: 16px; z-index: 5; border: 0; border-radius: 34px;
+      padding: .5rem .9rem; font-size: 1.05rem; line-height: 1; cursor: pointer; background: rgba(255,255,255,0.3); color: #fff; backdrop-filter: blur(4px); }
+    .diaporama-container.is-fullscreen .diapo-fs-exit { display: block; }
+    .diapo-fs-btn { font-size: 1.35rem; }
+
     @media (max-width: 700px) {
       .diaporama-container { padding: 1.3rem 0.9rem 1.7rem 0.9rem; }
       .diapo-title { font-size: 1.35rem; }
@@ -165,6 +185,7 @@
 </nav>
 <main id="main">
 <div class="diaporama-container fade-in" id="diapo-container">
+<button aria-label="Salir de pantalla completa" class="diapo-fs-exit" hidden="" id="fullscreen-exit" title="Salir de pantalla completa" type="button">✕</button>
 <h1 class="diapo-title">Diapositivas</h1>
 <div class="diapo-gallery" id="diapo-gallery"></div>
 <div class="diapo-stage">
@@ -179,6 +200,7 @@
 <button aria-label="Música de la presentación" class="diapo-audio-btn" id="audio-btn" title="Música">
 <span id="audio-icon">🎵</span>
 </button>
+<button aria-label="Pantalla completa" class="diapo-audio-btn diapo-fs-btn" id="fullscreen-btn" title="Pantalla completa" type="button">⛶</button>
 <audio id="diapo-audio" loop="" preload="auto">
 <source src="../audio/diapo.mp4" type="audio/mp4"/>
 </audio>
