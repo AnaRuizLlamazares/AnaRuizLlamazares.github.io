@@ -74,12 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
     return "Peau d’âne (2025) — " + tr(sectionKey);
   }
 
+  var FACE_TITLES = {1: 'Iel peut vivre aussi longtemps qu’il veut', 2: 'Éternel féminin', 3: 'Et je reprends encore le monde', 4: 'Iel était si belle que tu n’aurais pas osé l’aimer', 5: 'Elle ne parle que la langue de son âme'};
   function peauDaneFaceTitle(index) {
-    return tr('faceLabel') + ' ' + index;
+    return FACE_TITLES[index] || (tr('faceLabel') + ' ' + index);
   }
 
+  var GARMENT_TITLES = {2: 'Nekem', 3: 'Hypoderme', 4: 'Ben', 5: 'Remine', 6: 'Épiderme'};
   function peauDaneGarmentTitle(index) {
-    return tr('garmentLabel') + ' ' + index;
+    return GARMENT_TITLES[index] || (tr('garmentLabel') + ' ' + index);
   }
 
   var path = (window.location && window.location.pathname) ? window.location.pathname : '';
@@ -136,11 +138,11 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       name: "Sur le sentier du dragonnier (2008)",
       slides: [
-        { src: "img/SurLesSentiersDuDragonnier/dragonnier-couverture.jpg", title: "Dragonnier (couverture)" },
-        { src: "img/SurLesSentiersDuDragonnier/le-vieux-dragonnier.jpg", title: "Le vieux dragonnier" },
+        { src: "img/SurLesSentiersDuDragonnier/dragonnier-couverture.jpg", title: "Le sentier de la vie" },
+        { src: "img/SurLesSentiersDuDragonnier/le-vieux-dragonnier.jpg", title: "La force du dragonnier" },
         { src: "img/SurLesSentiersDuDragonnier/le-vieux-volcan.jpg", title: "Le vieux volcan" },
         { src: "img/SurLesSentiersDuDragonnier/sable-noir.jpg", title: "Sable noir" },
-        { src: "img/SurLesSentiersDuDragonnier/sur-la-terre.jpg", title: "Sur la terre" }
+        { src: "img/SurLesSentiersDuDragonnier/sur-la-terre.jpg", title: "Sur la terre ferme" }
       ]
     },
     {

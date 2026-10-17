@@ -783,15 +783,29 @@ html[data-theme="light"] .home-page .home-panel{
   font-weight: 700;
   text-decoration: none;
 }
+/* Exposition à venir (accueil et Œuvres) */
+.home-upcoming{ border-color: rgba(111, 92, 232, 0.45) !important; box-shadow: 0 8px 30px rgba(111, 92, 232, 0.14) !important; }
+.home-upcoming h2::before, .oeuvres-upcoming h2::before{ content: "★ "; color: #c79be8; }
+.home-upcoming .home-feature-card img, .oeuvres-upcoming .home-feature-card img{ aspect-ratio: 4 / 5; object-fit: contain; }
+.home-upcoming-links{ margin-top: .6rem; }
+.oeuvres-upcoming{ margin: 0 0 1.6rem 0; padding: 1.2rem 1.3rem; border-radius: 22px; background: var(--card-bg); border: 1px solid rgba(111, 92, 232, 0.45); }
+.oeuvres-upcoming h2{ margin: 0 0 .8rem 0 !important; }
+.oeuvres-upcoming .home-feature-card{ grid-template-columns: minmax(140px, 200px) 1fr; }
+.oeuvres-upcoming h3{ margin: 0 0 .5rem 0; font-family: 'Playfair Display', serif; font-size: 1.15rem; }
+.oeuvres-upcoming h3 a{ text-decoration: none; color: var(--heading); }
+.oeuvres-upcoming p{ margin: 0 0 .5rem 0; line-height: 1.6; }
+@media (max-width: 860px){ .oeuvres-upcoming .home-feature-card{ grid-template-columns: 1fr; } .oeuvres-upcoming .home-feature-card img{ max-width: 220px; } }
 /* Œuvres choisies (accueil) */
 .home-works{
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1rem 0.9rem;
   padding: 0;
   margin: 0.2rem 0 0 0;
+  max-width: 600px;
 }
+.home-works figure{ max-width: 130px; }
 .home-works a{
   display: block;
   text-decoration: none;
@@ -820,8 +834,10 @@ html[data-theme="light"] .home-page .home-panel{
 .home-work-expo{
   display: block;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
+.home-work-title{ font-size: 0.88rem; }
+@media (max-width: 640px){ .home-works{ gap: 0.8rem 0.6rem; } .home-work-expo{ font-size: 0.76rem; } }
 .home-works a:hover .home-work-title,
 .home-works a:focus .home-work-title{
   text-decoration: underline;
