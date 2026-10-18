@@ -4,6 +4,7 @@
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     if (l.indexOf('en') === 0) return 'en';
     if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('de') === 0) return 'de';
     if (l.indexOf('zh') === 0) return 'zh';
     return 'fr';
   }
@@ -12,6 +13,7 @@
     fr: { close: 'Fermer', zoom: 'Agrandir l’œuvre' },
     en: { close: 'Close', zoom: 'Open artwork full size' },
     es: { close: 'Cerrar', zoom: 'Abrir la obra en gran formato' },
+    de: { close: 'Schließen', zoom: 'Werk vergrößern' },
     zh: { close: '关闭', zoom: '放大查看作品' }
   };
 

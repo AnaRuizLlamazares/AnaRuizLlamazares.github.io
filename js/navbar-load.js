@@ -14,6 +14,7 @@
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     if (l.indexOf('en') === 0) return 'en';
     if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('de') === 0) return 'de';
     if (l.indexOf('zh') === 0) return 'zh';
     return 'fr';
   }
@@ -39,6 +40,13 @@
       themeTitleDark: 'Tema oscuro',
       themeTitleLight: 'Tema claro',
       langSwitcherLabel: 'Elegir idioma'
+    },
+    de: {
+      themeLabelDark: 'Dunkler Hintergrund (klicken, um zu hell zu wechseln)',
+      themeLabelLight: 'Heller Hintergrund (klicken, um zu dunkel zu wechseln)',
+      themeTitleDark: 'Dunkler Hintergrund',
+      themeTitleLight: 'Heller Hintergrund',
+      langSwitcherLabel: 'Sprache wählen'
     },
     zh: {
       themeLabelDark: '深色背景（点击切换为浅色）',

@@ -10,6 +10,7 @@
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     if (l.indexOf('en') === 0) return 'en';
     if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('de') === 0) return 'de';
     if (l.indexOf('zh') === 0) return 'zh';
     return 'fr';
   }
@@ -32,6 +33,12 @@
       sending: 'Enviando…',
       success: 'Mensaje enviado. ¡Gracias!',
       error: 'Error al enviar. Por favor, inténtalo de nuevo.'
+    },
+    de: {
+      config: 'Das Formular wird gerade eingerichtet. Bitte versuchen Sie es später noch einmal.',
+      sending: 'Wird gesendet…',
+      success: 'Nachricht gesendet. Vielen Dank!',
+      error: 'Fehler beim Senden. Bitte versuchen Sie es noch einmal.'
     },
     zh: {
       config: '表单正在配置中，请稍后再试。',

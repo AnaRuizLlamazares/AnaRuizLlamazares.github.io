@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
     if (l.indexOf('en') === 0) return 'en';
     if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('de') === 0) return 'de';
     if (l.indexOf('zh') === 0) return 'zh';
     return 'fr';
   }
@@ -65,6 +66,19 @@ document.addEventListener('DOMContentLoaded', function () {
       play: 'Reanudar el pase',
       fullscreen: 'Pantalla completa',
       exitFullscreen: 'Salir de pantalla completa'
+    },
+    de: {
+      altFallback: 'Werk von Ana Ruiz',
+      audioPlay: 'Musik abspielen',
+      audioPause: 'Musik pausieren',
+      facesSection: 'Gesichter',
+      garmentsSection: 'Kleider',
+      faceLabel: 'Gesicht',
+      garmentLabel: 'Kleid',
+      pause: 'Diashow anhalten',
+      play: 'Diashow fortsetzen',
+      fullscreen: 'Vollbild',
+      exitFullscreen: 'Vollbild beenden'
     },
     zh: {
       altFallback: 'Ana Ruiz 的作品',
