@@ -987,12 +987,41 @@ body > main, body > footer{ position: relative; z-index: 1; }
 .about-portrait img{ width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 10px 32px rgba(20,18,16,0.22); cursor: zoom-in; pointer-events: auto; }
 .about-portrait figcaption{ margin-top: .55rem; font-size: .9rem; color: var(--muted); text-align: center; font-style: italic; }
 .about-head-text .about-title, .about-head-text .contact-title{ text-align: left !important; margin-bottom: .6em !important; }
-.about-head-text .about-intro, .about-head-text .contact-info{ text-align: left !important; margin-left: 0 !important; margin-right: 0 !important; }
+.about-head-text .about-intro, .about-head-text .contact-info{ text-align: justify !important; margin-left: 0 !important; margin-right: 0 !important; }
+/* Signature de l'auteur du texte de la Bio (Chantal Bulliat-Calès) : alignée à droite comme une signature */
+.about-text p{ margin: 0 0 1em 0; }
+.about-text p:last-child{ margin-bottom: 0; }
+.about-text .about-signature{ text-align: right; text-align-last: right; margin-top: .4em; hyphens: manual; }
 @media (max-width: 700px){
   .about-head{ grid-template-columns: 1fr; gap: 1rem; }
   .about-portrait{ max-width: 240px; margin: 0 auto; }
-  .about-head-text .about-title, .about-head-text .contact-title, .about-head-text .about-intro, .about-head-text .contact-info{ text-align: center !important; }
+  .about-head-text .about-title, .about-head-text .contact-title{ text-align: center !important; }
 }
+
+/* ===== Typographie des textes courants (18/10/2026) =====
+   Paragraphes de présentation justifiés avec césure automatique (la langue vient de
+   l'attribut lang de <html>, posé sur chaque page). Sans césure, la justification
+   sur petit écran creuse de grands blancs entre les mots. Les titres, légendes,
+   sous-titres courts et boutons restent centrés. */
+.gallery-intro p,
+.intro-panel-body p,
+.intro-panel-body blockquote,
+.expanded-text p,
+.expanded-text blockquote,
+.about-text p,
+.about-intro,
+.contact-info,
+.oeuvres-intro,
+.article-desc,
+.legal-container p{
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  text-align-last: left;
+}
+
 .about-container, .contact-container{ position: relative; z-index: 1; }
 
 /* ===== Fond photo (Bio, Contact) : la photo d'Ana en transparence sur tout l'écran ===== */
