@@ -67,11 +67,12 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Les ajustements responsive se font **sans casser** la version desktop.
 
 
-### 7) Langues (FR / EN / ES / 中文)
-- Le site doit exister en **4 langues** :
+### 7) Langues (FR / EN / ES / DE / 中文)
+- Le site doit exister en **5 langues**, dans cet ordre dans la barre de menu :
   - **FR** (version par défaut) : à la racine du site (`/`)
   - **EN** : dossier `/en/`
   - **ES** : dossier `/es/`
+  - **DE** : dossier `/de/` (ajouté le 18 octobre 2026 ; vouvoiement « Sie »)
   - **ZH (mandarin)** : dossier `/zh/`
 - Le changement de langue se fait **uniquement** via des **drapeaux cliquables dans la barre de menu** (navbar), visibles sur **toutes les pages**.
 - Les drapeaux doivent être de **vrais petits drapeaux visuels** (pas des acronymes de langue, et pas des emojis pouvant se dégrader en lettres selon le navigateur).
@@ -79,10 +80,19 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Les pages traduites sont des **pages HTML séparées** (mêmes noms de fichiers) pour conserver une navigation simple.
 
 ### 7 bis) Qualité des traductions
-- Toutes les pages traduites (`/en`, `/es`, `/zh`) doivent être **entièrement** rédigées dans la langue cible.
+- Toutes les pages traduites (`/en`, `/es`, `/de`, `/zh`) doivent être **entièrement** rédigées dans la langue cible.
 - Exception : les **noms propres**, les **titres originaux des expositions** et les **titres originaux des œuvres** restent visibles **en français**.
 - Si une traduction d’un titre est ajoutée, le **titre original français** doit rester présent lui aussi.
 - Les éléments d’interface doivent aussi être localisés : titres de page, formulaires, libellés, boutons, messages d’état et labels d’accessibilité.
+
+### 7 ter) Ajouter une langue (procédure suivie pour l’allemand)
+1. `css/theme.css` : ajouter le drapeau `.lang-link[data-lang="xx"]::before` (SVG en base64, 24 × 16).
+2. Les quatre scripts à dictionnaire (`js/navbar-load.js`, `js/contact-form.js`, `js/diapo.js`, `js/gallery-lightbox.js`) : ajouter `xx:` dans `I18N` et `if (l.indexOf('xx') === 0) return 'xx';` dans `siteLang()`.
+3. Sur **toutes** les pages existantes (et `404.html`) : ajouter le lien `lang-link` à sa place dans l’ordre, et la ligne `<link hreflang="xx">` ; ajouter `"xx"` dans `knowsLanguage` du JSON-LD.
+4. Copier `en/*.html` vers `xx/*.html`, puis adapter `lang`, `canonical`, `og:url`, `og:locale`, `inLanguage` et les URL `/en/` des JSON-LD, et les deux liens du sélecteur (langue courante → `X.html`, anglais → `../en/X.html`).
+5. Traduire le texte, les méta, les `alt`/`aria-label` et les valeurs textuelles des JSON-LD ; titres d’œuvres et d’expositions en français.
+6. `sitemap.xml` : 15 nouvelles entrées `/xx/` et une ligne `hreflang="xx"` dans chaque entrée.
+7. Changer le numéro de version `?v=` partout (scripts modifiés), tester 5 langues × 2 thèmes, puis commit.
 
 ### 8) Rubrique "Vidéos"
 - L’accès **"Vidéos"** doit être **supprimé partout** (onglet absent du menu) et la rubrique n’existe plus.
@@ -147,7 +157,7 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 - Conserver `https://anaruizllamazares.com/` comme **domaine canonique principal**.
 - Les deux formes du nom doivent fonctionner dans les moteurs : **« Ana Ruiz »** et **« Ana Ruiz Llamazares »** (nom complet dans les titres, forme courte dans le texte de l’accueil, variantes déclarées dans la fiche `Person`).
 - Recherches visées : **« Ana Ruiz peintre »** et **« Gif-sur-Yvette artiste »** ; la **page d’accueil** est la page prioritaire.
-- Dans `sitemap.xml`, l’accueil est déclaré à l’adresse `/` (et `/en/`, `/es/`, `/zh/`), jamais `index.html`.
+- Dans `sitemap.xml`, l’accueil est déclaré à l’adresse `/` (et `/en/`, `/es/`, `/de/`, `/zh/`), jamais `index.html`.
 - Tout nouveau texte du site est relu en français par Sébastien avant traduction.
 
 ### 14) Nettoyage du dossier final
