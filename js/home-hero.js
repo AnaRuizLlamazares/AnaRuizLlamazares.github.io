@@ -10,15 +10,14 @@
   est ajouté automatiquement dans les dossiers de langue (en, es, de, zh).
 
   Respecte « prefers-reduced-motion » : dans ce cas la première œuvre reste
-  affichée, sans rotation, sans inclinaison ni apparition au défilement.
+  affichée, sans rotation ni inclinaison.
 
   Effets (sobres, désactivables en retirant la fonction correspondante) :
   - tilt()   : la toile s'incline légèrement et reflète la lumière en suivant
                la souris (souris uniquement, jamais sur tactile) ;
-  - barre    : un fin trait sous la toile se remplit pendant les 8 s ;
-  - reveal() : les panneaux de la page apparaissent en montant quand ils
-               entrent à l'écran (classe .reveal, posée ici en JS pour que la
-               page reste entièrement visible sans JavaScript).
+  - barre    : un fin trait sous la toile se remplit pendant les 8 s.
+  L'apparition au défilement des panneaux (classe .reveal) est commune à toutes
+  les pages : voir js/navbar-load.js.
 */
 (function () {
   'use strict';
@@ -81,7 +80,6 @@
       }, INTERVAL_MS);
       tilt(link, frame);
     }
-    if (!reduced) reveal();
   }
 
   // Inclinaison 3D et reflet qui suivent la souris (souris seulement).
@@ -110,31 +108,6 @@
       frame.style.transform = '';
       sheen.style.opacity = '0';
     });
-  }
-
-  // Apparition au défilement des panneaux de l'accueil (IntersectionObserver).
-  function reveal() {
-    if (!('IntersectionObserver' in window)) return;
-    var items = document.querySelectorAll('.home-panel, .home-works li');
-    if (!items.length) return;
-    items.forEach(function (el, i) {
-      el.classList.add('reveal');
-      el.style.setProperty('--reveal-delay', (i % 8) * 70 + 'ms');
-    });
-    var list = Array.prototype.slice.call(items);
-    function showUpTo(k) {
-      // Les éléments sont dans l'ordre de la page : tout ce qui précède un
-      // élément visible est au-dessus de lui, donc déjà passé -> visible.
-      for (var i = 0; i <= k; i++) {
-        if (!list[i].classList.contains('is-visible')) { list[i].classList.add('is-visible'); io.unobserve(list[i]); }
-      }
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting || en.boundingClientRect.top < 0) showUpTo(list.indexOf(en.target));
-      });
-    }, { threshold: 0 });
-    list.forEach(function (el) { io.observe(el); });
   }
 
   if (document.readyState === 'loading') {

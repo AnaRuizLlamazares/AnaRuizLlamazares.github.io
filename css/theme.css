@@ -1292,11 +1292,34 @@ html.nav-force-hamburger .has-sub.open > .sub-menu{ display: block; }
 }
 .hero-progress.run{ animation: heroProgress var(--hero-interval, 8000ms) linear forwards; }
 @keyframes heroProgress{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
-/* !important nécessaire : style-modern.css force .fade-in à opacity:1 !important */
-.reveal.reveal{ opacity: 0 !important; transform: translateY(14px) !important; transition: opacity .7s ease, transform .7s ease !important; transition-delay: var(--reveal-delay, 0ms) !important; }
+/* ===== Apparition au défilement (toutes les pages, voir js/navbar-load.js) =====
+   Les cartes et panneaux montent de 12 px en fondu quand ils entrent à l'écran.
+   La classe .reveal est posée par le script (sans JavaScript, tout est visible), puis
+   retirée une fois l'apparition terminée pour rendre la main aux effets de survol.
+   !important nécessaire : style-modern.css force .fade-in à opacity:1 !important */
+.reveal.reveal{ opacity: 0 !important; transform: translateY(12px) !important; transition: opacity .6s ease, transform .6s ease !important; transition-delay: var(--reveal-delay, 0ms) !important; }
 .reveal.is-visible{ opacity: 1 !important; transform: none !important; }
+
+/* ===== Survol des cartes d'œuvres et d'articles (souris uniquement) =====
+   Même relief que les cartes de la page Œuvres (.work-card) : légère élévation et
+   zoom doux de l'image. Rien sur tactile, où le survol n'existe pas. */
+@media (hover: hover) and (pointer: fine){
+  .gallery-work, .article-card{ transition: transform .25s ease, box-shadow .25s ease; }
+  .gallery-work:hover, .article-card:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.14) !important; }
+  html[data-theme="dark"] .gallery-work:hover, html[data-theme="dark"] .article-card:hover{ box-shadow: 0 14px 30px rgba(0,0,0,.45) !important; }
+  .gallery-work img, .article-thumb-wrap img{ transition: transform .5s ease; }
+  .gallery-work:hover img, .article-card:hover .article-thumb-wrap img{ transform: scale(1.03); }
+}
+/* Tactile : léger enfoncement au toucher, pour un retour visuel immédiat */
+@media (hover: none) and (pointer: coarse){
+  .gallery-work, .work-card, .article-card{ transition: transform .15s ease; }
+  .gallery-work:active, .work-card:active, .article-card:active{ transform: scale(.985); }
+}
 @media (prefers-reduced-motion: reduce){
   .hero-frame{ transition: none; }
-  .reveal{ opacity: 1; transform: none; transition: none; }
+  .reveal.reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
   .hero-progress.run{ animation: none; }
+  .gallery-work, .work-card, .article-card, .gallery-work img, .article-thumb-wrap img, .work-card img{ transition: none; }
+  .gallery-work:hover, .article-card:hover, .work-card:hover{ transform: none; }
+  .gallery-work:hover img, .article-card:hover .article-thumb-wrap img, .work-card:hover img{ transform: none; }
 }

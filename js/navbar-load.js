@@ -179,6 +179,59 @@
     });
   }
 
+  // --- Apparition au défilement ---
+  // Les cartes et panneaux listés dans REVEAL_SELECTOR montent légèrement en fondu
+  // quand ils entrent à l'écran (CSS : .reveal / .is-visible dans theme.css).
+  // - sans JavaScript ou sans IntersectionObserver : rien n'est caché ;
+  // - « prefers-reduced-motion » : pas d'effet ;
+  // - les classes sont retirées une fois l'apparition finie, pour que les effets
+  //   de survol (transform) reprennent la main ;
+  // - un élément déjà passé (au-dessus de l'écran, p. ex. après un retour arrière)
+  //   est affiché immédiatement avec tout ce qui le précède.
+  var REVEAL_SELECTOR = '.home-panel, .home-works li, .work-grid li, .oeuvres-upcoming, ' +
+    '.gallery-work, .article-card, .about-head, .about-text, .distinctions-block, .expo-infos';
+
+  function setupReveal() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    } catch (e) {}
+    if (!('IntersectionObserver' in window)) return;
+    var list = Array.prototype.slice.call(document.querySelectorAll(REVEAL_SELECTOR));
+    if (!list.length) return;
+
+    list.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', (i % 6) * 60 + 'ms');
+    });
+
+    function finish(el) {
+      el.classList.remove('reveal');
+      el.classList.remove('is-visible');
+      el.style.removeProperty('--reveal-delay');
+    }
+
+    function show(el) {
+      if (!el.classList.contains('reveal') || el.classList.contains('is-visible')) return;
+      el.classList.add('is-visible');
+      io.unobserve(el);
+      var done = false;
+      function end() { if (done) return; done = true; finish(el); }
+      el.addEventListener('transitionend', end, { once: true });
+      setTimeout(end, 1200); // sécurité si transitionend ne vient pas
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting && en.boundingClientRect.top >= 0) return;
+        // L'élément est visible, ou déjà au-dessus de l'écran : tout ce qui le
+        // précède dans la page l'est aussi.
+        var k = list.indexOf(en.target);
+        for (var i = 0; i <= k; i++) show(list[i]);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
+    list.forEach(function (el) { io.observe(el); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     // --- MOBILE MENU ---
     var nav = document.querySelector('nav.navbar');
@@ -331,6 +384,9 @@
     document.querySelectorAll('.fade-in').forEach(function (el) {
       el.classList.add('visible');
     });
+
+    // --- APPARITION AU DÉFILEMENT (toutes les pages) ---
+    setupReveal();
 
     // --- NAV OFFSET ---
     setNavOffset();
