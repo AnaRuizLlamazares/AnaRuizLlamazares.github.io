@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var path = (window.location && window.location.pathname) ? window.location.pathname : '';
-  var assetPrefix = /\/((en|es|zh))\//.test(path) ? '../' : '';
+  // Pages traduites (en, es, de, zh) : images et audio sont un niveau au-dessus.
+  var assetPrefix = /\/((en|es|de|zh))\//.test(path) ? '../' : '';
 
   var galleries = [
     {

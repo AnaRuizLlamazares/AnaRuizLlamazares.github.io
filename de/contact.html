@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="de">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!--
+    Ce fichier HTML fait partie du site d'Ana Ruiz.
+    Structure, navigation, et fonctionnalités sont expliquées par des commentaires dans le code.
+    Tout est responsive, accessible et moderne. Voir README.md pour plus de détails.
+  -->
+<meta charset="utf-8"/>
+<script>(function(){try{var t=localStorage.getItem("ana-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kontakt | Ana Ruiz Llamazares</title>
+<meta content="Kontaktieren Sie Ana Ruiz Llamazares über ein sicheres Formular (ohne Anzeige einer E-Mail-Adresse)." name="description"/>
+<meta content="index,follow" name="robots"/>
+<meta content="Ana Ruiz Llamazares" name="author"/>
+<meta content="#fbf7ef" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#151516" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<link href="https://anaruizllamazares.com/de/contact.html" rel="canonical"/>
+<link href="https://anaruizllamazares.com/contact.html" hreflang="fr" rel="alternate"/>
+<link href="https://anaruizllamazares.com/en/contact.html" hreflang="en" rel="alternate"/>
+<link href="https://anaruizllamazares.com/es/contact.html" hreflang="es" rel="alternate"/>
+<link href="https://anaruizllamazares.com/de/contact.html" hreflang="de" rel="alternate"/>
+<link href="https://anaruizllamazares.com/zh/contact.html" hreflang="zh" rel="alternate"/>
+<link href="https://anaruizllamazares.com/contact.html" hreflang="x-default" rel="alternate"/>
+<meta content="Ana Ruiz Llamazares" property="og:site_name"/>
+<meta content="Kontakt | Ana Ruiz Llamazares" property="og:title"/>
+<meta content="Kontaktieren Sie Ana Ruiz Llamazares über ein sicheres Formular (ohne Anzeige einer E-Mail-Adresse)." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://anaruizllamazares.com/de/contact.html" property="og:url"/>
+<meta content="https://anaruizllamazares.com/img/accueil.jpg" property="og:image"/>
+<meta content="de_DE" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Kontakt | Ana Ruiz Llamazares" name="twitter:title"/>
+<meta content="Kontaktieren Sie Ana Ruiz Llamazares über ein sicheres Formular (ohne Anzeige einer E-Mail-Adresse)." name="twitter:description"/>
+<meta content="https://anaruizllamazares.com/img/accueil.jpg" name="twitter:image"/>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "de", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "Malerin und bildende Künstlerin", "description": "Malerin und bildende Künstlerin, verbunden mit Gif-sur-Yvette im Département Essonne, nahe Paris.", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "de", "zh"]}, {"@context": "https://schema.org", "@type": "ContactPage", "@id": "https://anaruizllamazares.com/de/contact.html#webpage", "url": "https://anaruizllamazares.com/de/contact.html", "name": "Kontakt | Ana Ruiz Llamazares", "description": "Kontaktieren Sie Ana Ruiz Llamazares über ein sicheres Formular (ohne Anzeige einer E-Mail-Adresse).", "inLanguage": "de", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/accueil.jpg"}}]</script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style-modern.css?v=20261018a" rel="stylesheet"/>
+<!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
+<link href="../img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../img/signature.png" rel="shortcut icon"/>
+<link href="../img/signature.png" rel="apple-touch-icon"/>
+<style>
+    .contact-container {
+      position: relative;
+      max-width: 700px;
+      margin: 6rem auto 3rem auto;
+      padding: 2.5em 2.5em;
+      background: rgba(38,37,41,0.23);
+      border-radius: 26px;
+      box-shadow: 0 2px 28px #18101819;
+      text-align: center;
+      z-index: 1;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      color: #f4efe9;
+      font-size: 2rem;
+      margin-bottom: 1em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .contact-info {
+      color: #cec9c4;
+      font-size: 1.14rem;
+      margin-bottom: 2em;
+      word-break: normal;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 8px #19102844;
+    }
+    .contact-form label {
+      display: block;
+      color: #b8bac2;
+      font-size: 1.01rem;
+      margin: 1.4em 0 0.4em 0;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea { box-sizing: border-box;
+      width: 100%;
+      padding: 0.6em 0.9em;
+      border-radius: 10px;
+      border: 1px solid #28282b;
+      font-size: 1.07rem;
+      background: #232324ee;
+      color: #f4efe9;
+      margin-bottom: 1em;
+      box-shadow: 0 1px 7px #18101810;
+      transition: border-color 0.14s;
+      outline: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #9976e3;
+      background: #242136;
+    }
+    .contact-form button {
+      padding: 0.8em 2.2em;
+      background: rgba(238, 233, 222, 0.17);
+      color: #ded6c2;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 9px #18101421;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+      margin-top: 0.8em;
+    }
+    .contact-form button:hover {
+      background: rgba(238, 233, 222, 0.27);
+      color: #f4efe9;
+    }
+    @media (max-width: 850px) {
+      .contact-container { max-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      .contact-title { font-size: 1.18rem; }
+      .contact-info { font-size: 0.98rem; }
+      .contact-container { padding: 1.1em 0.3em; }
+    }
+  </style>
+<style>
+/* --- Correctifs mobile: signature visible, hamburger réduit, titres centrés --- */
+@media (max-width: 840px){
+  /* Afficher la signature en mobile et la réduire */
+  .nav-signature{display:block; height:20px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:20px; width:auto; display:block; opacity:.95}
+  /* Bouton hamburger plus petit et mieux clicable */
+  .hamburger{margin-left:auto; width:40px; height:36px; padding:0; display:grid; place-items:center; font-size:1rem; line-height:1; border-radius:.5rem}
+  /* Menu mobile: centrer les titres et l'alignement */
+  .nav-links{display:none; flex-direction:column; align-items:center; text-align:center}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block; padding:.6rem 0; font-size:1.05rem}
+}
+</style>
+<script defer="" src="../js/navbar-load.js?v=20261018a"></script>
+<script defer="" src="../js/site-config.js?v=20261018a"></script>
+<script defer="" src="../js/contact-form.js?v=20261018a"></script>
+<style>
+.nav-logo a {
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
+
+/* Navigation links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links a {
+  display: inline-block;
+  padding: .6rem .7rem;
+  font-size: 0.98rem;
+  line-height: 1;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .35rem;
+}
+
+/* visual breathing room for navbar on large screens */
+@media (min-width: 1200px) {
+  .navbar { padding: 1.2rem 0; }
+  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
+}
+
+/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
+@media (max-width: 840px){
+  .navbar { padding: 0.8rem 0.6rem; }
+  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
+
+  /* limiter la largeur du texte du logo mais le garder lisible */
+  .nav-logo a {
+    font-size: 0.88rem;
+    font-weight:700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* signature réduite pour mobile */
+  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
+  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
+
+  /* hamburger un peu plus grand pour confort tactile */
+  .hamburger{
+    margin-left:auto;
+    width:42px;
+    height:36px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    line-height:1;
+    border-radius:.5rem;
+  }
+
+  /* Menu mobile: colonne, plein largeur mais discret */
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0.12rem;
+    padding:0.35rem 0;
+    width:100%;
+  }
+  .nav-links.open{display:flex}
+
+  .nav-links li { margin:0; width:100%; }
+  .nav-links a{
+    display:block;
+    padding:.44rem 0;
+    font-size:0.92rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:100%;
+  }
+
+  /* très petits écrans : compacter encore légèrement */
+  @media (max-width: 380px) {
+    .nav-logo a { max-width: 120px; font-size:0.8rem; }
+    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
+    .hamburger { width:38px; height:32px; font-size:0.9rem; }
+  }
+}
+</style> <link href="../css/theme.css?v=20261018a" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="mosaic-bg" aria-hidden="true"></div>
+<!-- ===== Barre de navigation principale ===== -->
+<nav class="navbar">
+<div class="navbar-container">
+<div class="nav-logo">
+<a aria-label="Ana Ruiz" class="site-brand">Ana Ruiz</a>
+<img alt="Signature Ana Ruiz" class="nav-signature" decoding="async" height="45" loading="eager" src="../img/signature.png" width="106"/>
+</div>
+<ul class="nav-links" id="primary-nav">
+<li><a href="index.html">Startseite</a></li>
+<li><a href="galeries.html">Werke</a></li>
+<li><a href="publications.html">Publikationen</a></li>
+<li><a href="diaporama.html">Diashow</a></li>
+<li><a href="apropos.html">Biografie</a></li>
+<li><a href="contact.html">Kontakt</a></li>
+</ul>
+<div class="nav-actions">
+<div class="lang-switcher">
+<a aria-label="Français" class="lang-link" data-lang="fr" href="../contact.html" title="Français">🇫🇷</a>
+<a aria-label="English" class="lang-link" data-lang="en" href="../en/contact.html" title="English">🇬🇧</a>
+<a aria-label="Español" class="lang-link" data-lang="es" href="../es/contact.html" title="Español">🇪🇸</a>
+<a aria-label="Deutsch" class="lang-link" data-lang="de" href="contact.html" title="Deutsch">🇩🇪</a>
+<a aria-label="中文" class="lang-link" data-lang="zh" href="../zh/contact.html" title="中文">🇨🇳</a>
+</div>
+<button aria-label="Design wechseln" class="theme-toggle" id="theme-toggle" type="button">
+<span class="theme-icon">☀︎</span>
+</button>
+<button aria-controls="primary-nav" aria-label="Menü öffnen" class="hamburger" id="menu-toggle">☰</button>
+</div>
+</div>
+</nav>
+<!-- ===== Contenu principal de la page ===== -->
+<main id="main">
+<div class="contact-container fade-in">
+<div class="about-head"><figure class="about-portrait"><img alt="Ana Ruiz Llamazares in ihrem Atelier" decoding="async" height="1092" loading="eager" onclick="openLightbox(this.src,this.alt)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(this.src,this.alt)" src="../img/photo-ana-portrait.webp" title="Porträt vergrößern" width="902"/><figcaption>Ana Ruiz Llamazares in ihrem Atelier</figcaption></figure><div class="about-head-text"><h1 class="contact-title">Kontakt</h1>
+<div class="contact-info">
+        Für Fragen, Vorschläge oder eine Zusammenarbeit können Sie mir über dieses sichere Formular schreiben.
+      </div></div></div>
+<form class="contact-form" data-contact-form="" data-msg-config="Das Formular wird gerade eingerichtet. Bitte versuchen Sie es später noch einmal." data-msg-error="Fehler beim Senden. Bitte versuchen Sie es noch einmal." data-msg-sending="Wird gesendet…" data-msg-success="Nachricht gesendet. Vielen Dank!">
+<input aria-hidden="true" autocomplete="off" class="visually-hidden" name="_gotcha" tabindex="-1" type="text"/>
+<input name="lang" type="hidden" value="de"/>
+<input name="page" type="hidden" value="contact"/>
+<label for="nom">Name</label>
+<input autocomplete="name" id="nom" name="nom" required="" type="text"/>
+<label for="email">E-Mail</label>
+<input autocomplete="email" id="email" name="email" required="" type="email"/>
+<label for="message">Nachricht</label>
+<textarea id="message" name="message" required="" rows="5"></textarea>
+<button type="submit">Senden</button>
+<div aria-live="polite" class="form-status"></div>
+</form>
+</div>
+</main>
+<!-- ===== Pied de page commun à tout le site ===== -->
+<footer>
+<p>© 2026 Ana Ruiz. Alle Rechte vorbehalten. | <a href="mentions-legales.html">Impressum</a></p>
+</footer>
+<!-- ===== Scripts spécifiques à la page ===== -->
+<script src="../js/protect.js?v=20261018a"></script>
+<script src="../js/gallery-lightbox.js?v=20261018a"></script>
+<script defer src="../js/mosaic-bg.js?v=20261018a"></script>
+</body>
+</html>

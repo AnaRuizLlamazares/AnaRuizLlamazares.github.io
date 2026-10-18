@@ -11,7 +11,9 @@
   if (!root) return;
 
   var path = (window.location && window.location.pathname) ? window.location.pathname : '';
-  var prefix = /\/(en|es|zh)\//.test(path) ? '../' : '';
+  // Pages traduites : un sous-dossier de langue (en, es, de, zh) -> remonter d'un niveau.
+  // Penser à ajouter ici tout nouveau dossier de langue.
+  var prefix = /\/(en|es|de|zh)\//.test(path) ? '../' : '';
 
   var WORKS = [
     'img/mosaique/hypoderme-ana-ruiz.webp',

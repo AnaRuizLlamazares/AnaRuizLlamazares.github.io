@@ -87,12 +87,13 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 
 ### 7 ter) Ajouter une langue (procédure suivie pour l’allemand)
 1. `css/theme.css` : ajouter le drapeau `.lang-link[data-lang="xx"]::before` (SVG en base64, 24 × 16).
-2. Les quatre scripts à dictionnaire (`js/navbar-load.js`, `js/contact-form.js`, `js/diapo.js`, `js/gallery-lightbox.js`) : ajouter `xx:` dans `I18N` et `if (l.indexOf('xx') === 0) return 'xx';` dans `siteLang()`.
-3. Sur **toutes** les pages existantes (et `404.html`) : ajouter le lien `lang-link` à sa place dans l’ordre, et la ligne `<link hreflang="xx">` ; ajouter `"xx"` dans `knowsLanguage` du JSON-LD.
-4. Copier `en/*.html` vers `xx/*.html`, puis adapter `lang`, `canonical`, `og:url`, `og:locale`, `inLanguage` et les URL `/en/` des JSON-LD, et les deux liens du sélecteur (langue courante → `X.html`, anglais → `../en/X.html`).
-5. Traduire le texte, les méta, les `alt`/`aria-label` et les valeurs textuelles des JSON-LD ; titres d’œuvres et d’expositions en français.
-6. `sitemap.xml` : 15 nouvelles entrées `/xx/` et une ligne `hreflang="xx"` dans chaque entrée.
-7. Changer le numéro de version `?v=` partout (scripts modifiés), tester 5 langues × 2 thèmes, puis commit.
+2. `js/mosaic-bg.js`, `js/diapo.js` et `js/navbar-load.js` : ajouter le dossier dans l’expression `(en|es|de|zh)` qui reconnaît les sous-dossiers de langue (préfixe `../` des images, langue courante du sélecteur).
+3. Les quatre scripts à dictionnaire (`js/navbar-load.js`, `js/contact-form.js`, `js/diapo.js`, `js/gallery-lightbox.js`) : ajouter `xx:` dans `I18N` et `if (l.indexOf('xx') === 0) return 'xx';` dans `siteLang()`.
+4. Sur **toutes** les pages existantes (et `404.html`) : ajouter le lien `lang-link` à sa place dans l’ordre, et la ligne `<link hreflang="xx">` ; ajouter `"xx"` dans `knowsLanguage` du JSON-LD.
+5. Copier `en/*.html` vers `xx/*.html`, puis adapter `lang`, `canonical`, `og:url`, `og:locale`, `inLanguage` et les URL `/en/` des JSON-LD, et les deux liens du sélecteur (langue courante → `X.html`, anglais → `../en/X.html`).
+6. Traduire le texte, les méta, les `alt`/`aria-label` et les valeurs textuelles des JSON-LD ; titres d’œuvres et d’expositions en français.
+7. `sitemap.xml` : 15 nouvelles entrées `/xx/` et une ligne `hreflang="xx"` dans chaque entrée.
+8. Changer le numéro de version `?v=` partout (scripts modifiés), tester 5 langues × 2 thèmes, puis commit.
 
 ### 8) Rubrique "Vidéos"
 - L’accès **"Vidéos"** doit être **supprimé partout** (onglet absent du menu) et la rubrique n’existe plus.

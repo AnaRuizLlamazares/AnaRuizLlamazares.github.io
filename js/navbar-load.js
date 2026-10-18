@@ -115,7 +115,8 @@
 
   function currentLangFromPath() {
     var path = (window.location && window.location.pathname) ? window.location.pathname : '';
-    var m = path.match(/\/((en|es|zh))\//);
+    // Dossiers de langue du site (ajouter ici toute nouvelle langue).
+    var m = path.match(/\/((en|es|de|zh))\//);
     if (m && m[1]) return m[1];
     return 'fr';
   }
