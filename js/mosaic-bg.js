@@ -1,8 +1,13 @@
 /*
   Mosaïque de fond (Ana Ruiz)
   - Grille de tuiles en plein écran, derrière le contenu, à partir des œuvres du site
-  - Mosaïque FIXE : disposition tirée au hasard au chargement, puis aucune animation
-    (le mouvement et les fondus ont été jugés perturbants) — STATIC = true
+  - Mosaïque FIXE : aucune animation (le mouvement et les fondus ont été jugés
+    perturbants) — STATIC = true
+  - Disposition DÉTERMINISTE (18/10/2026) : même ordre de tuiles sur toutes les
+    pages et à chaque visite (mélange à graine fixe), et la grille n'est
+    reconstruite que si le nombre de colonnes ou de lignes change réellement
+    (sur téléphone, la barre d'adresse qui apparaît/disparaît déclenche un
+    « resize » sans changer la grille : la mosaïque ne doit pas bouger).
   - STATIC = false réactive la dérive lente et les fondus (respecte prefers-reduced-motion)
   Activation : <div class="mosaic-bg" aria-hidden="true"></div> juste après <body>
 */
@@ -55,22 +60,30 @@
   var reduceMotion = STATIC;
   try { if (!STATIC) reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
+  // Générateur pseudo-aléatoire à graine fixe : même mélange partout, toujours.
+  var seed = 20261018;
+  function rand() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
   function shuffle(a) {
-    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(rand() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
     return a;
   }
 
   var order = shuffle(WORKS.slice());
   var next = 0;
-  function nextWork() { var w = order[next % order.length]; next++; if (next % order.length === 0) shuffle(order); return prefix + w; }
+  function nextWork() { var w = order[next % order.length]; next++; return prefix + w; }
 
   var tiles = [];
+  var lastGrid = '';
   function build() {
-    root.innerHTML = '';
-    tiles = [];
     var w = window.innerWidth || 1200, h = window.innerHeight || 800;
     var size = w < 600 ? 170 : (w < 1100 ? 230 : 290);
     var cols = Math.max(2, Math.ceil(w / size)), rows = Math.max(2, Math.ceil(h / size));
+    var grid = cols + 'x' + rows;
+    if (grid === lastGrid) return; // même grille : on ne touche à rien
+    lastGrid = grid;
+    root.innerHTML = '';
+    tiles = [];
+    next = 0; // repart du début de l'ordre fixe : les premières tuiles restent les mêmes
     root.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
     root.style.gridTemplateRows = 'repeat(' + rows + ', 1fr)';
     for (var i = 0; i < cols * rows; i++) {
