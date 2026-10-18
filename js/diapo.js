@@ -311,20 +311,54 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   document.addEventListener('keydown', function (e) { if (e.key === ' ' && pauseBtn && document.activeElement === document.body) { e.preventDefault(); pauseBtn.click(); } });
 
-  /* --- Plein écran natif du diaporama (comme un lecteur vidéo) --- */
+  /* --- Plein écran du diaporama (comme un lecteur vidéo) ---
+     1. Plein écran natif (API Fullscreen) quand le navigateur l'offre : barre
+        d'adresse et onglets masqués.
+     2. Sinon, ou si la demande est refusée, « plein écran CSS » de repli : le
+        diaporama est posé en position fixe sur toute la fenêtre (classe
+        .is-pseudo-fs), au-dessus de la barre de navigation, et la page ne défile
+        plus derrière. C'est le cas de Safari sur iPhone, qui n'autorise le plein
+        écran natif que pour les vidéos (18/10/2026 : le bouton était masqué, donc
+        pas de plein écran du tout sur téléphone).
+     Dans les deux cas : même habillage (classe .is-fullscreen), croix et Échap
+     pour sortir. */
   var container = document.getElementById('diapo-container');
   var fsBtn = document.getElementById('fullscreen-btn');
   var fsExitBtn = document.getElementById('fullscreen-exit');
+  var pseudoFs = false; // plein écran CSS actif ?
   function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
-  function fsSupported() { return !!(container && (container.requestFullscreen || container.webkitRequestFullscreen)); }
+  function fsNativeAvailable() {
+    if (!container) return false;
+    var enabled = document.fullscreenEnabled || document.webkitFullscreenEnabled;
+    return !!(enabled && (container.requestFullscreen || container.webkitRequestFullscreen));
+  }
+  function isFs() { return pseudoFs || !!fsElement(); }
+
+  function enterPseudoFs() {
+    pseudoFs = true;
+    if (container) container.classList.add('is-pseudo-fs');
+    document.documentElement.classList.add('diapo-fs-lock');
+    syncFs();
+  }
+  function exitPseudoFs() {
+    pseudoFs = false;
+    if (container) container.classList.remove('is-pseudo-fs');
+    document.documentElement.classList.remove('diapo-fs-lock');
+    syncFs();
+  }
   function enterFs() {
-    if (!container) return;
+    if (!container || isFs()) return;
+    if (!fsNativeAvailable()) { enterPseudoFs(); return; }
     try {
       var r = container.requestFullscreen ? container.requestFullscreen({ navigationUI: 'hide' }) : container.webkitRequestFullscreen();
-      if (r && typeof r.catch === 'function') r.catch(function () {});
-    } catch (e) {}
+      // Demande refusée (promesse rejetée) : repli CSS
+      if (r && typeof r.catch === 'function') r.catch(enterPseudoFs);
+      // Ancienne API webkit sans promesse : si rien ne s'est passé, repli CSS
+      else setTimeout(function () { if (!fsElement() && !pseudoFs) enterPseudoFs(); }, 300);
+    } catch (e) { enterPseudoFs(); }
   }
   function exitFs() {
+    if (pseudoFs) { exitPseudoFs(); return; }
     if (!fsElement()) return;
     try {
       var r = document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
@@ -332,16 +366,15 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (e) {}
   }
   function syncFs() {
-    var on = !!fsElement();
+    var on = isFs();
     if (container) container.classList.toggle('is-fullscreen', on);
     if (fsBtn) { fsBtn.title = on ? tr('exitFullscreen') : tr('fullscreen'); fsBtn.setAttribute('aria-label', fsBtn.title); fsBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+    if (fsExitBtn) fsExitBtn.hidden = !on;
+    setTimeout(placeMark, 120);
   }
   if (fsBtn) {
-    if (!fsSupported()) { fsBtn.hidden = true; }
-    else {
-      fsBtn.title = tr('fullscreen'); fsBtn.setAttribute('aria-label', tr('fullscreen'));
-      fsBtn.addEventListener('click', function () { fsElement() ? exitFs() : enterFs(); });
-    }
+    fsBtn.title = tr('fullscreen'); fsBtn.setAttribute('aria-label', tr('fullscreen'));
+    fsBtn.addEventListener('click', function () { isFs() ? exitFs() : enterFs(); });
   }
   if (fsExitBtn) {
     fsExitBtn.title = tr('exitFullscreen'); fsExitBtn.setAttribute('aria-label', tr('exitFullscreen'));
@@ -349,6 +382,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   document.addEventListener('fullscreenchange', syncFs);
   document.addEventListener('webkitfullscreenchange', syncFs);
+  // Échap quitte le plein écran CSS (le natif gère Échap lui-même)
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pseudoFs) exitPseudoFs(); });
 
   var audioBtn = document.getElementById('audio-btn');
   var audioIcon = document.getElementById('audio-icon');

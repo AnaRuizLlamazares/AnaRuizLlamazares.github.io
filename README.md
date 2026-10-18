@@ -62,7 +62,7 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Une phrase indique que les œuvres sont **disponibles à l’acquisition** (accueil, sous les liens du panneau « peintre à Gif-sur-Yvette » ; Contact, après la phrase d’introduction).
 
 ### 5) Diaporama (diaporama.html + js/diapo.js)
-- Le diaporama tourne avec un rythme de **5 secondes** par image ; bouton **pause / reprise** (⏸ / ▶) et bouton **plein écran** (⛶) avec croix pour en sortir.
+- Le diaporama tourne avec un rythme de **5 secondes** par image ; bouton **pause / reprise** (⏸ / ▶) et bouton **plein écran** (⛶) avec croix pour en sortir. Le plein écran est **natif** quand le navigateur le permet (ordinateur, Android) et, sinon, un **plein écran CSS** de repli (diaporama en position fixe sur toute la fenêtre, navbar masquée, page bloquée) — c’est le cas de Safari sur iPhone, qui n’autorise le plein écran natif que pour les vidéos ; avant le 18/10/2026 le bouton y était masqué. Le bouton est donc toujours visible. Habillage commun sur `.is-fullscreen`, mode de repli sur `.is-pseudo-fs` (CSS inline de `diaporama.html`, identique dans les 5 langues).
 - Par défaut, choisir **4 images maximum par galerie**.
 - Exception : pour **Peau d’âne**, le diaporama doit afficher les nouvelles œuvres publiées, en **2 séquences** :
   1. **Visages** (`Vis1` à `Vis5`)

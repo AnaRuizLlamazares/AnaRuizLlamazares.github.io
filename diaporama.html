@@ -32,7 +32,7 @@
 <meta content="https://anaruizllamazares.com/img/accueil.jpg" name="twitter:image"/>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "fr", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "Artiste peintre et plasticienne", "description": "Artiste peintre et plasticienne liée à Gif-sur-Yvette, en Essonne, près de Paris.", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "de", "zh"]}, {"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://anaruizllamazares.com/diaporama.html#webpage", "url": "https://anaruizllamazares.com/diaporama.html", "name": "Diaporama | Ana Ruiz Llamazares", "description": "Diaporama musical d’une sélection d’œuvres d’Ana Ruiz Llamazares.", "inLanguage": "fr", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/accueil.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
-<link href="css/style-modern.css?v=20261018h" rel="stylesheet"/>
+<link href="css/style-modern.css?v=20261018i" rel="stylesheet"/>
 <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
 <link href="img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
@@ -125,15 +125,28 @@
       font-size: 0.95rem;
     }
 
-    /* Plein écran natif : fond noir, image au maximum, commandes en bas, croix en haut à droite */
-    .diaporama-container:fullscreen, .diaporama-container:-webkit-full-screen {
-      position: relative; max-width: none; width: 100vw; height: 100vh; margin: 0 !important; padding: 0 !important;
+    /* Plein écran : fond noir, image au maximum, commandes en bas, croix en haut à droite.
+       Deux modes (voir js/diapo.js) : natif (:fullscreen) ou de repli en position fixe
+       (.is-pseudo-fs, Safari iPhone notamment). L'habillage commun est sur .is-fullscreen. */
+    .diaporama-container:fullscreen, .diaporama-container:-webkit-full-screen,
+    .diaporama-container.is-pseudo-fs {
+      max-width: none; margin: 0 !important; padding: 0 !important;
       border-radius: 0; background: #000 !important; color: #f4efe9 !important;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
+    .diaporama-container:fullscreen, .diaporama-container:-webkit-full-screen { position: relative; width: 100vw; height: 100vh; }
+    .diaporama-container.is-pseudo-fs {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: auto; z-index: 5000; /* au-dessus de la navbar (3000) */
+      height: 100vh; height: 100dvh;
+      padding-top: env(safe-area-inset-top, 0px) !important; padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    }
+    html.diapo-fs-lock, html.diapo-fs-lock body { overflow: hidden; }
+    /* <main> forme un contexte d'empilement (z-index 2) sous la navbar (3000) : en mode
+       de repli, la barre de navigation est masquée pour que le diaporama soit seul à l'écran. */
+    html.diapo-fs-lock .navbar { display: none !important; }
     .diaporama-container.is-fullscreen .diapo-title { display: none; }
     .diaporama-container.is-fullscreen .diapo-gallery { position: absolute; top: 0; left: 0; right: 0; height: 2.4cm; display: flex; align-items: center; justify-content: center; margin: 0; color: #f4efe9 !important; font-size: 1.15rem; padding: 0 2.4cm; }
-    .diaporama-container.is-fullscreen .diapo-stage { height: calc(100vh - 4.8cm); border-radius: 0; }
+    .diaporama-container.is-fullscreen .diapo-stage { height: calc(100% - 4.8cm); flex: 0 0 auto; border-radius: 0; }
     .diaporama-container.is-fullscreen .diapo-img { border-radius: 0; }
     .diaporama-container.is-fullscreen .diapo-titlecard { color: #f4efe9; font-size: 2.2rem; }
     .diaporama-container.is-fullscreen .diapo-caption { position: absolute; bottom: calc(2.4cm - 1.6em); left: 0; right: 0; color: #f4efe9 !important; margin: 0; min-height: 0; line-height: 1.3; }
@@ -153,10 +166,10 @@
       .diapo-stage { height: min(360px, 50vh); }
     }
   </style>
-<script defer="" src="js/navbar-load.js?v=20261018h"></script>
-<script defer="" src="js/galeries-menu.js?v=20261018h"></script>
-<script defer="" src="js/diapo.js?v=20261018h"></script>
-<link href="css/theme.css?v=20261018h" rel="stylesheet"/>
+<script defer="" src="js/navbar-load.js?v=20261018i"></script>
+<script defer="" src="js/galeries-menu.js?v=20261018i"></script>
+<script defer="" src="js/diapo.js?v=20261018i"></script>
+<link href="css/theme.css?v=20261018i" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
@@ -218,6 +231,6 @@
 <footer>
 <p>© 2026 Ana Ruiz. Tous droits réservés. | <a href="mentions-legales.html">Mentions légales</a></p>
 </footer>
-<script src="js/protect.js?v=20261018h"></script>
+<script src="js/protect.js?v=20261018i"></script>
 </body>
 </html>
