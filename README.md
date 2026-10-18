@@ -14,12 +14,13 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Le libellé **"Galeries" devient "Oeuvres"**.
 - Le libellé **"À propos" devient "Bio"**.
 - Le bouton **Clair/Sombre** doit être accessible **sur toutes les pages** (et pas "perdu" dans un sous-menu).
+- **Sous-menu « Œuvres »** (18/10/2026) : le lien Œuvres de la navbar déroule la liste des 8 galeries (survol ou clavier sur ordinateur ; flèche-accordéon dans le menu hamburger et sur tactile). Il est construit par `js/galeries-menu.js`, **seule source de la liste** : rien à toucher dans les pages HTML pour ajouter une galerie.
 
 ### 2) Page "Oeuvres" (galeries.html)
 - Les œuvres sont listées **par exposition** (et le site reste organisé par pages d’expo/galerie).
-- Dans "Oeuvres", lister **Expositions + Installations**.
-- Quand une galerie existe, l’item doit être **cliquable** (lien vers la page correspondante). Sinon texte simple.
-- La première exposition listée doit être **Peau d’âne (2025)**.
+- Depuis le 18/10/2026, la page est une **grille de cartes** : une carte par exposition ayant une galerie (image de couverture prise dans `img/mosaique/`, badge année, titre, lieu, une ligne d’accroche, « Voir la galerie → »), précédée d’une phrase d’instruction (« Chaque image ouvre la galerie… »). Les expositions **sans** galerie et les **installations** sont en liste simple sous le titre « Autres expositions ».
+- Les 5 versions (`galeries.html`, `en/`, `es/`, `de/`, `zh/`) ont la même structure ; les lieux sont traduits, les titres d’expositions restent en français.
+- Ancienne règle (mars 2026, remplacée) : liste texte, item cliquable seulement s’il a une galerie, Peau d’âne en premier.
 
 ### 3) Expositions récentes (mise à jour du 17/10/2026)
 - **161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)**, Carré à la Farine, Versailles, du 2 au 15 novembre 2026 : page `salon-versailles-2026.html`, œuvres Hypoderme, Épiderme, Deuxième peau, Peau d’âne (`img/SalonVersailles2026/`). Annoncée en « Exposition à venir » sur l’accueil et la page Œuvres ; à passer en « Exposition récente » après le 15 novembre.
@@ -50,7 +51,8 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Le zoom et le diaporama passent en **vrai plein écran** du navigateur (sans barre d’adresse) avec une croix pour en sortir ; un seul script de zoom pour tout le site : `js/gallery-lightbox.js`.
 - Les scripts et styles sont chargés avec un numéro de version (`?v=AAAAMMJJx`) : l’augmenter à chaque modification de `js/` ou `css/` pour contourner le cache des navigateurs.
 - En mode clair, le footer (© 2026… | Mentions légales) doit être **suffisamment foncé** pour rester lisible.
-- Sur la page d’accueil, en mode clair, l’image de fond doit être **plus claire / moins assombrie**, tout en gardant un **contraste suffisant** pour que le texte ressorte bien.
+- Accueil (18/10/2026) : plus d’image de fond fixe (`img/accueil.jpg` ne sert plus qu’aux aperçus `og:image`) ; la **mosaïque floue** d’œuvres sert de fond comme sur les autres pages. Le bloc d’entrée est un **« hero » en deux colonnes** : à gauche le titre et le paragraphe **validés par Ana (ne pas modifier)** plus deux boutons (Voir les œuvres / Exposition à venir), à droite une **œuvre en vedette** qui change toutes les 8 s (`js/home-hero.js`, tableau `WORKS`), avec légende et lien vers sa galerie. Sur mobile, l’œuvre passe sous le texte.
+- Une phrase indique que les œuvres sont **disponibles à l’acquisition** (accueil, sous les liens du panneau « peintre à Gif-sur-Yvette » ; Contact, après la phrase d’introduction).
 
 ### 5) Diaporama (diaporama.html + js/diapo.js)
 - Le diaporama tourne avec un rythme de **5 secondes** par image ; bouton **pause / reprise** (⏸ / ▶) et bouton **plein écran** (⛶) avec croix pour en sortir.
@@ -131,7 +133,9 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 - **Thème clair/sombre + styles transverses** : `css/theme.css`
 - **Menu + gestion du thème + calcul d’offset navbar + langues** : `js/navbar-load.js`
 - **Diaporama (séquence, cartons de galerie, 4 images, 5s, sous-titres, audio)** : `js/diapo.js` + `diaporama.html`
-- **Liste Oeuvres** : `galeries.html`
+- **Page Oeuvres (grille de cartes)** : `galeries.html` (+ styles « Page Œuvres » dans `css/theme.css`)
+- **Sous-menu Œuvres de la navbar** : `js/galeries-menu.js` (liste des galeries) + styles « Sous-menu » dans `css/theme.css`
+- **Accueil, œuvre en vedette** : `js/home-hero.js` (tableau `WORKS`) + styles « Accueil : hero » dans `css/theme.css`
 - **Page Peau d’âne** : `peau-dane.html` (+ œuvres WebP dans `img/PeauDAne/`)
 
 ---
@@ -140,7 +144,8 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
 
 - Pour ajouter une nouvelle expo avec galerie :
   1. Créer une nouvelle page `mon-expo-AAAA.html` sur le modèle des pages existantes.
-  2. Ajouter l’entrée correspondante dans `galeries.html` (section Expositions ou Installations).
+  2. Ajouter une carte dans `galeries.html` (et ses 4 traductions), avec une image de couverture dans `img/mosaique/` ; pour une exposition sans galerie ou une installation, une ligne dans la liste « Autres expositions ».
+  2 bis. Ajouter la galerie dans le tableau `GALERIES` de `js/galeries-menu.js` (sous-menu) et, si on veut la mettre en avant sur l’accueil, dans `WORKS` de `js/home-hero.js`.
   3. Ajouter jusqu’à 4 images dans `js/diapo.js` si on veut l’inclure au diaporama (sauf exception explicite comme **Peau d’âne**).
 
 ### 12 bis) Protection des œuvres (17/10/2026)

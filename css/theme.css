@@ -346,24 +346,6 @@ html[data-theme="light"] footer a:hover{
 #lightbox-close{ background: rgba(255,255,255,0.22) !important; color: #fff !important; }
 #lightbox-close:hover, #lightbox-close:focus{ background: rgba(255,255,255,0.4) !important; }
 
-/* Ajustement de l'image de fond de l'accueil selon le thème */
-@keyframes bgFadeLight {
-  0% { filter: brightness(0.86) contrast(0.94) saturate(1.02) blur(0.72px) grayscale(4%); }
-  100% { filter: brightness(0.92) contrast(0.98) saturate(1.05) blur(0.38px) grayscale(1%); }
-}
-@keyframes bgFadeDark {
-  0% { filter: brightness(0.52) blur(1.2px) grayscale(10%); }
-  100% { filter: brightness(0.57) blur(0.7px) grayscale(5%); }
-}
-html[data-theme="light"] .background-slideshow{
-  filter: brightness(0.89) contrast(0.96) saturate(1.03) blur(0.55px) grayscale(2%) !important;
-  animation: bgFadeLight 22s infinite alternate !important;
-}
-html[data-theme="dark"] .background-slideshow{
-  filter: brightness(0.52) blur(1.2px) grayscale(10%) !important;
-  animation: bgFadeDark 22s infinite alternate !important;
-}
-
 /* Offset sécurité sous la navbar fixe (évite les chevauchements) */
 .gallery-page,
 .oeuvres-section,
@@ -793,7 +775,7 @@ html[data-theme="light"] .home-page .home-panel{
 }
 .diaporama-container.is-fullscreen .art-watermark, .lightbox-overlay .art-watermark{ font-size: 1rem; }
 /* ===== Protection des œuvres (voir js/protect.js) ===== */
-img, picture, .mosaic-bg, .background-slideshow{
+img, picture, .mosaic-bg, .hero-frame{
   -webkit-user-select: none; user-select: none;
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
@@ -981,3 +963,144 @@ a:focus-visible, button:focus-visible{ outline: 3px solid var(--link); outline-o
 .breadcrumb a{ color: var(--link); text-decoration: none; }
 .breadcrumb a:hover{ text-decoration: underline; }
 .breadcrumb [aria-current]{ color: var(--text); }
+
+/* ===========================
+   Sous-menu « Œuvres » (construit par js/galeries-menu.js)
+   - bureau avec souris : liste déroulante au survol / au clavier
+   - hamburger (<= 1100px ou html.nav-force-hamburger) et tactile : accordéon
+   =========================== */
+.has-sub{ position: relative; }
+.has-sub > a .sub-caret{ font-size: .8em; opacity: .7; }
+.sub-toggle{ display: none; }
+.sub-menu{
+  list-style: none; margin: 0; padding: .5rem;
+  position: absolute; left: 0; top: 100%; min-width: 300px; z-index: 60;
+  background: var(--nav-bg); backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border); border-radius: .8rem; box-shadow: var(--nav-shadow);
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+.sub-menu li{ margin: 0; }
+.sub-menu a{
+  display: flex; gap: .6rem; align-items: baseline;
+  padding: .5rem .7rem !important; border-radius: .5rem;
+  font-size: .92rem; line-height: 1.25; white-space: normal; text-align: left;
+}
+.sub-menu a:hover, .sub-menu a:focus-visible{ background: var(--nav-link-hover-bg); }
+.sub-menu a[aria-current="page"]{ font-weight: 700; }
+.sub-year{ font-weight: 700; font-variant-numeric: tabular-nums; opacity: .65; flex: 0 0 3.4rem; }
+.sub-all a{ font-weight: 700; border-bottom: 1px solid var(--card-border); border-radius: .5rem .5rem 0 0; margin-bottom: .25rem; }
+/* Ouverture au survol / clavier (souris uniquement) */
+@media (hover: hover){
+  .has-sub:hover > .sub-menu, .has-sub:focus-within > .sub-menu{ opacity: 1; visibility: visible; transform: none; }
+}
+/* Écrans tactiles larges (pas de survol) : la flèche sert de bouton */
+@media (hover: none){
+  .sub-toggle{ display: inline-grid; }
+  .has-sub > a .sub-caret{ display: none; }
+}
+.has-sub.open > .sub-menu{ opacity: 1; visibility: visible; transform: none; }
+.sub-toggle{
+  place-items: center; width: 40px; height: 36px; margin-left: -.2rem;
+  border: 0; background: transparent; color: inherit; font-size: 1rem; line-height: 1;
+  border-radius: .5rem; cursor: pointer; transition: transform .2s;
+}
+.sub-toggle:hover{ background: var(--nav-link-hover-bg); }
+.sub-toggle:focus-visible{ outline: none; box-shadow: var(--focus-ring); }
+.has-sub.open > .sub-toggle{ transform: rotate(180deg); }
+
+/* Mode hamburger : accordéon dans la colonne du menu */
+@media (max-width: 1100px){
+  .has-sub{ display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
+  .has-sub > a{ flex: 1 1 auto; }
+  .has-sub > a .sub-caret{ display: none; }
+  .sub-toggle{ display: inline-grid; }
+  .sub-menu{
+    position: static; min-width: 0; width: 100%; display: none;
+    opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: 0; border-left: 2px solid var(--card-border); border-radius: 0;
+    margin: .2rem 0 .4rem 1rem; padding: .2rem 0; background: transparent; backdrop-filter: none;
+  }
+  .has-sub.open > .sub-menu{ display: block; }
+  .sub-menu a{ padding: .42rem .6rem !important; font-size: .9rem; }
+}
+html.nav-force-hamburger .has-sub{ display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
+html.nav-force-hamburger .has-sub > a{ flex: 1 1 auto; }
+html.nav-force-hamburger .has-sub > a .sub-caret{ display: none; }
+html.nav-force-hamburger .sub-toggle{ display: inline-grid; }
+html.nav-force-hamburger .sub-menu{
+  position: static; min-width: 0; width: 100%; display: none;
+  opacity: 1; visibility: visible; transform: none;
+  box-shadow: none; border: 0; border-left: 2px solid var(--card-border); border-radius: 0;
+  margin: .2rem 0 .4rem 1rem; padding: .2rem 0; background: transparent; backdrop-filter: none;
+}
+html.nav-force-hamburger .has-sub.open > .sub-menu{ display: block; }
+
+/* ===========================
+   Page Œuvres : grille de cartes des galeries + archives
+   =========================== */
+.oeuvres-grid-title{ max-width: 1100px; margin: 2.5rem auto 1rem; padding: 0 1rem; }
+.oeuvres-grid-title small, .oeuvres-archive h2 small{ font-size: .6em; font-weight: 400; color: var(--muted); margin-left: .5rem; }
+.work-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; max-width: 1100px; margin: 0 auto; padding: 0 1rem; list-style: none; }
+.work-grid li{ margin: 0; }
+.work-card{ display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.work-card:hover, .work-card:focus-visible{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.14); outline: none; }
+.work-card:focus-visible{ box-shadow: var(--focus-ring), 0 14px 30px rgba(0,0,0,.14); }
+.work-card figure{ margin: 0; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--image-bg); }
+.work-card img{ width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.work-card:hover img{ transform: scale(1.04); }
+.work-card .badge{ position: absolute; top: .6rem; left: .6rem; background: rgba(20,18,16,.72); color: #fff; font-size: .8rem; font-weight: 700; padding: .2rem .55rem; border-radius: 999px; letter-spacing: .03em; }
+.work-card-body{ padding: .9rem 1rem 1.1rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+.work-card h3{ font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.25; margin: 0; }
+.work-card .place{ margin: 0; font-size: .86rem; color: var(--muted); }
+.work-card .blurb{ margin: .2rem 0 0; font-size: .9rem; color: var(--muted); flex: 1; }
+.work-card .cta{ margin-top: .6rem; font-weight: 700; color: var(--link); font-size: .92rem; }
+.oeuvres-archive{ max-width: 900px; margin: 3rem auto 0; padding: 0 1rem; }
+.archive-list{ list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.archive-list li{ display: grid; grid-template-columns: 6.5ch 1fr; gap: .2rem .8rem; padding: .55rem 0; border-bottom: 1px dashed var(--card-border); color: var(--muted); }
+.archive-list .year{ font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.archive-list .ttl{ color: var(--text); }
+.archive-list .place{ grid-column: 2; font-size: .92rem; }
+@media (max-width: 1000px){ .work-grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px){ .work-grid{ grid-template-columns: repeat(2, 1fr); gap: .9rem; } .work-card h3{ font-size: .98rem; } }
+@media (max-width: 400px){ .work-grid{ grid-template-columns: 1fr; } }
+
+/* ===========================
+   Accueil : hero « œuvre en vedette » (voir js/home-hero.js)
+   Le texte (h1 + paragraphe) est celui validé par Ana ; seul l'agencement change.
+   =========================== */
+.home-page .hero.hero-split{
+  max-width: 1080px;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.2rem; align-items: center;
+  text-align: left; padding: clamp(1.6rem, 4vw, 2.8rem);
+}
+.hero-split h1{ text-align: left; margin-top: 0; }
+.hero-split .hero-text > p{ text-align: left; }
+.hero-actions{ display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.3rem; }
+.hero-actions a{
+  display: inline-block; padding: .7rem 1.2rem; border-radius: 999px; text-decoration: none;
+  font-weight: 700; font-size: .95rem; border: 1px solid var(--card-border);
+}
+.hero-actions .btn-primary{ background: var(--text); color: var(--bg) !important; }
+.hero-actions .btn-primary:hover{ opacity: .88; }
+.hero-actions .btn-ghost{ background: var(--btn-bg); color: var(--btn-text) !important; }
+.hero-actions .btn-ghost:hover{ background: var(--btn-bg-hover); }
+.hero-actions a:focus-visible{ outline: none; box-shadow: var(--focus-ring); }
+.hero-art{ display: block; text-decoration: none; color: inherit; justify-self: center; width: min(100%, 360px); }
+.hero-frame{
+  position: relative; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 24px 50px rgba(0,0,0,.25); background: var(--image-bg);
+  transition: transform .25s;
+}
+.hero-frame img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
+.hero-frame img.on{ opacity: 1; }
+.hero-art:hover .hero-frame, .hero-art:focus-visible .hero-frame{ transform: translateY(-3px); }
+.hero-art:focus-visible{ outline: none; }
+.hero-art-caption{ margin: .7rem 0 0; font-size: .88rem; color: var(--muted); text-align: center; min-height: 1.3em; }
+.home-sale-note{ margin: 1rem 0 0; font-size: .92rem; color: var(--muted); }
+@media (max-width: 840px){
+  .home-page .hero.hero-split{ grid-template-columns: 1fr; text-align: center; }
+  .hero-split h1, .hero-split .hero-text > p{ text-align: center; }
+  .hero-actions{ justify-content: center; }
+  .hero-art{ width: min(70%, 300px); }
+}

@@ -6,7 +6,7 @@
 (function () {
   function isImageTarget(t) {
     if (!t || !t.closest) return false;
-    return !!(t.closest('img, picture, .lightbox-overlay, .diapo-stage, .mosaic-bg, .gallery-work, .home-works, .home-feature-card, .article-card, .tableau-card, .background-slideshow'));
+    return !!(t.closest('img, picture, .lightbox-overlay, .diapo-stage, .mosaic-bg, .gallery-work, .home-works, .home-feature-card, .article-card, .tableau-card, .hero-frame'));
   }
   document.addEventListener('contextmenu', function (e) { if (isImageTarget(e.target)) e.preventDefault(); }, true);
   document.addEventListener('dragstart', function (e) { if (e.target && e.target.tagName === 'IMG') e.preventDefault(); }, true);
