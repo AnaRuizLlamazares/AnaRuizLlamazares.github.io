@@ -419,18 +419,32 @@ html[data-theme="light"] footer a:hover{
     left: 0.8rem;
     width: auto !important; /* la largeur découle de left/right (annule un ancien width:100%) */
     box-sizing: border-box;
-    flex-direction:column;
-    align-items:stretch;
-    justify-content:flex-start;
-    gap:0;
-    padding: 0.5rem;
+    /* !important : la règle de base .nav-links (desktop, plus haut) est elle-même en
+       !important ; sans cela le panneau resterait en ligne, aligné en bas et non défilable. */
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    padding: 0.5rem !important;
     border-radius: 16px;
-    background: var(--nav-bg) !important;
+    /* Fond opaque : la barre est fixe et le panneau se superpose au texte de la
+       page ; en semi-transparent, les deux textes se mélangeaient. */
+    background: var(--bg) !important;
     box-shadow: var(--nav-shadow) !important;
-    overflow: visible;
+    /* Le panneau est attaché à la barre fixe : il ne défile pas avec la page.
+       Quand il dépasse l'écran (sous-menu Œuvres ouvert sur téléphone), il doit
+       défiler lui-même, sinon le doigt qui veut faire défiler déclenche un lien. */
+    max-height: calc(100vh - var(--site-nav-offset, 80px) - 16px);
+    max-height: calc(100dvh - var(--site-nav-offset, 80px) - 16px);
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .nav-links.open, .nav-links.show{ display:flex !important; }
-  .nav-links a{ padding: .7rem .9rem !important; }
+  /* Cibles tactiles ≥ 44 px */
+  .nav-links a{ padding: .8rem .9rem !important; min-height: 44px; box-sizing: border-box; }
+  /* La page ne défile pas derrière le menu ouvert */
+  body.menu-open{ overflow: hidden; }
 }
 
 /* Navbar compacte forcée (si le script détecte un débordement)
@@ -445,19 +459,24 @@ html.nav-force-hamburger .nav-links{
   left: 0.8rem;
   width: auto !important;
   box-sizing: border-box;
-  flex-direction:column;
-  align-items:stretch;
-  justify-content:flex-start;
-  gap:0;
-  padding: 0.5rem;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:0 !important;
+  padding: 0.5rem !important;
   border-radius: 16px;
-  background: var(--nav-bg) !important;
+  background: var(--bg) !important;
   box-shadow: var(--nav-shadow) !important;
-  overflow: visible;
+  max-height: calc(100vh - var(--site-nav-offset, 80px) - 16px);
+  max-height: calc(100dvh - var(--site-nav-offset, 80px) - 16px);
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 html.nav-force-hamburger .nav-links.open,
 html.nav-force-hamburger .nav-links.show{ display:flex !important; }
-html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
+html.nav-force-hamburger .nav-links a{ padding: .8rem .9rem !important; min-height: 44px; box-sizing: border-box; }
+html.nav-force-hamburger body.menu-open{ overflow: hidden; }
 /* ===========================
    Sélecteur de langue (petits drapeaux)
    Le drapeau est dessiné en CSS (::before, SVG en data-URI) et non avec l'emoji
@@ -1134,7 +1153,9 @@ a:focus-visible, button:focus-visible{ outline: 3px solid var(--link); outline-o
 /* ===========================
    Sous-menu « Œuvres » (construit par js/galeries-menu.js)
    - bureau avec souris : liste déroulante au survol / au clavier
-   - hamburger (<= 1100px ou html.nav-force-hamburger) et tactile : accordéon
+   - hamburger (<= 1100px ou html.nav-force-hamburger) et tactile : accordéon ;
+     dans ce mode, toucher « Œuvres » ouvre/ferme le sous-menu au lieu de naviguer
+     (l'entrée « Toutes les œuvres » mène à la page) — voir js/galeries-menu.js
    =========================== */
 .has-sub{ position: relative; }
 .has-sub > a .sub-caret{ font-size: .8em; opacity: .7; }
@@ -1189,7 +1210,8 @@ a:focus-visible, button:focus-visible{ outline: 3px solid var(--link); outline-o
     margin: .2rem .4rem .4rem 1rem; padding: .2rem 0; background: transparent; backdrop-filter: none;
   }
   .has-sub.open > .sub-menu{ display: block; }
-  .sub-menu a{ padding: .42rem .6rem !important; font-size: .9rem; white-space: normal !important; text-align: left !important; justify-content: flex-start; }
+  .sub-menu a{ padding: .6rem .6rem !important; min-height: 44px; align-items: center; font-size: .9rem; white-space: normal !important; text-align: left !important; justify-content: flex-start; }
+  .sub-menu .sub-label{ flex: 1 1 auto; text-align: left; }
 }
 html.nav-force-hamburger .has-sub{ display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
 html.nav-force-hamburger .has-sub > a{ flex: 1 1 0; width: auto !important; min-width: 0; }
@@ -1202,6 +1224,8 @@ html.nav-force-hamburger .sub-menu{
   margin: .2rem .4rem .4rem 1rem; padding: .2rem 0; background: transparent; backdrop-filter: none;
 }
 html.nav-force-hamburger .has-sub.open > .sub-menu{ display: block; }
+html.nav-force-hamburger .sub-menu a{ padding: .6rem .6rem !important; min-height: 44px; align-items: center; white-space: normal !important; text-align: left !important; justify-content: flex-start; }
+html.nav-force-hamburger .sub-menu .sub-label{ flex: 1 1 auto; text-align: left; }
 
 /* ===========================
    Page Œuvres : grille de cartes des galeries + archives

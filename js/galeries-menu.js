@@ -10,8 +10,11 @@
   - ordinateur (souris) : le sous-menu s'ouvre au survol du lien « Œuvres » ou
     au clavier (Tab) ; le lien lui-même mène toujours à la page Œuvres ;
   - menu hamburger (écran étroit, ou navbar compactée par navbar-load.js) et
-    écrans tactiles sans survol : une flèche ouvre/ferme le sous-menu
-    (accordéon) ; Échap le referme.
+    écrans tactiles sans survol : toucher « Œuvres » ou sa flèche ouvre/ferme le
+    sous-menu (accordéon) sans quitter la page ; la page Œuvres s'atteint par la
+    première entrée « Toutes les œuvres ». Échap referme.
+    (Avant le 18/10/2026, « Œuvres » naviguait aussi sur téléphone : un doigt qui
+    cherchait la flèche partait vers la page Œuvres sans le vouloir.)
   - Les titres d'expositions restent en français (règle du site) ; seuls les
     libellés d'interface sont traduits.
 */
@@ -88,7 +91,10 @@
         y.textContent = year;
         a.appendChild(y);
       }
-      a.appendChild(document.createTextNode(label));
+      var txt = document.createElement('span');
+      txt.className = 'sub-label';
+      txt.textContent = label;
+      a.appendChild(txt);
       el.appendChild(a);
       return el;
     }
@@ -104,10 +110,27 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       link.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
-    btn.addEventListener('click', function (e) {
+    // Mode accordéon : menu hamburger (breakpoint CSS ou compactage forcé) ou
+    // écran sans survol (tactile). Même critère que css/theme.css.
+    function accordionMode() {
+      try {
+        if (document.documentElement.classList.contains('nav-force-hamburger')) return true;
+        if (window.matchMedia('(max-width: 1100px)').matches) return true;
+        if (window.matchMedia('(hover: none)').matches) return true;
+      } catch (err) {}
+      return false;
+    }
+    function toggle(e) {
       e.preventDefault();
+      // stopPropagation : navbar-load.js referme tout le menu hamburger au clic
+      // sur un lien ; ici on ne fait qu'ouvrir le sous-menu.
       e.stopPropagation();
       setOpen(!li.classList.contains('open'));
+    }
+    btn.addEventListener('click', toggle);
+    link.addEventListener('click', function (e) {
+      if (accordionMode()) toggle(e);
+      // sinon (souris, bureau) : le lien mène à la page Œuvres, le survol ouvre la liste
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') setOpen(false);
