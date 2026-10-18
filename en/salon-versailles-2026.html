@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -154,7 +144,6 @@
     @media (max-width: 900px) { .gallery-works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -203,10 +192,14 @@
 <h1 class="gallery-title">161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)</h1>
 <div class="gallery-desc">Four canvases from the garment series, shown in Versailles.</div><p class="gallery-meta">Group exhibition · Carré à la Farine, Versailles · 2–15 November 2026</p>
 <section class="expo-infos"><h2>Practical information</h2><ul><li><b>Dates:</b> Monday 2 to Sunday 15 November 2026</li><li><b>Venue:</b> Carré à la Farine, 70 bis rue de la Paroisse, 78000 Versailles</li><li><b>Opening hours:</b> 11 am – 6 pm (until 7 pm on 7 November) · closed on 11 November</li><li><b>Opening reception:</b> Saturday 7 November, 3 pm – 7 pm</li><li><b>Free admission</b></li></ul></section>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>About the exhibition</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>The 161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (161st Salon of the Versailles Society of Île-de-France Artists) brings together, from 2 to 15 November 2026 at the Carré à la Farine, more than seventy artists from the region in painting, sculpture, printmaking and drawing. Founded in 1855, the Society holds this salon every year and awards prizes.</p>
 <p>Ana Ruiz Llamazares presents four canvases from her garment series, <em>Hypoderme</em>, <em>Épiderme</em>, <em>Deuxième peau</em> and <em>Peau d’âne</em>: clothing as a map of intimacy, continuing the <a href="peau-dane.html">Peau d’âne</a> exhibition.</p>
+<button type="button" class="intro-panel-close">Close</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://www.versailles.fr/924-11495/culture/carre-a-la-farine/agenda/fiche/161e-salon-de-la-societe-versaillaise-des-artistes-d-ile-de-france.htm" rel="noopener noreferrer" target="_blank">Programme on versailles.fr</a>
 </div>

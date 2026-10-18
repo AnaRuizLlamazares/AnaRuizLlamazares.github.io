@@ -513,69 +513,6 @@ body.lb-open .navbar { transform: translateY(-130%); opacity: 0; pointer-events:
 }
 .zoom-btn:hover,.zoom-btn:focus { opacity: 1; }
 
-/* Bloc description étendu (si pas déjà défini) */
-.expanded-text {
-  position: relative;
-  z-index: 30;
-  background: rgba(20,20,22,0.96);
-  border-radius: 12px;
-  padding: 1rem .9rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  overflow: hidden;
-  color: #d7d2cf;
-  margin: 0 auto;
-  max-width: 780px;
-  box-sizing: border-box;
-  display: none;
-  opacity: 0;
-  transform-origin: top center;
-  transform: translateY(-6px);
-  transition: opacity .26s ease, transform .26s ease;
-}
-.expanded-text.open {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  margin-top: 1rem;
-}
-.expanded-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 0;
-  color: #ece3de;
-  padding: .18rem .5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  display: none;
-}
-.expanded-text.open .expanded-close { display: block; }
-.expanded-text p {
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  margin: 0 0 1rem;
-  line-height: 1.7;
-  color: #d7d2cf;
-  font-size: 1rem;
-}
-.expanded-text blockquote {
-  font-style: italic;
-  margin: 1rem 0;
-  color: #e6dccf;
-  border-left: 3px solid rgba(255,255,255,0.04);
-  padding-left: 1rem;
-}
-.expanded-text .source {
-  text-align: right;
-  font-style: italic;
-  color: #bfb6ad;
-  margin-top: 0.6rem;
-  font-size: 0.95rem;
-}
-
 /* Affichage immédiat des blocs avec fade-in */
 .fade-in{
   opacity:1!important;

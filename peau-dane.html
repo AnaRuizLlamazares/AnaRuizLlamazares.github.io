@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -147,7 +137,6 @@
 
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -195,7 +184,9 @@
 <nav aria-label="Fil d'Ariane" class="breadcrumb"><a href="index.html">Accueil</a><span aria-hidden="true"> › </span><a href="galeries.html">Œuvres</a><span aria-hidden="true"> › </span><span aria-current="page">Peau d'âne (2024)</span></nav>
 <h1 class="gallery-title">Peau d'âne (2024)</h1>
 <div class="gallery-desc">Le vêtement comme cartographie de l’intime.</div><p class="gallery-meta">Exposition présentée à la galerie-restaurant Le Canapé, Gif-sur-Yvette, mai – juillet 2024.</p>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>Présentation de l’exposition</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>
           Le vêtement est une cartographie de l’intime : il trace les contours de ce que l’on est, de nos désirs,
           de nos peurs, de nos histoires personnelles. Chaque choix vestimentaire révèle un bout de notre géographie
@@ -216,7 +207,9 @@
           Ici, les vêtements-cartes nous invitent à un voyage : celui de la découverte de soi, des autres, de mille
           visages de l’intime. Le tableau devient un reflet de notre cartographie intime, un écho visuel de qui l’on est.
         </p>
+<button type="button" class="intro-panel-close">Replier</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://youtu.be/bvlnzltgUqg?si=h7M2hqSJ2O6x4cE5" rel="noopener noreferrer" target="_blank">
           Voir la vidéo « Peau d'âne »

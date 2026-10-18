@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -154,7 +144,6 @@
     @media (max-width: 900px) { .gallery-works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -203,10 +192,14 @@
 <h1 class="gallery-title">161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)</h1>
 <div class="gallery-desc">服饰系列中的四幅画作，于凡尔赛展出。</div><p class="gallery-meta">联展 · Carré à la Farine，凡尔赛 · 2026 年 11 月 2 日至 15 日</p>
 <section class="expo-infos"><h2>参观信息</h2><ul><li><b>日期：</b>2026 年 11 月 2 日（周一）至 15 日（周日）</li><li><b>地点：</b>Carré à la Farine，70 bis rue de la Paroisse，78000 Versailles</li><li><b>开放时间：</b>11:00 – 18:00（11 月 7 日至 19:00）· 11 月 11 日闭馆</li><li><b>开幕式：</b>11 月 7 日（周六）15:00 – 19:00</li><li><b>免费入场</b></li></ul></section>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>展览介绍</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France（第161届凡尔赛法兰西岛艺术家协会沙龙）于 2026 年 11 月 2 日至 15 日在 Carré à la Farine 举办，汇集七十余位本地区艺术家的绘画、雕塑、版画与素描作品。该协会创立于 1855 年，每年举办沙龙并颁发奖项。</p>
 <p>Ana Ruiz Llamazares 展出其服饰系列中的四幅画作《Hypoderme》《Épiderme》《Deuxième peau》与《Peau d’âne》：衣着作为私密世界的地图，延续了展览《<a href="peau-dane.html">Peau d’âne</a>》的主题。</p>
+<button type="button" class="intro-panel-close">收起</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://www.versailles.fr/924-11495/culture/carre-a-la-farine/agenda/fiche/161e-salon-de-la-societe-versaillaise-des-artistes-d-ile-de-france.htm" rel="noopener noreferrer" target="_blank">versailles.fr 上的活动页面</a>
 </div>

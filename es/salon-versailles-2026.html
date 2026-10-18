@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -154,7 +144,6 @@
     @media (max-width: 900px) { .gallery-works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -203,10 +192,14 @@
 <h1 class="gallery-title">161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)</h1>
 <div class="gallery-desc">Cuatro lienzos de la serie sobre la prenda, presentados en Versalles.</div><p class="gallery-meta">Exposición colectiva · Carré à la Farine, Versalles · del 2 al 15 de noviembre de 2026</p>
 <section class="expo-infos"><h2>Información práctica</h2><ul><li><b>Fechas:</b> del lunes 2 al domingo 15 de noviembre de 2026</li><li><b>Lugar:</b> Carré à la Farine, 70 bis rue de la Paroisse, 78000 Versalles</li><li><b>Horario:</b> 11 h – 18 h (hasta las 19 h el 7 de noviembre) · cerrado el 11 de noviembre</li><li><b>Inauguración:</b> sábado 7 de noviembre, de 15 h a 19 h</li><li><b>Entrada libre</b></li></ul></section>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>Presentación de la exposición</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>El 161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (161.º Salón de la Sociedad versallesa de artistas de Île-de-France) reúne, del 2 al 15 de noviembre de 2026 en el Carré à la Farine, a más de setenta artistas de la región en pintura, escultura, grabado y dibujo. Fundada en 1855, la Sociedad organiza este salón cada año y concede premios.</p>
 <p>Ana Ruiz Llamazares presenta cuatro lienzos de su serie sobre la prenda, <em>Hypoderme</em>, <em>Épiderme</em>, <em>Deuxième peau</em> y <em>Peau d’âne</em>: la ropa como cartografía de lo íntimo, en continuidad con la exposición <a href="peau-dane.html">Peau d’âne</a>.</p>
+<button type="button" class="intro-panel-close">Cerrar</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://www.versailles.fr/924-11495/culture/carre-a-la-farine/agenda/fiche/161e-salon-de-la-societe-versaillaise-des-artistes-d-ile-de-france.htm" rel="noopener noreferrer" target="_blank">Programa en versailles.fr</a>
 </div>

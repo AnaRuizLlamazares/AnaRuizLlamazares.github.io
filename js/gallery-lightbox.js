@@ -1,4 +1,4 @@
-/* Lightbox + description global (version consolidée, i18n) */
+/* Lightbox des œuvres (version consolidée, i18n). Le volet de présentation est en HTML natif (<details class="intro-panel">), voir js/navbar-load.js pour son bouton « Replier ». */
 (function(){
   function siteLang(){
     var l = (document.documentElement.getAttribute('lang') || '').toLowerCase();
@@ -193,52 +193,6 @@
     });
   }
 
-  function initDescription(){
-    const trigger=document.getElementById('gallery-desc');
-    const panel=document.getElementById('gallery-desc-full');
-    const closeB=document.getElementById('gallery-desc-close');
-    if(!trigger||!panel) return;
-
-    if(trigger.dataset.descBound) return;
-    trigger.dataset.descBound = '1';
-
-    function openDesc(){
-      panel.style.display='block';
-      requestAnimationFrame(()=>{
-        panel.classList.add('open');
-        panel.setAttribute('aria-hidden','false');
-        trigger.setAttribute('aria-expanded','true');
-        closeB&&closeB.focus();
-      });
-    }
-
-    function closeDesc(){
-      panel.classList.remove('open');
-      panel.setAttribute('aria-hidden','true');
-      trigger.setAttribute('aria-expanded','false');
-      setTimeout(()=>{panel.style.display='none'; trigger.focus();},200);
-    }
-
-    function toggle(){
-      panel.classList.contains('open') ? closeDesc() : openDesc();
-    }
-
-    trigger.addEventListener('click',e=>{e.preventDefault();toggle();});
-    trigger.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){
-        e.preventDefault();
-        toggle();
-      }
-    });
-    closeB&&closeB.addEventListener('click',e=>{e.stopPropagation();closeDesc();});
-    closeB&&closeB.addEventListener('keydown',e=>{
-      if(e.key==='Enter'||e.key===' '){
-        e.preventDefault();
-        closeDesc();
-      }
-    });
-  }
-
   /* Appel direct depuis une page (ex. Publications : onclick="openLightbox('...')") */
   window.openLightbox=function(src,alt){ if(!box) initLightbox(); if(box) open(src,alt||''); };
   window.closeLightbox=function(){ if(box) close(); };
@@ -246,6 +200,5 @@
   document.addEventListener('DOMContentLoaded',()=>{
     initLightbox();
     enhanceThumbnails();
-    initDescription();
   });
 })();

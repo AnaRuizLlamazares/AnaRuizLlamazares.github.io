@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -147,7 +137,6 @@
 
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -195,10 +184,14 @@
 <nav aria-label="面包屑导航" class="breadcrumb"><a href="index.html">首页</a><span aria-hidden="true"> › </span><a href="galeries.html">作品</a><span aria-hidden="true"> › </span><span aria-current="page">Angles de vie (2005)</span></nav>
 <h1 class="gallery-title">Angles de vie (2005)</h1>
 <div class="gallery-desc">框架、色彩与光线：在生命之线上保持平衡的身影。</div><p class="gallery-meta">年度艺术家展览 · Belleville 城堡，Gif-sur-Yvette · 2005 年 6 月 16 日至 7 月 3 日</p>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>展览介绍</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>Ana Ruiz 当选 Gif-sur-Yvette 2004-2005 年度艺术家，于 2005 年 6 月 16 日至 7 月 3 日在 Belleville 城堡大厅展出《Angles de vie》（生命的角度）。</p>
 <p>框架、色彩与光线构建起空间；保持平衡的身影——其中包括神秘的“Passant”（过客）——穿行于画布之间。“Ana Ruiz-Llamazares 的绘画是真正的生命颂歌：明亮、温暖而深邃”（Chantal Bulliat-Calès）。</p>
+<button type="button" class="intro-panel-close">收起</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="publications.html">阅读媒体报道（出版物）</a>
 </div>

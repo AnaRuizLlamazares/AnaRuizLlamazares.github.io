@@ -236,7 +236,12 @@ html[data-theme="light"] .nav-signature{
   height: 100%;
 }
 
-/* Conteneurs principaux : fond continu (pas de box blanche) */
+/* Conteneurs principaux : fond continu (pas de box blanche).
+   width: 100% : <main> est une colonne flex centrée (style-modern.css), ses enfants
+   prennent donc par défaut la largeur de leur contenu ; la largeur de la page
+   dépendait du bloc de texte le plus large et changeait d'une page à l'autre
+   (ou quand un texte est replié). Chaque conteneur occupe maintenant toute la
+   largeur disponible, bornée par son max-width. */
 .gallery-page,
 .gallery-container,
 .diaporama-container,
@@ -245,6 +250,8 @@ html[data-theme="light"] .nav-signature{
 .legal-container,
 .oeuvres-section,
 .publications-section{
+  width: 100%;
+  box-sizing: border-box;
   background: var(--panel-bg) !important;
   color: var(--text) !important;
   border: none !important;
@@ -583,35 +590,6 @@ html[data-theme="dark"] .lang-link.active::before{
 
   .hamburger{ width: 40px !important; height: 36px !important; }
 }
-
-/* ===========================
-   Expanded description panels (La maison...) must follow theme
-   - In light mode: dark text on cream (no white-on-black)
-   =========================== */
-html[data-theme="light"] .expanded-text{
-  background: var(--panel-bg-soft) !important;
-  color: var(--text) !important;
-  box-shadow: 0 10px 32px rgba(20,18,16,0.14) !important;
-}
-
-html[data-theme="light"] .expanded-text p{
-  color: var(--text) !important;
-}
-
-html[data-theme="light"] .expanded-text blockquote{
-  color: var(--muted) !important;
-  border-left-color: rgba(26,23,18,0.14) !important;
-}
-
-html[data-theme="light"] .expanded-text .source{
-  color: var(--muted) !important;
-}
-
-html[data-theme="light"] .expanded-close{
-  color: var(--text) !important;
-  background: rgba(26,23,18,0.06) !important;
-}
-
 
 /* ===========================
    Bio : Distinctions
@@ -998,6 +976,104 @@ body > main, body > footer{ position: relative; z-index: 1; }
   .about-head-text .about-title, .about-head-text .contact-title{ text-align: center !important; }
 }
 
+/* ===== Volet de présentation (18/10/2026) =====
+   Les textes de présentation des expositions (Peau d'âne, Icône, Angles de vie,
+   Salon de Versailles, La maison) sont repliés dans un <details class="intro-panel">
+   pour laisser la place aux œuvres. HTML natif : fonctionne sans JavaScript, au
+   clavier (Entrée/Espace sur le titre), et le texte reste lu par les moteurs de
+   recherche. Un clic sur le titre ouvre ou referme ; le bouton « Replier » en bas
+   du texte referme aussi (petit script dans js/navbar-load.js).
+   Pages concernées : voir outils/intro-panel.py (script qui a créé les volets). */
+.intro-panel{
+  max-width: 860px;
+  margin: 0 auto 1.6rem auto;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--panel-bg-soft);
+  box-shadow: 0 2px 14px rgba(20,18,16,0.06);
+}
+html[data-theme="dark"] .intro-panel{ box-shadow: 0 2px 14px rgba(0,0,0,0.25); }
+.intro-panel-summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .85rem 1.15rem;
+  cursor: pointer;
+  list-style: none;              /* retire le triangle par défaut… */
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--heading);
+  border-radius: 14px;
+  transition: background .15s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.intro-panel-summary::-webkit-details-marker{ display: none; } /* …aussi sur Safari */
+.intro-panel-summary:hover{ background: var(--nav-link-hover-bg); }
+.intro-panel-summary:focus-visible{ outline: none; box-shadow: var(--focus-ring); }
+.intro-panel[open] > .intro-panel-summary{ border-radius: 14px 14px 0 0; }
+/* Chevron dessiné en CSS (indépendant de la police), tourné quand le volet est ouvert */
+.intro-panel-chevron{
+  flex: 0 0 auto;
+  width: 10px; height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform .25s ease;
+  opacity: .75;
+}
+.intro-panel[open] .intro-panel-chevron{ transform: translateY(3px) rotate(-135deg); }
+.intro-panel-body{
+  padding: .2rem 1.15rem 1.1rem 1.15rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--text);
+  animation: introPanelOpen .3s ease both;
+}
+.intro-panel-body p{ margin: 0 0 1rem 0; }
+.intro-panel-body p:last-of-type{ margin-bottom: .4rem; }
+.intro-panel-body blockquote{
+  font-style: italic;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  color: var(--muted);
+  border-left: 3px solid var(--card-border);
+}
+.intro-panel-body .intro-panel-signature{ text-align: right; text-align-last: right; hyphens: manual; }
+.intro-panel-body .source{
+  text-align: right; font-style: italic; color: var(--muted);
+  margin: .6rem 0 0 0; font-size: .95rem;
+}
+.intro-panel-close{
+  display: block;
+  margin: .9rem 0 0 auto;      /* à droite, sous le texte */
+  padding: .45rem .9rem;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font: inherit;
+  font-size: .92rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.intro-panel-close:hover{ background: var(--btn-bg-hover); }
+.intro-panel-close:focus-visible{ outline: none; box-shadow: var(--focus-ring); }
+@keyframes introPanelOpen{
+  from{ opacity: 0; transform: translateY(-6px); }
+  to  { opacity: 1; transform: none; }
+}
+@media (max-width: 600px){
+  .intro-panel-summary{ padding: .75rem .9rem; font-size: 1rem; }
+  .intro-panel-body{ padding: .1rem .9rem .9rem .9rem; font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .intro-panel-body{ animation: none; }
+  .intro-panel-chevron{ transition: none; }
+}
+
 /* ===== Typographie des textes courants (18/10/2026) =====
    Paragraphes de présentation justifiés avec césure automatique (la langue vient de
    l'attribut lang de <html>, posé sur chaque page). Sans césure, la justification
@@ -1006,8 +1082,6 @@ body > main, body > footer{ position: relative; z-index: 1; }
 .gallery-intro p,
 .intro-panel-body p,
 .intro-panel-body blockquote,
-.expanded-text p,
-.expanded-text blockquote,
 .about-text p,
 .about-intro,
 .contact-info,

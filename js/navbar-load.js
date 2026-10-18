@@ -308,6 +308,25 @@
     // --- LANGUAGE LINKS (flags) ---
     setupLanguageLinks();
 
+    // --- VOLETS DE PRÉSENTATION (<details class="intro-panel">) ---
+    // Le volet s'ouvre/se referme nativement par son titre (<summary>). Le bouton
+    // « Replier » placé sous le texte le referme aussi et ramène le titre à l'écran
+    // s'il a défilé hors de vue (texte long sur téléphone).
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('.intro-panel-close') : null;
+      if (!btn) return;
+      var panel = btn.closest('details.intro-panel');
+      if (!panel) return;
+      panel.removeAttribute('open');
+      var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--site-nav-offset'), 10) || 80;
+      var top = panel.getBoundingClientRect().top;
+      if (top < navH) {
+        window.scrollBy({ top: top - navH - 12, behavior: 'smooth' });
+      }
+      var summary = panel.querySelector('summary');
+      if (summary) { try { summary.focus({ preventScroll: true }); } catch (err) { summary.focus(); } }
+    });
+
     // --- Simple fade-in ---
     document.querySelectorAll('.fade-in').forEach(function (el) {
       el.classList.add('visible');

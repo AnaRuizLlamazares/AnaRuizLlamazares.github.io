@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -147,7 +137,6 @@
 
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -195,7 +184,9 @@
 <nav aria-label="面包屑导航" class="breadcrumb"><a href="index.html">首页</a><span aria-hidden="true"> › </span><a href="galeries.html">作品</a><span aria-hidden="true"> › </span><span aria-current="page">Peau d'âne (2024)</span></nav>
 <h1 class="gallery-title">Peau d'âne (2024)</h1>
 <div class="gallery-desc">衣着作为私密世界的地图。</div><p class="gallery-meta">展览地点：Le Canapé 画廊餐厅，Gif-sur-Yvette，2024 年 5 月至 7 月。</p>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>展览介绍</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>
           衣着是一种私密世界的地图：它勾勒出我们是谁、我们的欲望、恐惧与个人故事的轮廓。每一次穿着的选择，都泄露出一段内在地理。衣服触及我们最深处的存在；在无意识中，它们像一种秘密语言，讲述我们是谁、我们处于怎样的心境。
         </p>
@@ -208,7 +199,9 @@
 <p>
           在这里，这些“衣着-地图”邀请我们踏上一段旅程：去发现自我、他人，以及私密的千种面孔。画作成为我们内在地图的镜像，是“我是谁”的视觉回声。
         </p>
+<button type="button" class="intro-panel-close">收起</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://youtu.be/bvlnzltgUqg?si=h7M2hqSJ2O6x4cE5" rel="noopener noreferrer" target="_blank">
           观看视频《Peau d'âne》

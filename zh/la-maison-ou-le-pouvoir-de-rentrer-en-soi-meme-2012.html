@@ -37,7 +37,6 @@
 <meta content="https://anaruizllamazares.com/img/la-maison/maison-sacree.jpg" name="twitter:image"/>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "zh", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "画家与视觉艺术家", "description": "与法国巴黎附近 Gif-sur-Yvette 相联系的画家与视觉艺术家。", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "de", "zh"]}, {"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html#webpage", "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html", "name": "房子，或回到自我的力量 (2012) | Ana Ruiz Llamazares", "description": "房子，或回到自我的力量 (2012) - Ana Ruiz — Ana Ruiz Llamazares 作品集：绘画、装置与展览。在线画廊、幻灯片与出版物。", "inLanguage": "zh", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/la-maison/maison-sacree.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
 <link href="../css/style-modern.css?v=20261018f" rel="stylesheet"/>
 <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
 <link href="../img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -67,86 +66,14 @@
     .gallery-desc {
       color: #cec9c4;
       font-size: 1.09rem;
-      margin: 0 auto 1.2rem auto; /* espace supplémentaire sous la phrase */
-      max-width: 880px;           /* limite largeur et évite débordement */
+      margin: 0 auto 1.4em auto;
+      max-width: 880px;
       text-align: center;
       font-style: italic;
-      cursor: pointer;
-      position: relative;
-      outline: none;
-      display: block;             /* bloc plein, empêche chevauchement */
-      padding: .45rem .9rem;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.02);
-      transition: background .18s, transform .12s;
-      -webkit-appearance: none;
-      text-decoration: none;
-      line-height:1.3;
-      touch-action: manipulation; /* priorité aux taps, évite gestures indésirables */
-      -webkit-tap-highlight-color: transparent;
-      z-index: 40; /* au-dessus d'éléments éventuels */
-    }
-    /* indicateur placé après le texte, non absolu (ne force pas débordement) */
-    .gallery-desc::after {
-      content: " ▾ 了解更多";
-      display: inline-block;
-      margin-left: .45rem;
-      font-size: 0.88rem;
-      color: #bfb6ad;
-      opacity: 0.95;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    /* petite amélioration visuelle pour montrer que c'est cliquable */
-    .gallery-desc:hover,
-    .gallery-desc:focus {
-      background: rgba(255,255,255,0.045);
-      transform: translateY(-1px);
-      outline: 2px solid rgba(255,255,255,0.05);
+      line-height: 1.3;
     }
     /* si malgré tout il reste du texte posé sous la phrase, forcer séparation */
     .gallery-works { margin-top: 0.8rem; }
-    /* Bloc étendu : fond, ombre et priorité d'affichage */
-    .expanded-text {
-      position: relative;
-      z-index: 30;                    /* au-dessus des éléments fixes */
-      background: rgba(20,20,22,0.96);/* fond opaque pour éviter superposition visuelle */
-      border-radius: 12px;
-      padding: 1rem .9rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-      overflow: hidden;
-      color: #d7d2cf;
-      text-align: justify;
-      margin: 0 auto;
-      max-width: 780px;
-      box-sizing: border-box;
-      display: none;                  /* caché par défaut de façon sûre */
-      opacity: 0;
-      transform-origin: top center;
-      transform: translateY(-6px);
-      transition: opacity 0.26s ease, transform 0.26s ease;
-    }
-    .expanded-text.open {
-      display: block;                 /* rendu visible quand on ouvre */
-      opacity: 1;
-      transform: translateY(0);
-      margin-top: 1rem;
-    }
-    /* bouton Fermer */
-    .expanded-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 0;
-      color: #ece3de;
-      padding: .18rem .5rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      display: none;
-    }
-    .expanded-text.open .expanded-close { display: block; }
     .gallery-works {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -221,46 +148,6 @@
       .gallery-works { grid-template-columns: 1fr;}
       .gallery-work img { height: 180px;}
     } /* ajustable si nécessaire */
-    .author-signature {
-      font-family: "Great Vibes", cursive;
-      font-size: 1.6rem;                 /* un peu plus grand pour la lisibilité */
-      color: #e6dccf;
-      display: inline-block;
-      margin-top: .45rem;
-      line-height: 1;
-      letter-spacing: 0.8px;             /* espacement entre caractères */
-      word-spacing: 0.5rem;              /* espace entre les mots/parties du nom */
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    .author-signature .sig-part { display:inline-block; }
-    .author-signature .sig-sep { width:.5rem; display:inline-block; }
-    /* Styles pour le texte étendu */
-    .expanded-text p {
-      text-align: justify;
-      text-justify: inter-word;
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-      hyphens: auto;
-      margin: 0 0 1rem;
-      line-height: 1.7;
-      color: #d7d2cf;
-      font-size: 1rem;
-    }
-    .expanded-text blockquote {
-      font-style: italic;
-      margin: 1rem 0;
-      color: #e6dccf;
-      border-left: 3px solid rgba(255,255,255,0.04);
-      padding-left: 1rem;
-    }
-    .expanded-text .source {
-      text-align: right;
-      font-style: italic;
-      color: #bfb6ad;
-      margin-top: 0.6rem;
-      font-size: 0.95rem;
-    }
 </style>
  <script defer="" src="../js/navbar-load.js?v=20261018f"></script>
 <script defer="" src="../js/galeries-menu.js?v=20261018f"></script>
@@ -305,12 +192,12 @@
 <div class="gallery-page">
 <nav aria-label="面包屑导航" class="breadcrumb"><a href="index.html">首页</a><span aria-hidden="true"> › </span><a href="galeries.html">作品</a><span aria-hidden="true"> › </span><span aria-current="page">La maison ou le pouvoir de rentrer en soi-même (2012)</span></nav>
 <h1 class="gallery-title">La maison ou le pouvoir de rentrer en soi-même (2012)</h1>
-<div aria-expanded="false" class="gallery-desc" id="gallery-desc" role="button" tabindex="0">
+<div class="gallery-desc">
       房子是否映照着我们随着岁月一点点塑成的个性？究竟是谁建构并保护着另一方？
     </div>
-<!-- remplacer le contenu actuel de #gallery-desc-full par : -->
-<div aria-hidden="true" class="expanded-text" id="gallery-desc-full">
-<button aria-label="关闭说明" class="expanded-close" id="gallery-desc-close">✕</button>
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>展览介绍</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>
           因为房子同时是物质的与非物质的——既是我们居住的房子，也是我们深处携带的房子——它栖居于我们，如同我们栖居于它。因此失去它也意味着失去自己：被关在门外，也被关在自我之外，流离失所，被剥夺了亲密生活的空间与回到自我的力量；与自己与他人分离，如同被消失的房子所缠绕的幽灵。
         </p>
@@ -320,12 +207,14 @@
 <p>
           在连接世界所有房屋的细线上，一道脆弱的身影摇摇晃晃却执拗前行。那会是一位走钢索的骑士吗？高贵而慷慨的理想之力让他不至坠落，并推动他逆流而上、继续向前。他是否在一座座房屋之间寻找通往另一个世界的敞开之门——在那里，每一座房子都是宇宙的中心，且永远不会被毁灭？我们都走在一根线上；从高处，如果我们细看，如果我们俯身在心的窗前凝望，
         </p>
-<p><em>Germinal Arcal Palacio</em></p>
+<p class="intro-panel-signature"><em>Germinal Arcal Palacio</em></p>
 <blockquote>
           “（……）所有的房子都像宇宙那片辽阔蔚蓝之海上的彩色船壳。脆弱的三角小帆与指向天空的桅杆，同时诉说着我们的囚困与轻盈，我们的沉重与虚荣。”
         </blockquote>
 <div class="source">(Lydia Devos, La Maison, Le Seuil)</div>
+<button type="button" class="intro-panel-close">收起</button>
 </div>
+</details>
 <div class="gallery-works">
 <div class="gallery-work">
 <img alt="Maison sacrée — La maison ou le pouvoir de rentrer en soi-même, Ana Ruiz Llamazares" data-large="../img/la-maison/maison-sacree.jpg" decoding="async" height="560" loading="lazy" src="../img/la-maison/maison-sacree.jpg" width="800"/>

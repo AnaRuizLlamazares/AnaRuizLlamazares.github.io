@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -154,7 +144,6 @@
     @media (max-width: 900px) { .gallery-works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -203,10 +192,14 @@
 <h1 class="gallery-title">161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)</h1>
 <div class="gallery-desc">Quatre toiles de la série sur le vêtement, présentées à Versailles.</div><p class="gallery-meta">Exposition collective · Carré à la Farine, Versailles · du 2 au 15 novembre 2026</p>
 <section class="expo-infos"><h2>Informations pratiques</h2><ul><li><b>Dates :</b> du lundi 2 au dimanche 15 novembre 2026</li><li><b>Lieu :</b> Carré à la Farine, 70 bis rue de la Paroisse, 78000 Versailles</li><li><b>Horaires :</b> 11h – 18h (jusqu’à 19h le 7 novembre) · fermé le 11 novembre</li><li><b>Vernissage :</b> samedi 7 novembre, de 15h à 19h</li><li><b>Entrée libre</b></li></ul></section>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>Présentation de l’exposition</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>Le 161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France réunit, du 2 au 15 novembre 2026 au Carré à la Farine, plus de soixante-dix artistes de la région en peinture, sculpture, gravure et dessin. Fondée en 1855, la Société organise chaque année ce salon et y décerne des prix.</p>
 <p>Ana Ruiz Llamazares y présente quatre toiles de sa série sur le vêtement, <em>Hypoderme</em>, <em>Épiderme</em>, <em>Deuxième peau</em> et <em>Peau d’âne</em> : le vêtement comme cartographie de l’intime, dans la continuité de l’exposition <a href="peau-dane.html">Peau d’âne</a>.</p>
+<button type="button" class="intro-panel-close">Replier</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://www.versailles.fr/924-11495/culture/carre-a-la-farine/agenda/fiche/161e-salon-de-la-societe-versaillaise-des-artistes-d-ile-de-france.htm" rel="noopener noreferrer" target="_blank">Programme sur versailles.fr</a>
 </div>

@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -147,7 +137,6 @@
 
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -195,7 +184,9 @@
 <nav aria-label="Breadcrumb" class="breadcrumb"><a href="index.html">Home</a><span aria-hidden="true"> › </span><a href="galeries.html">Works</a><span aria-hidden="true"> › </span><span aria-current="page">Peau d'âne (2024)</span></nav>
 <h1 class="gallery-title">Peau d'âne (2024)</h1>
 <div class="gallery-desc">Clothing as a map of intimacy.</div><p class="gallery-meta">Exhibition presented at Le Canapé gallery-restaurant, Gif-sur-Yvette, May – July 2024.</p>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>About the exhibition</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>
           Clothing is a map of intimacy: it traces the contours of who we are—our desires, our fears, our personal stories. Each choice reveals a piece of our inner geography. Clothes touch the deepest part of our being; unconsciously, they tell something about who we are and how we feel, like a secret language.
         </p>
@@ -208,7 +199,9 @@
 <p>
           Here, these map-clothes invite us on a journey: discovering ourselves, others, and the thousand faces of intimacy. The painting becomes a reflection of our intimate map—an echo of who we are.
         </p>
+<button type="button" class="intro-panel-close">Close</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://youtu.be/bvlnzltgUqg?si=h7M2hqSJ2O6x4cE5" rel="noopener noreferrer" target="_blank">
           Watch the “Peau d'âne” video

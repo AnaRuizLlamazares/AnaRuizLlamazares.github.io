@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -147,7 +137,6 @@
 
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -195,7 +184,9 @@
 <nav aria-label="Ruta de navegación" class="breadcrumb"><a href="index.html">Inicio</a><span aria-hidden="true"> › </span><a href="galeries.html">Obras</a><span aria-hidden="true"> › </span><span aria-current="page">Peau d'âne (2024)</span></nav>
 <h1 class="gallery-title">Peau d'âne (2024)</h1>
 <div class="gallery-desc">La ropa como cartografía de lo íntimo.</div><p class="gallery-meta">Exposición presentada en la galería-restaurante Le Canapé, Gif-sur-Yvette, mayo – julio de 2024.</p>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>Presentación de la exposición</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>
           La ropa es una cartografía de lo íntimo: dibuja los contornos de lo que somos, de nuestros deseos, de nuestros miedos, de nuestras historias personales. Cada elección revela un fragmento de nuestra geografía interior. Las prendas tocan lo más profundo de nuestro ser; de forma inconsciente, cuentan cosas sobre quiénes somos y sobre nuestros estados de ánimo, como un lenguaje secreto.
         </p>
@@ -208,7 +199,9 @@
 <p>
           Aquí, estas ropas-mapas nos invitan a un viaje: el de descubrirnos a nosotros mismos, a los demás y los mil rostros de lo íntimo. La pintura se convierte en el reflejo de nuestra cartografía interior, un eco visual de quienes somos.
         </p>
+<button type="button" class="intro-panel-close">Cerrar</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://youtu.be/bvlnzltgUqg?si=h7M2hqSJ2O6x4cE5" rel="noopener noreferrer" target="_blank">
           Ver el vídeo « Peau d'âne »

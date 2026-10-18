@@ -65,16 +65,6 @@
       font-style: italic;
     }
 
-    .gallery-intro {
-      max-width: 860px;
-      margin: 0 auto 1.6rem auto;
-      font-size: 1.08rem;
-      line-height: 1.75;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-    }
-    .gallery-intro p { margin: 0 0 1rem 0; }
 
     .gallery-actions {
       display: flex;
@@ -154,7 +144,6 @@
     @media (max-width: 900px) { .gallery-works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .gallery-title { font-size: 1.3rem; }
-      .gallery-intro { font-size: 1rem; }
       .gallery-works { grid-template-columns: 1fr; }
       .gallery-work img { height: 240px; }
     }
@@ -203,10 +192,14 @@
 <h1 class="gallery-title">161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)</h1>
 <div class="gallery-desc">Vier Gemälde aus der Serie über das Kleid, gezeigt in Versailles.</div><p class="gallery-meta">Gruppenausstellung · Carré à la Farine, Versailles · 2. bis 15. November 2026</p>
 <section class="expo-infos"><h2>Praktische Informationen</h2><ul><li><b>Zeitraum:</b> Montag, 2. November, bis Sonntag, 15. November 2026</li><li><b>Ort:</b> Carré à la Farine, 70 bis rue de la Paroisse, 78000 Versailles</li><li><b>Öffnungszeiten:</b> 11–18 Uhr (am 7. November bis 19 Uhr) · am 11. November geschlossen</li><li><b>Vernissage:</b> Samstag, 7. November, 15–19 Uhr</li><li><b>Eintritt frei</b></li></ul></section>
-<div class="gallery-intro">
+<details class="intro-panel">
+<summary class="intro-panel-summary"><span>Zur Ausstellung</span><span class="intro-panel-chevron" aria-hidden="true"></span></summary>
+<div class="intro-panel-body">
 <p>Der 161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (161. Salon der Versailler Gesellschaft der Künstler der Île-de-France) vereint vom 2. bis 15. November 2026 im Carré à la Farine mehr als siebzig Künstlerinnen und Künstler der Region in Malerei, Bildhauerei, Druckgrafik und Zeichnung. Die 1855 gegründete Gesellschaft richtet diesen Salon jedes Jahr aus und vergibt dabei Preise.</p>
 <p>Ana Ruiz Llamazares zeigt dort vier Gemälde aus ihrer Serie über das Kleid, <em>Hypoderme</em>, <em>Épiderme</em>, <em>Deuxième peau</em> und <em>Peau d’âne</em>: das Kleid als Kartografie des Intimen, in der Fortsetzung der Ausstellung <a href="peau-dane.html">Peau d’âne</a>.</p>
+<button type="button" class="intro-panel-close">Schließen</button>
 </div>
+</details>
 <div class="gallery-actions">
 <a class="external-link" href="https://www.versailles.fr/924-11495/culture/carre-a-la-farine/agenda/fiche/161e-salon-de-la-societe-versaillaise-des-artistes-d-ile-de-france.htm" rel="noopener noreferrer" target="_blank">Programm auf versailles.fr</a>
 </div>
