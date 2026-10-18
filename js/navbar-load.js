@@ -89,11 +89,23 @@
     return document.documentElement.getAttribute('data-theme') || 'light';
   }
 
+  // Icônes du bouton thème : SVG inline (20x20) plutôt que les caractères ☀︎ / ☾,
+  // dont le dessin et l'alignement vertical varient d'une police système à l'autre.
+  // Les SVG prennent la couleur du texte (currentColor) et sont donc lisibles dans les deux thèmes.
+  var SVG_OPEN = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">';
+  var ICON_SUN = SVG_OPEN +
+    '<circle cx="12" cy="12" r="4.2"/>' +
+    '<path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.35 5.35l1.85 1.85M16.8 16.8l1.85 1.85M5.35 18.65l1.85-1.85M16.8 7.2l1.85-1.85"/>' +
+    '</svg>';
+  var ICON_MOON = SVG_OPEN +
+    '<path d="M20.2 14.4A8.4 8.4 0 0 1 9.6 3.8a8.4 8.4 0 1 0 10.6 10.6z"/>' +
+    '</svg>';
+
   function updateThemeButton(btn) {
     if (!btn) return;
     var icon = btn.querySelector('.theme-icon') || btn;
     var dark = currentTheme() === 'dark';
-    if (icon) icon.textContent = dark ? '☾' : '☀︎';
+    if (icon) icon.innerHTML = dark ? ICON_MOON : ICON_SUN;
     btn.setAttribute('aria-label', dark ? tr('themeLabelDark') : tr('themeLabelLight'));
     btn.title = dark ? tr('themeTitleDark') : tr('themeTitleLight');
   }

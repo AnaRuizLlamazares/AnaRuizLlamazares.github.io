@@ -162,11 +162,31 @@ a:hover{ color: var(--link-hover); }
   flex: 0 0 auto;
 }
 
-/* Hamburger : caché par défaut (desktop). Affiché quand la navbar bascule en mode compact. */
+/* Hamburger : caché par défaut (desktop). Affiché quand la navbar bascule en mode compact.
+   Les trois barres sont dessinées en CSS (::before + ombres), centrées par marges
+   automatiques : le caractère ☰ du HTML (secours sans CSS) est rendu invisible, car
+   sa hauteur dans la ligne varie selon la police du système. */
 .hamburger{
   color: var(--nav-text) !important;
   display: none !important;
+  position: relative;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
 }
+.hamburger::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+}
+.hamburger:hover{ background: var(--nav-link-hover-bg) !important; }
 
 /* Signature : lisible en clair / sombre */
 html[data-theme="dark"] .nav-signature{
@@ -178,7 +198,11 @@ html[data-theme="light"] .nav-signature{
   opacity: 0.88;
 }
 
-/* Bouton thème (☀︎/☾) */
+/* Bouton thème (soleil / lune)
+   L'icône est un petit SVG inséré par js/navbar-load.js (updateThemeButton) :
+   contrairement aux caractères ☀︎ / ☾, son dessin et son centrage ne dépendent
+   pas de la police du système (Mac, iPhone, Android, Windows).
+   Le caractère présent dans le HTML ne sert que de secours sans JavaScript. */
 .theme-toggle{
   border: none;
   background: transparent;
@@ -186,8 +210,9 @@ html[data-theme="light"] .nav-signature{
   cursor: pointer;
   display: inline-grid;
   place-items: center;
-  width: 42px;
-  height: 38px;
+  width: var(--nav-icon-size, 40px);
+  height: var(--nav-icon-size, 40px);
+  padding: 0;
   border-radius: 999px;
   transition: background 0.15s, transform 0.08s;
 }
@@ -198,8 +223,17 @@ html[data-theme="light"] .nav-signature{
   box-shadow: var(--focus-ring);
 }
 .theme-toggle .theme-icon{
-  font-size: 1.15rem;
-  line-height: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 1.15rem; /* secours texte (sans JS) */
+  line-height: 20px;
+  text-align: center;
+}
+.theme-toggle .theme-icon svg{
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Conteneurs principaux : fond continu (pas de box blanche) */
@@ -366,8 +400,6 @@ html[data-theme="light"] footer a:hover{
    - affiche un menu hamburger
 */
 @media (max-width: 1100px){
-  .theme-toggle{ width: 46px; height: 40px; }
-
   /* Hamburger visible */
   .hamburger{ display: grid !important; }
 
@@ -397,7 +429,6 @@ html[data-theme="light"] footer a:hover{
 /* Navbar compacte forcée (si le script détecte un débordement)
    -> même comportement que le breakpoint 1100px, mais applicable sur desktop.
 */
-html.nav-force-hamburger .theme-toggle{ width: 46px; height: 40px; }
 html.nav-force-hamburger .hamburger{ display: grid !important; }
 html.nav-force-hamburger .nav-links{
   display:none !important;
@@ -421,10 +452,22 @@ html.nav-force-hamburger .nav-links.open,
 html.nav-force-hamburger .nav-links.show{ display:flex !important; }
 html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
 /* ===========================
-   Language switcher (small flags)
-   Use drawn flag icons instead of emoji, because some browser/OS combinations
-   fall back to acronyms/letters instead of real flags.
+   Sélecteur de langue (petits drapeaux)
+   Le drapeau est dessiné en CSS (::before, SVG en data-URI) et non avec l'emoji
+   du HTML : certains navigateurs/systèmes affichent des lettres à la place des
+   drapeaux. L'emoji reste dans le HTML comme secours sans CSS ; ici il est
+   rendu invisible (taille 0) et repoussé hors du cercle.
+
+   Toutes les tailles passent par deux variables, redéfinies dans les media
+   queries plus bas (ne pas dupliquer de width/height ailleurs) :
+   --nav-icon-size : diamètre du cercle (drapeaux ET bouton thème)
+   --flag-w / --flag-h : dimensions du drapeau (ratio 3:2)
    =========================== */
+:root{
+  --nav-icon-size: 40px;
+  --flag-w: 22px;
+  --flag-h: 15px;
+}
 .lang-switcher{
   display:flex;
   align-items:center;
@@ -432,10 +475,9 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
 }
 
 .lang-link{
-  display:inline-grid;
-  place-items:center;
-  width: 34px;
-  height: 34px;
+  display:block;
+  width: var(--nav-icon-size);
+  height: var(--nav-icon-size);
   line-height: 1;
   text-decoration:none;
   border-radius: 999px;
@@ -449,11 +491,16 @@ html.nav-force-hamburger .nav-links a{ padding: .7rem .9rem !important; }
   white-space: nowrap;
 }
 
+/* Le drapeau est positionné en absolu et centré par marges automatiques :
+   son emplacement ne dépend ainsi ni du texte de secours ni du mode de rendu
+   (c'est l'ancien empilement en grille, avec l'emoji, qui le poussait en haut). */
 .lang-link::before{
   content: "";
-  display:block;
-  width: 22px;
-  height: 15px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: var(--flag-w);
+  height: var(--flag-h);
   border-radius: 2px;
   border: 1px solid rgba(0,0,0,0.12);
   box-shadow: 0 1px 2px rgba(0,0,0,0.08);
@@ -487,18 +534,11 @@ html[data-theme="dark"] .lang-link::before{
 }
 
 .lang-link.active::before{
-  transform: translateY(-0.5px);
   box-shadow: 0 0 0 2px rgba(45, 74, 122, 0.18), 0 1px 2px rgba(0,0,0,0.08);
 }
 
 html[data-theme="dark"] .lang-link.active::before{
   box-shadow: 0 0 0 2px rgba(151, 187, 198, 0.22), 0 1px 2px rgba(0,0,0,0.22);
-}
-
-/* Slightly larger tap targets on small screens */
-@media (max-width: 840px){
-  .lang-link{ width: 38px; height: 36px; }
-  .lang-link::before{ width: 22px; height: 15px; }
 }
 
 /* Ultra-mobile portrait: la navbar doit rester 100% utilisable.
@@ -538,13 +578,10 @@ html[data-theme="dark"] .lang-link.active::before{
   }
 
   .lang-switcher{ gap: .1rem !important; }
-  .lang-link{ width: 30px !important; height: 30px !important; }
-  .lang-link::before{ width: 18px !important; height: 12px !important; }
+  /* cercles un peu plus petits pour tenir sur une ligne (5 drapeaux + thème + ☰) */
+  :root{ --nav-icon-size: 36px; --flag-w: 20px; --flag-h: 14px; }
 
-  .theme-toggle{ width: 38px !important; height: 36px !important; }
-  .theme-toggle .theme-icon{ font-size: 1.05rem !important; }
-
-  .hamburger{ width: 40px !important; height: 36px !important; font-size: 1.05rem !important; }
+  .hamburger{ width: 40px !important; height: 36px !important; }
 }
 
 /* ===========================
@@ -637,9 +674,8 @@ html[data-theme="dark"] .form-status.error{ color: #ff8a80; }
    =========================== */
 @media (max-width: 420px){
   .nav-actions{ gap: .22rem !important; }
-  .lang-link{ width: 32px !important; height: 32px !important; font-size: 1.05rem !important; }
-  .theme-toggle{ width: 40px !important; height: 34px !important; }
-  .hamburger{ width: 40px !important; height: 34px !important; font-size: 1.05rem !important; }
+  :root{ --nav-icon-size: 34px; --flag-w: 20px; --flag-h: 14px; }
+  .hamburger{ width: 40px !important; height: 34px !important; }
   .nav-logo a{ max-width: 140px !important; }
   .nav-signature{ display:none !important; }
 }
@@ -966,7 +1002,7 @@ html[data-theme="dark"] { --photobg-opacity: 0.38; --photobg-filter: saturate(0.
 a:focus-visible, button:focus-visible{ outline: 3px solid var(--link); outline-offset: 2px; }
 /* zones cliquables plus grandes (≥ 40px) sans changer la mise en page */
 .oeuvres-list a, footer a, .gallery-back a, .breadcrumb a{ display: inline-block; padding: .45em .15em; margin: -.45em -.15em; }
-.lang-link{ min-width: 40px; min-height: 40px; }
+/* (drapeaux : la taille des zones tactiles est fixée par --nav-icon-size, voir le sélecteur de langue) */
 /* fil d'Ariane */
 .breadcrumb{ font-size: .92rem; color: var(--muted); margin: 0 0 .8rem 0; }
 .breadcrumb a{ color: var(--link); text-decoration: none; }
