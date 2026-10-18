@@ -1113,3 +1113,26 @@ html.nav-force-hamburger .has-sub.open > .sub-menu{ display: block; }
   .hero-actions{ justify-content: center; }
   .hero-art{ width: min(70%, 300px); }
 }
+
+/* --- Accueil : effets sobres (voir js/home-hero.js) --- */
+.hero-frame{ transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out; }
+.hero-sheen{
+  position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), rgba(255,255,255,.28) 0%, rgba(255,255,255,.08) 28%, rgba(255,255,255,0) 60%);
+  mix-blend-mode: screen;
+}
+.hero-progress{
+  position: absolute; left: 0; bottom: 0; height: 3px; width: 100%;
+  transform: scaleX(0); transform-origin: left; background: rgba(255,255,255,.75);
+  box-shadow: 0 0 6px rgba(0,0,0,.25);
+}
+.hero-progress.run{ animation: heroProgress var(--hero-interval, 8000ms) linear forwards; }
+@keyframes heroProgress{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
+/* !important nécessaire : style-modern.css force .fade-in à opacity:1 !important */
+.reveal.reveal{ opacity: 0 !important; transform: translateY(14px) !important; transition: opacity .7s ease, transform .7s ease !important; transition-delay: var(--reveal-delay, 0ms) !important; }
+.reveal.is-visible{ opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce){
+  .hero-frame{ transition: none; }
+  .reveal{ opacity: 1; transform: none; transition: none; }
+  .hero-progress.run{ animation: none; }
+}

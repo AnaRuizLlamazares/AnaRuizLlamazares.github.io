@@ -10,7 +10,15 @@
   est ajouté automatiquement dans les dossiers de langue (en, es, de, zh).
 
   Respecte « prefers-reduced-motion » : dans ce cas la première œuvre reste
-  affichée, sans rotation.
+  affichée, sans rotation, sans inclinaison ni apparition au défilement.
+
+  Effets (sobres, désactivables en retirant la fonction correspondante) :
+  - tilt()   : la toile s'incline légèrement et reflète la lumière en suivant
+               la souris (souris uniquement, jamais sur tactile) ;
+  - barre    : un fin trait sous la toile se remplit pendant les 8 s ;
+  - reveal() : les panneaux de la page apparaissent en montant quand ils
+               entrent à l'écran (classe .reveal, posée ici en JS pour que la
+               page reste entièrement visible sans JavaScript).
 */
 (function () {
   'use strict';
@@ -44,22 +52,89 @@
       return img;
     });
 
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Barre de progression (fin trait sous la toile)
+    var bar = document.createElement('span');
+    bar.className = 'hero-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.style.setProperty('--hero-interval', INTERVAL_MS + 'ms');
+    frame.appendChild(bar);
+
     function show(n) {
       imgs.forEach(function (img, k) { img.classList.toggle('on', k === n); });
       caption.textContent = WORKS[n].title + ' · ' + WORKS[n].expo;
       link.href = WORKS[n].href;
+      // relance l'animation de la barre
+      bar.classList.remove('run');
+      void bar.offsetWidth;
+      if (!reduced) bar.classList.add('run');
     }
 
     var current = 0;
     show(current);
 
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduced && WORKS.length > 1) {
       setInterval(function () {
         current = (current + 1) % WORKS.length;
         show(current);
       }, INTERVAL_MS);
+      tilt(link, frame);
     }
+    if (!reduced) reveal();
+  }
+
+  // Inclinaison 3D et reflet qui suivent la souris (souris seulement).
+  function tilt(area, frame) {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var MAX = 6; // degrés
+    var sheen = document.createElement('span');
+    sheen.className = 'hero-sheen';
+    sheen.setAttribute('aria-hidden', 'true');
+    frame.appendChild(sheen);
+    var raf = null;
+    area.addEventListener('mousemove', function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var r = frame.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width;   // 0..1
+        var y = (e.clientY - r.top) / r.height;   // 0..1
+        frame.style.transform = 'perspective(900px) rotateY(' + ((x - 0.5) * 2 * MAX).toFixed(2) + 'deg) rotateX(' + ((0.5 - y) * 2 * MAX).toFixed(2) + 'deg) translateY(-3px)';
+        sheen.style.setProperty('--sx', (x * 100).toFixed(1) + '%');
+        sheen.style.setProperty('--sy', (y * 100).toFixed(1) + '%');
+        sheen.style.opacity = '1';
+      });
+    });
+    area.addEventListener('mouseleave', function () {
+      frame.style.transform = '';
+      sheen.style.opacity = '0';
+    });
+  }
+
+  // Apparition au défilement des panneaux de l'accueil (IntersectionObserver).
+  function reveal() {
+    if (!('IntersectionObserver' in window)) return;
+    var items = document.querySelectorAll('.home-panel, .home-works li');
+    if (!items.length) return;
+    items.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', (i % 8) * 70 + 'ms');
+    });
+    var list = Array.prototype.slice.call(items);
+    function showUpTo(k) {
+      // Les éléments sont dans l'ordre de la page : tout ce qui précède un
+      // élément visible est au-dessus de lui, donc déjà passé -> visible.
+      for (var i = 0; i <= k; i++) {
+        if (!list[i].classList.contains('is-visible')) { list[i].classList.add('is-visible'); io.unobserve(list[i]); }
+      }
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting || en.boundingClientRect.top < 0) showUpTo(list.indexOf(en.target));
+      });
+    }, { threshold: 0 });
+    list.forEach(function (el) { io.observe(el); });
   }
 
   if (document.readyState === 'loading') {
