@@ -14,6 +14,7 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - Le libellé **"Galeries" devient "Oeuvres"**.
 - Le libellé **"À propos" devient "Bio"**.
 - Le bouton **Clair/Sombre** doit être accessible **sur toutes les pages** (et pas "perdu" dans un sous-menu).
+- **Barre de navigation de référence** (18/10/2026) : le bloc `<nav class="navbar">` est strictement identique sur toutes les pages d’une même langue ; il est généré par `outils/navbar-sync.py` (un seul modèle + libellés par langue). Après tout ajout de page ou changement de menu : `python3 outils/navbar-sync.py`, et `python3 outils/navbar-sync.py --check` pour vérifier. **Aucune règle CSS de navbar dans les pages** : tout le style du menu (bureau, hamburger, tactile) est dans `css/theme.css` et `css/style-modern.css`, pour que le rendu soit le même sur toutes les pages à largeur d’écran égale (les différences ordinateur / téléphone sont, elles, voulues).
 - **Sous-menu « Œuvres »** (18/10/2026) : le lien Œuvres de la navbar déroule la liste des 8 galeries (survol ou clavier sur ordinateur ; flèche-accordéon dans le menu hamburger et sur tactile). Il est construit par `js/galeries-menu.js`, **seule source de la liste** : rien à toucher dans les pages HTML pour ajouter une galerie.
 
 ### 2) Page "Oeuvres" (galeries.html)

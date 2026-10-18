@@ -38,21 +38,20 @@
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://anaruizllamazares.com/#website", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "inLanguage": "zh", "publisher": {"@id": "https://anaruizllamazares.com/#person"}}, {"@context": "https://schema.org", "@type": "Person", "@id": "https://anaruizllamazares.com/#person", "name": "Ana Ruiz Llamazares", "url": "https://anaruizllamazares.com/", "image": "https://anaruizllamazares.com/img/photo-ana.jpg", "jobTitle": "画家与视觉艺术家", "description": "与法国巴黎附近 Gif-sur-Yvette 相联系的画家与视觉艺术家。", "homeLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "workLocation": {"@type": "Place", "name": "Gif-sur-Yvette, Essonne, France"}, "knowsLanguage": ["fr", "en", "es", "de", "zh"]}, {"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html#webpage", "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html", "name": "房子，或回到自我的力量 (2012) | Ana Ruiz Llamazares", "description": "房子，或回到自我的力量 (2012) - Ana Ruiz — Ana Ruiz Llamazares 作品集：绘画、装置与展览。在线画廊、幻灯片与出版物。", "inLanguage": "zh", "isPartOf": {"@id": "https://anaruizllamazares.com/#website"}, "about": {"@id": "https://anaruizllamazares.com/#person"}, "primaryImageOfPage": {"@type": "ImageObject", "url": "https://anaruizllamazares.com/img/la-maison/maison-sacree.jpg"}}]</script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
-<link href="../css/style-modern.css?v=20261018b" rel="stylesheet"/>
+<link href="../css/style-modern.css?v=20261018c" rel="stylesheet"/>
 <!-- Favicon : signature d'Ana (affiché dans l'onglet) -->
 <link href="../img/signature.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="../img/signature.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="../img/signature.png" rel="shortcut icon"/>
 <link href="../img/signature.png" rel="apple-touch-icon"/>
 <style>
-    /* fallback : valeur par défaut pour éviter chevauchement si JS n'a pas encore calculé la hauteur */
+/* fallback : valeur par défaut pour éviter chevauchement si JS n'a pas encore calculé la hauteur */
     :root { --site-nav-offset: 80px; }
      body { background: #151516 !important; }
      .gallery-page {
        max-width: 1000px;
        margin: 0 auto 3rem auto;
        padding: 0 1vw;
-       /* espace au-dessus calculé à partir de la hauteur réelle de la navbar */
        margin-top: calc(var(--site-nav-offset) + 0.8rem);
      }
     .gallery-title {
@@ -107,7 +106,6 @@
     }
     /* si malgré tout il reste du texte posé sous la phrase, forcer séparation */
     .gallery-works { margin-top: 0.8rem; }
-
     /* Bloc étendu : fond, ombre et priorité d'affichage */
     .expanded-text {
       position: relative;
@@ -134,7 +132,6 @@
       transform: translateY(0);
       margin-top: 1rem;
     }
-
     /* bouton Fermer */
     .expanded-close {
       position: absolute;
@@ -223,13 +220,7 @@
       .gallery-title { font-size: 1.3rem;}
       .gallery-works { grid-template-columns: 1fr;}
       .gallery-work img { height: 180px;}
-    }
-
-    /* Eviter que la barre chevauche le contenu : garde compatibilité */
-  /* la variable CSS --site-nav-offset garantit que le contenu commence sous la navbar */
-  .gallery-page { margin-top: calc(var(--site-nav-offset) + 0.8rem); } /* ajustable si nécessaire */
-
-    /* signature auteur : police manuscrite */
+    } /* ajustable si nécessaire */
     .author-signature {
       font-family: "Great Vibes", cursive;
       font-size: 1.6rem;                 /* un peu plus grand pour la lisibilité */
@@ -244,7 +235,6 @@
     }
     .author-signature .sig-part { display:inline-block; }
     .author-signature .sig-sep { width:.5rem; display:inline-block; }
-
     /* Styles pour le texte étendu */
     .expanded-text p {
       text-align: justify;
@@ -271,108 +261,10 @@
       margin-top: 0.6rem;
       font-size: 0.95rem;
     }
-    @media (orientation: landscape) {
-    }
-  </style>
-<style>
-.nav-logo a {
-  font-size: 1.05rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.nav-signature { display:inline-block; margin-left:.4rem; height:22px; }
-
-/* Navigation links (desktop) */
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  margin-left: auto;
-  align-items: center;
-}
-.nav-links a {
-  display: inline-block;
-  padding: .6rem .7rem;
-  font-size: 0.98rem;
-  line-height: 1;
-  color: inherit;
-  text-decoration: none;
-  border-radius: .35rem;
-}
-
-/* visual breathing room for navbar on large screens */
-@media (min-width: 1200px) {
-  .navbar { padding: 1.2rem 0; }
-  .nav-links a { padding: .7rem .9rem; font-size: 1rem; }
-}
-
-/* --- Mobile: adapter mais garder la barre plus haute proportionnellement --- */
-@media (max-width: 840px){
-  .navbar { padding: 0.8rem 0.6rem; }
-  .navbar-container { gap: .6rem; padding: 0 0.6rem; }
-
-  /* limiter la largeur du texte du logo mais le garder lisible */
-  .nav-logo a {
-    font-size: 0.88rem;
-    font-weight:700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 160px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  /* signature réduite pour mobile */
-  .nav-signature{display:block; height:18px; width:auto; margin-left:.25rem; opacity:.95}
-  .nav-signature img{height:18px; width:auto; display:block; opacity:.95}
-
-  /* hamburger un peu plus grand pour confort tactile */
-  .hamburger{
-    margin-left:auto;
-    width:42px;
-    height:36px;
-    padding:0;
-    display:grid;
-    place-items:center;
-    font-size:1rem;
-    line-height:1;
-    border-radius:.5rem;
-  }
-
-  /* Menu mobile: colonne, plein largeur mais discret */
-  .nav-links{
-    display:none;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:0.12rem;
-    padding:0.35rem 0;
-    width:100%;
-  }
-  .nav-links.open{display:flex}
-
-  .nav-links li { margin:0; width:100%; }
-  .nav-links a{
-    display:block;
-    padding:.44rem 0;
-    font-size:0.92rem;
-    line-height:1.15;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    width:100%;
-  }
-
-  /* très petits écrans : compacter encore légèrement */
-  @media (max-width: 380px) {
-    .nav-logo a { max-width: 120px; font-size:0.8rem; }
-    .nav-links a { font-size:0.82rem; padding:.28rem 0; }
-    .hamburger { width:38px; height:32px; font-size:0.9rem; }
-  }
-}
-</style> <script defer="" src="../js/navbar-load.js?v=20261018b"></script>
-<script defer="" src="../js/galeries-menu.js?v=20261018b"></script>
-<link href="../css/theme.css?v=20261018b" rel="stylesheet"/>
+</style>
+ <script defer="" src="../js/navbar-load.js?v=20261018c"></script>
+<script defer="" src="../js/galeries-menu.js?v=20261018c"></script>
+<link href="../css/theme.css?v=20261018c" rel="stylesheet"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://anaruizllamazares.com/zh/index.html"}, {"@type": "ListItem", "position": 2, "name": "作品", "item": "https://anaruizllamazares.com/zh/galeries.html"}, {"@type": "ListItem", "position": 3, "name": "La maison ou le pouvoir de rentrer en soi-même (2012)", "item": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}]}</script>
 <script type="application/ld+json" data-artworks="1">{"@context": "https://schema.org", "@type": "ItemList", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)", "numberOfItems": 6, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "VisualArtwork", "name": "Maison sacrée", "image": "https://anaruizllamazares.com/img/la-maison/maison-sacree.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "VisualArtwork", "name": "Maison Floride", "image": "https://anaruizllamazares.com/img/la-maison/maison-floride.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}, {"@type": "ListItem", "position": 3, "item": {"@type": "VisualArtwork", "name": "Maison temple", "image": "https://anaruizllamazares.com/img/la-maison/maison-temple.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}, {"@type": "ListItem", "position": 4, "item": {"@type": "VisualArtwork", "name": "Maison palais prison", "image": "https://anaruizllamazares.com/img/la-maison/maison-palais-prison.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}, {"@type": "ListItem", "position": 5, "item": {"@type": "VisualArtwork", "name": "Maison de Typhée", "image": "https://anaruizllamazares.com/img/la-maison/maison-de-thyphee.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}, {"@type": "ListItem", "position": 6, "item": {"@type": "VisualArtwork", "name": "Maison paradis perdu", "image": "https://anaruizllamazares.com/img/la-maison/maison-paradis-perdu.jpg", "creator": {"@id": "https://anaruizllamazares.com/#person"}, "artform": "绘画", "dateCreated": "2012", "inLanguage": "zh", "isPartOf": {"@type": "ExhibitionEvent", "name": "La maison ou le pouvoir de rentrer en soi-même (2012)"}, "url": "https://anaruizllamazares.com/zh/la-maison-ou-le-pouvoir-de-rentrer-en-soi-meme-2012.html"}}]}</script>
 </head>
@@ -383,7 +275,7 @@
 <div class="navbar-container">
 <div class="nav-logo">
 <a aria-label="Ana Ruiz" class="site-brand">Ana Ruiz</a>
-<img alt="Signature Ana Ruiz" class="nav-signature" decoding="async" height="45" loading="eager" src="../img/signature.png" width="106"/>
+<img alt="Ana Ruiz 的签名" class="nav-signature" decoding="async" height="45" loading="eager" src="../img/signature.png" width="106"/>
 </div>
 <ul class="nav-links" id="primary-nav">
 <li><a href="index.html">首页</a></li>
@@ -466,7 +358,7 @@
 </div>
 </div>
 </main>
-<script src="../js/gallery-lightbox.js?v=20261018b"></script>
-<script src="../js/protect.js?v=20261018b"></script>
+<script src="../js/gallery-lightbox.js?v=20261018c"></script>
+<script src="../js/protect.js?v=20261018c"></script>
 </body>
 </html>
