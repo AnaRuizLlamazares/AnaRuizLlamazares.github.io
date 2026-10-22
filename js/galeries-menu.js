@@ -31,7 +31,8 @@
     { href: 'fete-des-artistes-2009.html',                         year: '2009', label: 'Fête des artistes en cartes postales' },
     { href: 'sur-le-sentier-du-dragonnier-2008.html',              year: '2008', label: 'Sur le sentier du dragonnier' },
     { href: 'couleurs-en-nudite-2007.html',                        year: '2007', label: 'Couleurs en nudité' },
-    { href: 'angles-de-vie-2005.html',                             year: '2005', label: 'Angles de vie' }
+    { href: 'angles-de-vie-2005.html',                             year: '2005', label: 'Angles de vie' },
+    { href: 'contre-verse-autour-des-limites-2004.html',           year: '2004', label: 'Contre-verse autour des limites' }
   ];
 
   // Libellés d'interface par langue.

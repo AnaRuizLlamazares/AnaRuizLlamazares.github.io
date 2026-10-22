@@ -59,7 +59,12 @@
     'img/mosaique/angles-de-vie-1-ana-ruiz.webp',
     'img/mosaique/angles-de-vie-2-ana-ruiz.webp',
     'img/mosaique/angles-de-vie-3-ana-ruiz.webp',
-    'img/mosaique/angles-de-vie-4-ana-ruiz.webp'
+    'img/mosaique/angles-de-vie-4-ana-ruiz.webp',
+    'img/mosaique/air-eau-ciel-ana-ruiz.webp',
+    'img/mosaique/el-cid-a-mogador-ana-ruiz.webp',
+    'img/mosaique/una-noche-sin-luna-ana-ruiz.webp',
+    'img/mosaique/el-misere-ana-ruiz.webp',
+    'img/mosaique/don-quijote-ana-ruiz.webp'
   ];
 
   var STATIC = true;
