@@ -188,11 +188,22 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     {
       name: "Angles de vie (2005)",
+      maxSlides: 6, // les six toiles (deux ajoutées le 22/10/2026)
       slides: [
         { src: "img/AnglesDeVie/angles-de-vie-1-ana-ruiz.webp", title: "Angles de vie I" },
         { src: "img/AnglesDeVie/angles-de-vie-2-ana-ruiz.webp", title: "Angles de vie II" },
         { src: "img/AnglesDeVie/angles-de-vie-3-ana-ruiz.webp", title: "Angles de vie III" },
-        { src: "img/AnglesDeVie/angles-de-vie-4-ana-ruiz.webp", title: "Angles de vie IV" }
+        { src: "img/AnglesDeVie/angles-de-vie-4-ana-ruiz.webp", title: "Angles de vie IV" },
+        { src: "img/AnglesDeVie/air-eau-ciel-ana-ruiz.webp", title: "Air, eau, ciel" },
+        { src: "img/AnglesDeVie/el-cid-a-mogador-ana-ruiz.webp", title: "El Cid à Mogador" }
+      ]
+    },
+    {
+      name: "Contre-verse autour des limites (2004)",
+      slides: [
+        { src: "img/ContreVerse2004/una-noche-sin-luna-ana-ruiz.webp", title: "Una noche sin luna" },
+        { src: "img/ContreVerse2004/el-misere-ana-ruiz.webp", title: "El misere" },
+        { src: "img/ContreVerse2004/don-quijote-ana-ruiz.webp", title: "Le petit Quijote" }
       ]
     }
   ];

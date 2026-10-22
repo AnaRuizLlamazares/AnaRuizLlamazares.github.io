@@ -27,7 +27,9 @@ Si une nouvelle instruction contredit ce README, on met à jour ce README (aprè
 - **161ᵉ Salon de la Société versaillaise des artistes d’Île-de-France (2026)**, Carré à la Farine, Versailles, du 2 au 15 novembre 2026 : page `salon-versailles-2026.html`, œuvres Hypoderme, Épiderme, Deuxième peau, Peau d’âne (`img/SalonVersailles2026/`). Annoncée en « Exposition à venir » sur l’accueil et la page Œuvres ; à passer en « Exposition récente » après le 15 novembre.
 - **Icône ou le pouvoir de soi (2024)**, exposition collective Géographie(s) du Sacré, crypte d’Orsay, septembre 2024 : page `icone-ou-le-pouvoir-de-soi.html`, les cinq visages (`img/Icone/visage-1..5-ana-ruiz.webp`), titres donnés par Ana.
 - **Peau d’âne (2024)**, galerie-restaurant Le Canapé, Gif-sur-Yvette, mai – juillet 2024 : page `peau-dane.html`, les vêtements Nekem, Ben, Remine (`img/PeauDAne/`) ; Mina et Aniga à ajouter quand Ana enverra les photos.
-- **Angles de vie (2005)**, château de Belleville : page `angles-de-vie-2005.html`, quatre tableaux (`img/AnglesDeVie/`), titres provisoires I à IV.
+- **Angles de vie (2005)**, château de Belleville : page `angles-de-vie-2005.html`, six tableaux (`img/AnglesDeVie/`) : I à IV (titres provisoires) et, depuis le 22/10/2026, « Air, eau, ciel » et « El Cid à Mogador » (titres donnés par Ana ; tirages rephotographiés puis recadrés).
+- **Contre-verse autour des limites (2004)** : page `contre-verse-autour-des-limites-2004.html` (5 langues) créée le 22/10/2026 avec ce qui est connu : le titre, l’année et trois toiles (`img/ContreVerse2004/` : Una noche sin luna, El misere, Le petit Quijote). **Lieu, dates et texte de présentation à compléter** dès la réponse d’Ana (volet `intro-panel` à ajouter avec `outils/intro-panel.py`, ligne de lieu sur la carte Œuvres, ExhibitionEvent du JSON-LD). Pas d’œuvre choisie sur l’accueil (Ana a validé 8 œuvres sur 2 lignes).
+- **Publications** (22/10/2026) : le livre **François Beautier, *Commune de Gif, un héritage à partager*, Mairie de Gif-sur-Yvette, 2010** (références : archives de ville-gif.fr ; Gif Infos n° 365, février 2011), p. 125 : tableau d’Ana acquis par la ville (titre inconnu, à demander), légende et texte transcrits (pas de capture de la page) ; couverture du *Carnet de saison 2004/2005* de Gif. Script d’intégration : `outils/ajout-oeuvres-2026-10-22.py`. Photo de 1994 (Ana au château du Montcel ?) reçue mais non publiée en attendant Ana.
 - **Fête des artistes en cartes postales (2009)** : Tolède retiré du site, Angles de vie déplacé dans sa propre galerie.
 - Les fichiers retirés sont rangés dans `img/Historique/retires-2026-10/` (rien n’est supprimé).
 
@@ -153,7 +155,8 @@ Note : sur un site 100% statique, il est difficile de garantir que l'adresse soi
   1. Créer une nouvelle page `mon-expo-AAAA.html` sur le modèle des pages existantes.
   2. Ajouter une carte dans `galeries.html` (et ses 4 traductions), avec une image de couverture dans `img/mosaique/` ; pour une exposition sans galerie ou une installation, une ligne dans la liste « Autres expositions ».
   2 bis. Ajouter la galerie dans le tableau `GALERIES` de `js/galeries-menu.js` (sous-menu) et, si on veut la mettre en avant sur l’accueil, dans `WORKS` de `js/home-hero.js`.
-  3. Ajouter jusqu’à 4 images dans `js/diapo.js` si on veut l’inclure au diaporama (sauf exception explicite comme **Peau d’âne**).
+  3. Ajouter les images dans `js/diapo.js` si on veut l’inclure au diaporama (4 par défaut ; `maxSlides` pour en montrer plus, comme Angles de vie ou Icône).
+  4. Ajouter la miniature dans `WORKS` de `js/mosaic-bg.js` (fond mosaïque), l’entrée dans `sitemap.xml` (5 URL + images), et vérifier `python3 outils/navbar-sync.py --check`.
 
 ### 12 bis) Protection des œuvres (17/10/2026)
 - Clic droit, glisser-déposer et sélection désactivés sur les images ; appui long « Enregistrer l’image » désactivé sur mobile ; impression bloquée (Cmd/Ctrl+P et page d’impression vide) : `js/protect.js` + `css/theme.css`.
